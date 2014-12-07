@@ -1,0 +1,10 @@
+baseurl = "http://simcoe.science.uoit.ca/"
+languageCode = "en-us"
+title = "RPi Labs"
+pygmentsstyle = "tango"
+
+[params]
+Description = "Laboratories on RaspberryPi for UOIT students"
+Copyright = " "
+Logo = "/images/logo.png"
+
