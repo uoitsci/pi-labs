@@ -22,15 +22,15 @@ When these servos are commanded to move, they will move to the position and hold
 
 To control del servo motor from the RaspberryPi we are going to use the PWM module in RPi.GPIO. The first step is to create the PWM instance asociated with the GPIO pin:
 
-{{%highlight python%}}
+{{< highlight python >}}
 p = GPIO.PWM(12, 50)
-{{%/highlight%}}
+{{< /highlight >}}
 
 In the above case we have intanciated the PWM module for the pin number 12 with a frequency of 50Hz. That frequency was selected because the servo motor expect a pulse avery 20ms (period), that means 50 pulses per second or Hertz. Once instantiated the PWM module, to start sending a pulse we do:
 
-{{%highlight python%}}
+{{< highlight python >}}
 p.start(dc)
-{{%/highlight%}}
+{{< /highlight >}}
 
 In this case dc is the *duty cicle*. The duty cycle describes the proportion of *on* time to the regular interval or *period* of time. If we want a pulse with an specific lenght we can calculate the duty cicle as follows: 
 
@@ -42,15 +42,15 @@ Since the servo uses 20ms cicles, we can calculate the dutycicle of the 3 turns 
 
 To change the duty cicle we can use:
 
-{{%highlight python%}}
+{{< highlight python >}}
 p.ChangeDutyCycle(dc)
-{{%/highlight%}}
+{{< /highlight >}}
 
 and to stop the pulse emition:
 
-{{%highlight python%}}
+{{< highlight python >}}
 p.stop()
-{{%/highlight%}}
+{{< /highlight >}}
 
 # Example of controling a servo from the RaspberryPi
 The following diagram shows how to connect the servo to the RaspberryPi:
@@ -59,7 +59,7 @@ The following diagram shows how to connect the servo to the RaspberryPi:
 
 The following program will control the servo making it move to it's neutral position (90 degrees), wait 1 second and then move to it's 0 degrees, wait 1 second and finally move to it's 180 degrees. The cicle contiue until interrupted:
 
-{{%highlight python%}}
+{{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
@@ -82,7 +82,7 @@ try:
 except KeyboardInterrupt:
 	p.stop()
         GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 ## Exercise
 Add two buttons to the circuit and extend the above program to control the servo in the following way: One button will make the servo turn to its 0 degrees, the other will make it trun to it's 180 degrees and both buttons at the same time will make the servo turn towards it neutral position (90 degrees).  

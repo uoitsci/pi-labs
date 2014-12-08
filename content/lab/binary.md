@@ -109,18 +109,18 @@ SHIFT-RIGHT 0101
 ## Bit shift in python 
 In python the left and right shift operators are `<<` and `>>`, respectively. The number of places to shift is given as the second argument to the shift operators. For example:
 
-{{%highlight python%}}
+{{< highlight python >}}
 y = x >> 2
-{{%/highlight%}}
+{{< /highlight >}}
 
 Now `y` constains the value of `x` shifted two positions to the right.
 
 ## Testing for bits in python
 To test for different bits in python you can use the combination of the shift operator and the and operator. If you want to test if the bit in the i-th possition (from right to left counting form 0) you can do:
 
-{{%highlight python%}}
+{{< highlight python >}}
 (x >> i) & 1
-{{%/highlight%}}
+{{< /highlight >}}
 
 The result of the above operation will be 1 if the bit in the i-th possition has value 1, zero otherwise.
 
@@ -131,7 +131,7 @@ We are going to do a fun excersise. Lets create a circuit with 3 LEDs representi
 
 Notice that we are using GPIO pins 8, 10 and 12 as output pins for the LEDs. The following program will show the different binary numbers from 0 to 7 displayed using the LEDs:
 
-{{%highlight python%}}
+{{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
@@ -154,7 +154,7 @@ try:
 		time.sleep(1)
 except KeyboardInterrupt:
         GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 ## Exercise
 Add a button to the circuit and extend the above program to increase the binary number when the button is pressed.

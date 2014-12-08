@@ -55,7 +55,7 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 
 Once conected as in the above diagram, you can test if everything was properly conected using the followig program. This progam turn on all segments in all digits:
 
-{{%highlight python%}}
+{{< highlight python >}}
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
@@ -79,13 +79,13 @@ try:
 	pass
 except KeyboardInterrupt:
         GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 If after running the above program not all segments in all digits are on, you should recheck your wiring.
 
 Now that we know that the wiring is correct, we can display some numbers (between 0 and 9) in the 7 segment display. In this case, we are going to display the same number in all digit. The python program is the following:
 
-{{%highlight python%}}
+{{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
@@ -134,13 +134,13 @@ try:
 	n = (n + 1) % 10 # Increase the number
 except KeyboardInterrupt:
         GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 Note that in the above program we initialize the segments output to zero insted of one as in the previous. 
 
 Now we are ready to display larger numbers with different values for each one of the four digits. For that we are going to proced as follow: we are going to display the values of each digit one at a time but changing from one to the other very fast, so the human will see as if all four are on at the same time. The following program displays the number 1234 in the seven segment display:
 
-{{%highlight python%}}
+{{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
@@ -191,7 +191,7 @@ try:
 		
 except KeyboardInterrupt:
 	GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 ## Exercise
 Add a button to the circuit and extend the above program to increase the number displayed every time the button is pressed. 

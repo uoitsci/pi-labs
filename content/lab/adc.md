@@ -55,7 +55,7 @@ Next connect up the potentiometer. Pin #1 (left) goes to GND (black), #2 (middle
 
 The following python program read the value of the potentiometer and print it value to the screen:
 
-{{%highlight python%}}
+{{< highlight python >}}
 
 import RPi.GPIO as GPIO
 import time
@@ -119,7 +119,7 @@ try:
     time.sleep(1)
 except KeyboardInterrupt:
   GPIO.cleanup()
-{{%/highlight%}}
+{{< /highlight >}}
 
 ## Exercise
-Add another potentiometer to the circuit and extend the above program to print both values.l
+Add another potentiometer to the circuit and extend the above program to print both values.
