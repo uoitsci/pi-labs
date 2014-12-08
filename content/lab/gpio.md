@@ -83,7 +83,9 @@ To control a LED from the Raspberry Pi, we are going to connect it to a GPIO por
 
 As the output voltage of the GPIO pins is 3.3 volts, and the LED uses only 2 volts, we need to add a resistor. The specification of this LED says it consume 5ma, so to calculate the appropriate resistor we need to use the Ohm's law as follows:
 
-{{<img src="/images/ohmnLed.png">}}
+$$
+  R = \frac{V}{I} = \frac{3.3\text{V} - 2.0\text{V}}{4\text{mA}} = \frac{1.3\text{V}}{0.004\text{A}} = 325\Omega
+$$
 
 As the formula indicates, we need a resistor of at least 325 ohms, so a 330 ohms is OK.
 

@@ -34,4 +34,21 @@
 
   <!-- RSS -->
   <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+
+  <!-- MathJax -->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  <script type="text/javascript">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        styles: {
+          ".MathJax .mo, .MathJax .mi": {color: "black ! important"}
+        }
+      },
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
 </head>

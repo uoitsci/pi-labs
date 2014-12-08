@@ -1,16 +1,16 @@
 +++
 draft = false
-title = "Controlling a Servomotor from the Raspberry Pi"
+title = "Controlling a Servo from the Raspberry Pi"
 Weight = 6
 +++
 
-A *Servomotor* is a small device that has an output shaft. This shaft can be positioned to specific angular positions by sending the servo a coded signal. As long as the coded signal exists on the input line, the servo will maintain the angular position of the shaft. As the coded signal changes, the angular position of the shaft changes.
+A *Servomotor*, or servo, is a small device that has an output shaft. This shaft can be positioned to specific angular positions by sending the servo a coded signal. As long as the coded signal exists on the input line, the servo will maintain the angular position of the shaft. As the coded signal changes, the angular position of the shaft changes.
 
 {{%img src="/images/servoMotor.png"%}}
 
-Servomotors, or in short servos, are extremely useful in practice, they can be used to operate remote-controlled or radio-controlled toy cars, robots and airplanes. Servos are also used in industrial applications, robotics, in-line manufacturing, pharmaceutics and food services.
+Servos are extremely useful in practice.  They may be used to operate remote-controlled toy cars, robots, or airplanes.  Servos are also used in industrial applications, robotics, in-line manufacturing, pharmaceutics, and food services.
 
-# How is the servo controlled?
+# How is a Servo Controlled?
 Servos are controlled by sending an electrical pulse of variable width, or pulse width modulation (PWM), through the control wire. There is a minimum pulse, a maximum pulse, and a repetition rate. A servo motor can usually only turn 90 degrees in either direction for a total of 180 degree movement. The motor's neutral position is defined as the position where the servo has the same amount of potential rotation in the both the clockwise or counter-clockwise direction. The PWM sent to the motor determines position of the shaft, and based on the duration of the pulse sent via the control wire; the rotor will turn to the desired position. The servo motor expects to see a pulse every 20 milliseconds (ms) and the length of the pulse will determine how far the motor turns. For example, a 1.5ms pulse will make the motor turn to the 90-degree position. Shorter than 1.5ms moves it to 0 degrees, and any longer than 1.5ms will turn the servo to 180 degrees, as diagrammed below:
 
 {{%img src="/images/servoInput.png"%}}
@@ -33,11 +33,23 @@ p.start(dc)
 
 In this case dc is the *duty cycle*. The duty cycle describes the proportion of *on* time to the regular interval or *period* of time. If we want a pulse with an specific length we can calculate the duty cycle as follows: 
 
-{{%img src="/images/dc.png"%}}
+$$
+\text{dc} = \frac{\text{length}}{\text{period}}
+$$
 
 Since the servo uses 20ms cycles, we can calculate the duty cycle of the 3 turns of the servo motor:
 
-{{%img src="/images/dc_servo.png"%}}
+$$
+\text{dc} = \frac{0.5}{20} \times 100 = 2.5\%
+$$
+
+$$
+\text{dc} = \frac{1.5}{20} \times 100 = 7.5\%
+$$
+
+$$
+\text{dc} = \frac{2.5}{20} \times 100 = 12.5\%
+$$
 
 To change the duty cycle we can use:
 
