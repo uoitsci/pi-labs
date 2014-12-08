@@ -4,7 +4,7 @@ title = "RPi Labs"
 pygmentsstyle = "tango"
 
 [params]
-Description = "Laboratories on RaspberryPi for UOIT students"
+Description = "Laboratories on Raspberry Pi for UOIT students"
 Copyright = " "
 Logo = "/images/logo.png"
 

@@ -1,10 +1,10 @@
 +++
 draft = false
-title = "ARM assembler in RaspberryPi"
+title = "ARM assembler in Raspberry Pi"
 Weight = 8
 +++
 
-Machine language is built up from discrete statements or instructions implemented by a particular processor. ARM is a family of instruction set architectures for computer processors and is the one used by the processor of the RaspberryPi. The machine language is interpreted by the computer in term of binary codes. Binary code is what a computer can run. It is composed of instructions, that are encoded in a binary representation (such encodings are documented in the ARM manuals). You could write binary code encoding instructions but that would be painstaking. So instead we will write assembler language. Assembler language is just a thin syntax layer on top of the binary code.
+Machine language is built up from discrete statements or instructions implemented by a particular processor. ARM is a family of instruction set architectures for computer processors and is the one used by the processor of the Raspberry Pi. The machine language is interpreted by the computer in term of binary codes. Binary code is what a computer can run. It is composed of instructions, that are encoded in a binary representation (such encodings are documented in the ARM manuals). You could write binary code encoding instructions but that would be painstaking. So instead we will write assembler language. Assembler language is just a thin syntax layer on top of the binary code.
 
 Since the computer cannot run assembler we have to get binary code from it. We use a tool called, well, assembler to assemble the assembler code into a binary code that we can run. The tool to do this is called as. In particular GNU Assembler, which is the assembler tool from the GNU project, sometimes it is also known as gas for this reason. This is the tool we will use to assemble our programs.
 
@@ -52,7 +52,7 @@ Great! That error code of 2 is not by chance, it is due to that #2 in the assemb
 # Well, what happened?
 We cheated a bit just to make things a bit easier. We wrote a C main function in assembler which only does return 2;. This way our program is easier since the C runtime handled initialization and termination of the program for us. I will use this approach all the time.
 
-Let’s review every line of our minimal assembler file.
+Let's review every line of our minimal assembler file.
 
 These are comments. Comments are enclosed in /* and */. Use them to document your assembler as they are ignored. As usually, do not nest /* and */ inside /* because it does not work.
 
@@ -95,11 +95,11 @@ And the error code? Well, the result of main is the error code of the program an
 
 At its core, a processor in a computer is nothing but a powerful calculator. Calculations can only be carried using values stored in very tiny memories called registers. The ARM processor in a Raspberry Pi has 16 integer registers and 32 floating point registers. A processor uses these registers to perform integer computations and floating point computations, respectively. We will put floating registers aside for now and eventually we will get back to them in a future installment. Let’s focus on the integer registers.
 
-Those 16 integer registers in ARM have names from r0 to r15. They can hold 32 bits. Of course these 32 bits can encode whatever you want. That said, it is convenient to represent integers in two’s complement as there are instructions which perform computations assuming this encoding. So from now, except noted, we will assume our registers contain integer values encoded in two’s complement.
+Those 16 integer registers in ARM have names from r0 to r15. They can hold 32 bits. Of course these 32 bits can encode whatever you want. That said, it is convenient to represent integers in two's complement as there are instructions which perform computations assuming this encoding. So from now, except noted, we will assume our registers contain integer values encoded in two's complement.
 
 # Basic arithmetic
 
-Almost every processor can do some basic arithmetic computations using the integer registers. So do ARM processors.  You can ADD two registers. Let’s retake our example from above:
+Almost every processor can do some basic arithmetic computations using the integer registers. So do ARM processors.  You can ADD two registers. Let's retake our example from above:
 
 {{< highlight nasm >}}
 /* -- sum01.s */

@@ -8,7 +8,7 @@ In this lab we are going to learn about binary numbers and its representation.
 
 # Binary numbers
 
-The binary numeral system is a way to write numbers using only two digits: 0 and 1. These are used in computers as a series of "off" and "on" switches. In binary, each digit's place value is twice as much as that of the next digit to the right (since each digit holds two values). In decimal - the system that humans normally use - each digit holds ten values, and the place value increases by a power of ten (one's, ten's, hundred's place, etc.). The place value of the rightmost digit in either case is 1.
+The binary numeral system is a way to write numbers using only two digits: 0 and 1. These are used in computers as a series of "off" and "on" switches. In binary, each digit's place value is twice as much as that of the next digit to the right (since each digit holds two values). In decimal - the system that humans normally use - each digit holds ten values, and the place value increases by a power of ten (ones, tens, hundreds place, etc.). The place value of the rightmost digit in either case is 1.
 
 Example: 10110011
 
@@ -32,8 +32,8 @@ Example: 118
 * 29 divided by 2 is equal to 14 with remainder 1, so the value before that is a 1.
 * 17 divided by 2 is equal to 7 with remainder 0, so the value before that is a 0.
 * 7 divided by 2 is equal to 3 with remainder 1, so the value before that is a 1.
-* 3 devided by 2 is equal to 1 with remainder 1, so the value before that is a 1.
-* 1 devided by 2 is equal to 0 with remainder 1, so the value before that is a 1.
+* 3 divided by 2 is equal to 1 with remainder 1, so the value before that is a 1.
+* 1 divided by 2 is equal to 0 with remainder 1, so the value before that is a 1.
 
 The binary representation of the number 118 is 1110110.
 
@@ -79,7 +79,7 @@ XOR 0011
   = 0110
 </pre>
 
-The `XOR` operator can be seen as a comparison of two bits patterns, given the result in eaxh posision 1 if both bits differs and 0 if they are the same.
+The `XOR` operator can be seen as a comparison of two bits patterns, given the result in each position 1 if both bits differs and 0 if they are the same.
 
 ## Bitwise operations in python
 In python the bitwise operators has the following symbols:
@@ -113,19 +113,19 @@ In python the left and right shift operators are `<<` and `>>`, respectively. Th
 y = x >> 2
 {{< /highlight >}}
 
-Now `y` constains the value of `x` shifted two positions to the right.
+Now `y` contains the value of `x` shifted two positions to the right.
 
 ## Testing for bits in python
-To test for different bits in python you can use the combination of the shift operator and the and operator. If you want to test if the bit in the i-th possition (from right to left counting form 0) you can do:
+To test for different bits in python you can use the combination of the shift operator and the and operator. If you want to test if the bit in the i-th position (from right to left counting form 0) you can do:
 
 {{< highlight python >}}
 (x >> i) & 1
 {{< /highlight >}}
 
-The result of the above operation will be 1 if the bit in the i-th possition has value 1, zero otherwise.
+The result of the above operation will be 1 if the bit in the i-th position has value 1, zero otherwise.
 
-# Representing binary numbers with LED on the RaspberryPi
-We are going to do a fun excersise. Lets create a circuit with 3 LEDs representing each one a bit in a binary number of size 3, and increment that number every second. The circuit would be the following:
+# Representing binary numbers with LED on the Raspberry Pi
+We are going to do a fun exercise. Lets create a circuit with 3 LEDs representing each one a bit in a binary number of size 3, and increment that number every second. The circuit would be the following:
 
 {{%img src="/images/binary.png"%}}
 
