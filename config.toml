@@ -1,4 +1,4 @@
-baseurl = "http://simcoe.science.uoit.ca/"
+baseurl = "http://rpi.science.uoit.ca/"
 languageCode = "en-us"
 title = "RPi Labs"
 pygmentsstyle = "tango"
