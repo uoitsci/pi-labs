@@ -6,139 +6,184 @@ Weight = 2
 
 In this lab we are going to introduce the GPIO interface of the Raspberry Pi.
 
-# What is GPIO?
-In one corner of the Raspberry Pi is a 26 pin expansion header. The pins are numerated from 1 to 26, with the even numbers on the outside of the board as the picture shows:
+## What is GPIO?
+In one corner of the Raspberry Pi is a 40-pin expansion header.  The pins are numbered from 1 to 40, with the even numbers on the outside edge of the board as shown below.
 
-{{<img src="/images/expansionHeader.png">}}
+{{<img src="/images/rasbperry_pi_bplus_top.jpg" hidpi="/images/rasbperry_pi_bplus_top@2x.jpg" alt="Raspberry Pi Model B+ GPIO expansion headers" caption="Raspberry Pi Model B+ GPIO expansion headers" attr="Lucasbosch on Wikipedia, reproduced under CC BY-SA 3.0" attrlink="http://commons.wikimedia.org/wiki/File:Raspberry_Pi_B%2B_top.jpg">}}
 
-This table indentifies  each of the pins in the expansion header:
+Each of these GPIO pins are identified below.
 
-{{<img src="/images/pins.png">}}
+{{<img src="/images/gpio_pins.png" hidpi="/images/gpio_pins@2x.png" attr="Christopher Stanton, Element 14 Community" caption="Raspberry Pi B+ GPIO 40 Pin Block Pinout" attrlink="http://www.element14.com/community/docs/DOC-68203/l/raspberry-pi-b-gpio-40-pin-block-pinout">}}
 
-There are different types of pins in the expansion header:
+There are several different types of pins in the expansion header.
 
-* The red pins: those pins are connected to the Raspberry Pi 5 volts rail, meaning that they provide constant 5 volts.
-* The orange pins: those pins are connected to the Raspberry Pi 3.3 volts rail, meaning that they provide constant 3.3 volts.
-* The black pins: those pins are connected to ground, meaning they provide constant 0 volts.
+<dl>
+  <dt>Light Red</dt>
+  <dd>Connected to the Pi's 5V rail, provides a consistent +5.0V.</dd>
+  <dt>Dark Red</dt>
+  <dd>Connected to the Pi's 3.3V rail, provides a consistent +3.3V.</dd>
+  <dt>Black</dt>
+  <dd>Connected to the Pi's ground, provides a consistent 0V.</dd>
+  <dt>Yellow <span class="masthead-title"><small>New in Model B+</small></span></dt>
+  <dd>I<sup>2</sup>C bus dedicated to expansion boards</dd>
+</dl>
 
-All the remaining pins are known as the **General-purpose input/output (GPIO)**. The GPIO is a generic pin on a circuit whose behavior, including whether it is an input or output, can be controlled by the user at run time. The GPIO pins are also connected to the 3.3 volts rails but what that makes them special is that they can be used to read voltages (input) or they can set to 3.3 volts or 0 volts (output).
+All the remaining pins are known as the **General-purpose input/output (GPIO)**.  The GPIO is a generic pin on a circuit whose behaviour, including whether it is an input or output, may be controlled by the user at run-time.
 
-There are also 4 types of GPIO ports in the Raspberry Pi expansion header. The green pins are generic GPIO pins. The blue, yellow and gray are also GPIO pins, but by default they have been reserved for special functions, but they can be reconfigured if needed. 
+The GPIO pins are connected to the +3.3V rails.  When used for input they are able to read voltages.  When used for output they may be set to +3.3V (high) or 0V (low).
 
-In total there are 17 GPIO ports. Although any GPIO pins can be used, we recommend to use only the 8 colored in green in the above table.
+There are 4 different types of GPIO pins on the Raspberry Pi.  Of these, three may be used as GPIO or special purposes.
 
-# Using the GPIO from python
+<dl>
+  <dt>Green</dt>
+  <dd>These are generic GPIO pins without a special purpose.</dd>
+  <dt>Blue</dt>
+  <dd>These pins may operate as GPIO or used as an I<sup>2</sup>C bus.</dd>
+  <dt>Orange</dt>
+  <dd>These pins may operate as GPIO or used for <abbr title="Universal asynchronous receiver/transmitter">UART</abbr></dd>.
+  <dt>Purple</dt>
+  <dd>These pins may operate as GPIO or used as an <abbr title="Serial Peripheral Interface">SPI</abbr> bus.</dd>
+</dl>
 
-To use the GPIO interface from python the first step is to import the Raspberry Pi GPIO module:
+In total there are 24 GPIO ports.  Although any GPIO pins may be used, when possible the green pins should be used first.
+
+__Note:__ _Only the first 26 pins are used for these labs._
+
+## Using the GPIO Pins From Python
+
+The examples below use the RPi.GPIO Python package.  It may be installed with the following command.
+
+{{< highlight bash >}}
+$ sudo pip install RPi.GPIO
+{{< /highlight >}}
+
+To use the GPIO interface from Python the first step is to import the Raspberry Pi GPIO module.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 {{< /highlight >}}
 
-Then it is necessary to initialize the GPIO interface:
+Then it is necessary to initialize the GPIO interface.
 
 {{< highlight python >}}
 GPIO.setmode(GPIO.BOARD)
 {{< /highlight >}}
 
-An now everything is ready to start using the GPIO port. You will need to define the input and output pins and do your logic behind them. To finalize it is a good practice to do:
+Now we are ready to start using the GPIO pins.  You may declare each pin as input (`GPIO.IN`) or output (`GPIO.OUT`), define your logic, etc.
+
+It is good practice to clean-up when you are finished using the GPIO pins.  This resets all of the pins to their original state.
 
 {{< highlight python >}}
 GPIO.cleanup()
 {{< /highlight >}}
 
-That clean all setting we have define. If you forget to do the cleanup and one output pin is active (set to 1) it will continue providing 3.3 volts until deactivated (set to 0) or a cleanup is done.
+### Controlling GPIO Pins
 
-# Define and manage input pins
-
-To define a GPIO pin as output from python, you need to set:
+To set a GPIO pin to output mode from Python, you must set it to `GPIO.OUT`.
 
 {{< highlight python >}}
 GPIO.setup(12, GPIO.OUT)
 {{< /highlight >}}
 
-Now the pin is ready to provide output. You can set it to provide 3.3 volts (on) doing:
+The pin is now set to output.  You may set it to +3.3V (high)
 
 {{< highlight python >}}
-GPIO.output(12, 1)
+GPIO.output(12, GPIO.HIGH)
 {{< /highlight >}}
 
-Or set is to provide 0 volts (off) doing:
+or 0V (low)
 
 {{< highlight python >}}
-GPIO.output(12, 0)
+GPIO.output(12, GPIO.LOW)
 {{< /highlight >}}
 
-### Simple circuit using the Raspberry Pi GPIO ports: control a LED. 
+## Example 1:  Controlling an LED
 
-A **light-emitting diode** (LED) is a two-lead semiconductor light source. It resembles a basic p-n junction diode, which emits light when activated.
+A **light-emitting diode (LED)** is a two-lead semiconductor that emits light.  It resembles a simple p-n junction diode, which emits light when activated
 
 {{<img src="/images/led.png">}}
 
-Because LEDs are diodes, they only left current pass in one way, so you must ensure to connect the anode to the power source and the cathode to the ground, otherwise current would not pass through and thus it would not emit light. Monochrome LEDs has two legs being generally the longest the anode and the shortest the cathode. You can also identify the cathode has a flat top side inside the lens in round LEDs.
+As LEDs are diodes, current only flows in one direction.  Thus you must connect the anode to the power source and the cathode to the ground.  Reversing these connections will now permit current to flow through and thus it will not emit light.
 
-To control a LED from the Raspberry Pi, we are going to connect it to a GPIO port, for instance the number 12 as the following picture shows:
+In general the longest leg of the LED is the anode, while the shortest is the cathode.  The flat side of the LED lens is always the cathode.
 
-{{<img src="/images/ledCircuit.png">}}
+To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.
 
-As the output voltage of the GPIO pins is 3.3 volts, and the LED uses only 2 volts, we need to add a resistor. The specification of this LED says it consume 5ma, so to calculate the appropriate resistor we need to use the Ohm's law as follows:
+{{<img src="/images/led_circuit.png" hidpi="/images/led_circuit@2x.png">}}
+
+As the output voltage of the GPIO pins is +3.3V and the LED only uses +2.1V, we must add a resistor.  The specification of this LED says it consumes 20mA.  Each pin supplies up to 16mA, so the actual forward current consumed by the LED is 16mA, not 20mA.
+
+To calculate the appropriate resistor value we must use Ohm's law as follows.
 
 $$
-  R = \frac{V}{I} = \frac{3.3\text{V} - 2.0\text{V}}{4\text{mA}} = \frac{1.3\text{V}}{0.004\text{A}} = 325\Omega
+  R = \frac{V}{I} = \frac{3.3\text{V} - 2.1\text{V}}{16\text{mA}} = \frac{1.2\text{V}}{0.016\text{A}} = 75\Omega
 $$
 
-As the formula indicates, we need a resistor of at least 325 ohms, so a 330 ohms is OK.
+As the formula indicates, we need a resistor value of at least 75&#8486;, so a resistor value of 82&#8486; is suitable.
 
-Now that we are ready, lets control the LED from the Raspberry Pi. The following program turns the LED on for 3 seconds:
+With the circuit constructed, we may now control the LED with the Raspberry Pi.
+
+The following code initializes the GPIO, sets pin #12 to output, turns the LED on, sleeps for 3 seconds, then finally turns the LED off.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BOARD)
-
 GPIO.setup(12, GPIO.OUT)
 
-GPIO.output(12, 1)
+GPIO.output(12, GPIO.HIGH)
 
 time.sleep(3)
+
+GPIO.output(12, GPIO.LOW)
 
 GPIO.cleanup()
 {{< /highlight >}}
 
+### Reading Input
 
-## Define and manage output pins
-
-In a similar way that we defined a GPIO output pin we can define a GPIO input pin:
+Similarly to how we defined a GPIO output pin, we may define a GPIO input pin.
 
 {{< highlight python >}}
 GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 {{< /highlight >}}
 
-Notice the extra argument *pull_up_down* provided to the setup function. The values of this argument will be explained later.
+Notice the extra argument `pull_up_down` provided to the setup function.  The purpose of this argument will be explained later.
 
-To read from that pin that we have defined as input we need to do:
+In order to read a value from this pin, we use the `input` method.  This returns either `GPIO.HIGH` or `GPIO.LOW`, depending on if the input is considered active or not.
 
 {{< highlight python >}}
 GPIO.input(11)
 {{< /highlight >}}
 
-That function will return 1 or 0 depending if the input is considered active or not. When input is considered active is defined in the *pull_up_down* argument to the setup function. It has two possible values:
+When an input pin is considered active depends on the value passed to the `pull_up_down` argument.  There are two possible values.
 
-* `GPIO.PUD_DOWN`: The input is considered on when that pin is reading 3.3 volts, off if reading less than that.
-* `GPIO.PUD_UP`: The input is considered on when the pins is reading less that 3.3 volts, on if reading 3.3 volts.
+* `GPIO.PUD_DOWN` - The input is considered active if it is receiving +3.3V, inactive otherwise.
+* `GPIO.PUD_UP` - The input is considered active if reading less than +3.3V, inactive if it reads +3.3V.
 
-Both values are opposite behaviors and the usage depends on the needs. 
+The table below further clarifies the difference between these two values.  The value +1.8V is there for illustrative purposes and does not have special meaning.
+
+Value           | +3.3V    | < +3.3V  | 0V
+----------------|----------|----------|---------
+`GPIO.PUD_DOWN` | Active   | Inactive | Inactive
+`GPIO.PUD_UP`   | Inactive | Active   | Active
+
+## Example 2:  Button Input
 
 ### Simple button input with the Raspberry Pi.
 
-When we controlled the LED from the Raspberry Pi, we demonstrated the usage of a GPIO pin as output. To show the usage of a GPIO pin as input, we are going to extend the above program to make the led blink on the push of a button. In this case we want the light the LED when the button is pushed. For that we are going to connect the button to the GPIO pin 11 and to the 3.3 V pin 17 as follow:
+In our previous example we demonstrated the usage of a GPIO pin as output.  In order to demonstrate using a GPIO pin for input, we are going to extend the previous example to make the LED blink when a button is pressed.
 
-{{<img src="/images/button.png">}}
+Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 and another to +3.3V.
 
-and we are going to setup the *pull_up_down* argument of that ping to `GPIO.PUD_DOWN`. When the button is pushed, it closes the circuit and there will be 3.3 volts at pin 11, and the function `GPIO.input(11)` will return 1.
+Your circuit should be similar to the following.
 
-The following python program turns the LED on push of the button:
+{{<img src="/images/led_button_circuit.png" hidpi="/images/led_button_circuit@2x.png">}}
+
+When the button is pressed, the circuit between the +3.3V pin and pin #11 is completed.  This causes the input value of #11 to be `GPIO.HIGH`.  As we want a value of `GPIO.HIGH` to be read when the button has been pressed, we use set the `pull_up_down` argument to `GPIO.PUD_DOWN`.
+
+The following Python program turns on the LED when the button is pressed.  The LED is turned off otherwise.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
@@ -147,14 +192,15 @@ GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(12, GPIO.OUT)
 GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.output(12, 0)
+GPIO.output(12, GPIO.LOW)
 
 try:
-	while True:
-		GPIO.output(12, GPIO.input(11))
+    while True:
+        GPIO.output(12, GPIO.input(11))
 except KeyboardInterrupt:
-	GPIO.cleanup()
+    GPIO.cleanup()
 {{< /highlight >}}
 
 ## Exercise
+
 Extend the first program to make the LED blink constantly.
