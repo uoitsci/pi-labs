@@ -1,17 +1,19 @@
 <!-- image -->
 <figure {{ with .Get "class" }}class="{{.}}"{{ end }}>
     {{ with .Get "link"}}<a href="{{.}}">{{ end }}
-        <img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
-    {{ if .Get "link"}}</a>{{ end }}
+      <img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} srcset="{{.Get "src" }} 1x{{ if (.Get "hidpi") }}, {{ .Get "hidpi" }} 2x{{ end }}" />
+      {{ if .Get "link"}}</a>{{ end }}
     {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
     <figcaption>{{ if isset .Params "title" }}
         <h4>{{ .Get "title" }}</h4>{{ end }}
-        {{ if or (.Get "caption") (.Get "attr")}}<p>
-        {{ .Get "caption" }}
-        {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+        <small>
+          {{ if or (.Get "caption") (.Get "attr")}}<p>
+          {{ .Get "caption" }}
+          {{ with .Get "attrlink"}} &mdash; <em><a href="{{.}}"> {{ end }}
             {{ .Get "attr" }}
-        {{ if .Get "attrlink"}}</a> {{ end }}
-        </p> {{ end }}
+            {{ if .Get "attrlink"}}</a> {{ end }}</em>
+          </p> {{ end }}
+        </small>
     </figcaption>
     {{ end }}
 </figure>
