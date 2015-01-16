@@ -109,7 +109,7 @@ In general the longest leg of the LED is the anode, while the shortest is the ca
 
 To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.  As you can verify in the pinout diagram above, this corresponds to the GPIO #18 (as labelled in the header).
 
-{{<img src="/images/led_circuit.png" hidpi="/images/led_circuit@2x.png">}}
+{{<img src="/images/led_circuit.png" hidpi="/images/led_circuit_rev3.png">}}
 
 As the output voltage of the GPIO pins is +3.3V and the LED only uses +2.1V, we must add a resistor.  The specification of this LED says it consumes 20mA.  Each pin supplies up to 16mA, so the actual forward current consumed by the LED is 16mA, not 20mA.
 
@@ -179,7 +179,7 @@ Start with the circuit from Example 1.  Insert a momentary pushbutton switch int
 
 Your circuit should be similar to the following.
 
-{{<img src="/images/led_button_circuit.png" hidpi="/images/led_button_circuit@2x.png">}}
+{{<img src="/images/led_button_circuit.png" hidpi="/images/led_button_circuit_rev3.png">}}
 
 When the button is pressed, the circuit between the +3.3V pin and pin #11 is completed.  This causes the input value of #11 to be `GPIO.HIGH`.  As we want a value of `GPIO.HIGH` to be read when the button has been pressed, we use set the `pull_up_down` argument to `GPIO.PUD_DOWN`.
 
