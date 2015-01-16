@@ -103,11 +103,11 @@ A **light-emitting diode (LED)** is a two-lead semiconductor that emits light.  
 
 {{<img src="/images/led.png">}}
 
-As LEDs are diodes, current only flows in one direction.  Thus you must connect the anode to the power source and the cathode to the ground.  Reversing these connections will now permit current to flow through and thus it will not emit light.
+As LEDs are diodes, current only flows in one direction.  Thus you must connect the anode to the power source and the cathode to the ground.  Reversing these connections will not permit current to flow through and thus it will not emit light.
 
 In general the longest leg of the LED is the anode, while the shortest is the cathode.  The flat side of the LED lens is always the cathode.
 
-To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.
+To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.  As you can verify in the pinout diagram above, this corresponds to the GPIO #18 (as labelled in the header).
 
 {{<img src="/images/led_circuit.png" hidpi="/images/led_circuit@2x.png">}}
 
@@ -175,7 +175,7 @@ Value           | +3.3V    | < +3.3V  | 0V
 
 In our previous example we demonstrated the usage of a GPIO pin as output.  In order to demonstrate using a GPIO pin for input, we are going to extend the previous example to make the LED blink when a button is pressed.
 
-Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 and another to +3.3V.
+Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 (which corresponds to GPIO#17) and another to +3.3V.
 
 Your circuit should be similar to the following.
 
