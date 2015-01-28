@@ -43,7 +43,7 @@ The 74xx series of chips generally contain logic gates and other components.  Fo
 
 Nearly all of these chips has a very similar pin layout.  The diagram below describes the pin layout for the 7400 chip:
 
-{{<img src="/images/7400_pinout.png" alt="Pinout of the 7400 chip">}}
+{{<img src="/images/7400_pinout.png">}}
 
 To use one of these chips, connect pin 7 to ground, and pin 14 to a power source (e.g. one of the 5v pins on the Raspberry Pi's GPIO array).  You can then connect two inputs (either GPIO output ports or directly from power source) to pins 1 and 2, and connect the output (pin 3) to either an LED (with an appropriate resistor) or a GPIO input port.  You can also combine gates together, by connecting output pins to input pins.
 
