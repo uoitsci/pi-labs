@@ -91,7 +91,7 @@ One can easily construct a half adder for two input bits (X and Y) by drawing th
 
 Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder:
 
-{{<img src="/images/half_adder.png" alt="Circuit diagram for a half adder" />}}
+{{<img src="/images/half_adder.png">}}
 
 ## Hardware Setup
 Take out the Raspberry Pi and lay it on a flat surface.  Identify the 74xx chips required by examining the model numbers written on the top of the chip.  You will need a 7408 (4 AND gates) and 7486 (4 XOR gates) for this part.  Each of the two chips must be mounted across the gap in the middle of the breadboard, so that each side of pins has its own breadboard column for connecting wires.
