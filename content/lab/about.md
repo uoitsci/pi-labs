@@ -14,7 +14,7 @@ The RPi has its operating system on a MicroSD card, that is plugged into your de
 Important note:  These RPis are shared, and you should not expect your work to still be there from a previous lab.  Also, it is not recommended that you leave your completed work on the Raspberry Pi.  You should delete all work after you’ve completed it.
 
 # Python programming language
-Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programing language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
+Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programming language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
 
 ## Hardware Setup
 To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, a microUSB AC adapter, an Ethernet cable, a multimeter, and various wires and components.
