@@ -43,7 +43,7 @@ The 74xx series of chips generally contain logic gates and other components.  Fo
 
 Nearly all of these chips has a very similar pin layout.  The diagram below describes the pin layout for the 7400 chip:
 
-{{<img src="/images/7400_pinout.png">}}
+{{<img src="/images/7400_pinout.png" alt="Pinouts for the 7400 chip">}}
 
 To use one of these chips, connect pin 7 to ground, and pin 14 to a power source (e.g. one of the 5v pins on the Raspberry Pi's GPIO array).  You can then connect two inputs (either GPIO output ports or directly from power source) to pins 1 and 2, and connect the output (pin 3) to either an LED (with an appropriate resistor) or a GPIO input port.  You can also combine gates together, by connecting output pins to input pins.
 
@@ -91,7 +91,7 @@ One can easily construct a half adder for two input bits (X and Y) by drawing th
 
 Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder:
 
-{{<img src="/images/half_adder_circuit.png">}}
+{{<img src="/images/half_adder_circuit.png" alt="The circuit for a half adder (HA)">}}
 
 ## Hardware Setup
 Take out the Raspberry Pi and lay it on a flat surface.  Identify the 74xx chips required by examining the model numbers written on the top of the chip.  You will need a 7408 (4 AND gates) and 7486 (4 XOR gates) for this part.  Each of the two chips must be mounted across the gap in the middle of the breadboard, so that each side of pins has its own breadboard column for connecting wires.
@@ -129,3 +129,140 @@ GPIO.cleanup()
 {{< /highlight >}}
 
 The program's output should match the above truth table.
+
+# Full Adders
+A full adder is a circuit that adds two binary digits, plus a carry in, producing a sum and a carry out bit.  The carry bit is one (high) when the three bits add up to more than can be stored in a single digit.  This happens when two or more of the input bits is one (high).
+
+## Circuit Design
+The same process used for the half adder can be used to design the circuit for a full adder, starting with the truth table (which is filled out by hand, based on what we know about the behaviour of the circuit):
+
+<table class="wikitable">
+  <caption>Truth table for a full adder (FA)</caption>
+  <tr>
+    <th>X</th>
+	<th>Y</th>
+	<th>C(in)</th>
+	<th>S</th>
+	<th>C(out)</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+</table>
+
+Using a Karnaugh map, and knowledge of XOR, we can get simplified Boolean algebraic expressions for each of the two output variables:
+
+<pre>
+   S = X XOR Y XOR C(in)
+</pre>
+
+<pre>
+   C(out) = ((X XOR Y) AND C(in)) OR (X AND Y)
+</pre>
+
+The circuit corresponding to these Boolean algebraic expressions is shown below:
+
+{{<img src="/images/full_adder_circuit.png" alt="The circuit for a full adder">}}
+
+## Hardware Setup
+Disconnect all of the gate inputs and outputs from the half adder.  We'll need to add a 7432 chip for the single OR gate that is shown in the circuit diagram.  Connect power and ground to this chip accordingly.  Connect the gate inputs and outputs according to the following table:
+
+<table class="wikitable">
+  <caption>Gate Inputs for a Full Adder</caption>
+  <tr>
+    <th>Gate</th>
+	<th>Input 1</th>
+	<th>Input 2</th>
+	<th>Output</th>
+  </tr>
+  <tr>
+    <td>XOR 1</td>
+    <td>x (pin #15, GPIO #22)</td>
+    <td>y (pin #11, GPIO #17)</td>
+    <td>XOR 2 input 1</td>
+  </tr>
+  <tr>
+    <td>XOR 2</td>
+    <td>c(in) (pin #7, GPIO #4)</td>
+    <td>XOR 1 output</td>
+    <td>s (pin #16, GPIO #23)</td>
+  </tr>
+  <tr>
+    <td>AND 1</td>
+    <td>c(in) (pin #7, GPIO #4)</td>
+    <td>XOR 1 output</td>
+    <td>OR input 1</td>
+  </tr>
+  <tr>
+    <td>AND 2</td>
+    <td>x (pin #15, GPIO #22)</td>
+    <td>y (pin #11, GPIO #17)</td>
+    <td>OR input 2</td>
+  </tr>
+  <tr>
+    <td>OR</td>
+    <td>AND 1 output</td>
+    <td>AND 2 output</td>
+    <td>c(out) (pin #18, GPIO #24)</td>
+  </tr>
+</table>
+
+The resulting circuit should look something like the following illustration:
+
+{{<img src="/images/FullAdder_bb.png" alt="The hardware configuration for a full adder">}}
+
+## Exercise
+Write some code in Python to test your full adder circuit will all possible inputs.  Use the half_adder_test.py as a starting point.
