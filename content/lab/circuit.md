@@ -43,7 +43,7 @@ The 74xx series of chips generally contain logic gates and other components.  Fo
 
 Nearly all of these chips has a very similar pin layout.  The diagram below describes the pin layout for the 7400 chip:
 
-{{<img src="/images/7400_pinout.png" alt="Pinout of the 7400 chip" />}}
+{{<img src="/images/7400_pinout.png" alt="Pinout of the 7400 chip">}}
 
 To use one of these chips, connect pin 7 to ground, and pin 14 to a power source (e.g. one of the 5v pins on the Raspberry Pi's GPIO array).  You can then connect two inputs (either GPIO output ports or directly from power source) to pins 1 and 2, and connect the output (pin 3) to either an LED (with an appropriate resistor) or a GPIO input port.  You can also combine gates together, by connecting output pins to input pins.
 
@@ -100,7 +100,7 @@ Connect a red wire to a power supply of 5v on the GPIO header, and plug it into 
 
 Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO pins #21 and #22.  Connect the output from the XOR gate to GPIO pin #23, and the output from the AND gate to GPIO pin #24.  The completed circuit wiring is shown below:
 
-{{<img src="/images/half_adder_bb.png" alt="The hardware configuration for a half adder" />}}
+{{<img src="/images/HalfAdder_bb.png" alt="The hardware configuration for a half adder" />}}
 
 ## Testing out your circuit
 Connect the cables for the Raspberry Pi as usual, and boot to the Raspbian graphical environment.  Create a new Python file, called half_adder_test.py, containing the following code:
