@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en-us">
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
   <!-- Enable responsiveness on mobile devices-->
@@ -13,27 +12,33 @@
   <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/poole.css">
   <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/syntax.css">
   <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700%7CAbril+Fatface">
 
   <style type="text/css">
     IMG.logo {
-    display: block;
-    margin-left: auto;
-  margin-right: auto; 
-}
-@media (min-width: 48rem) {
-  .sidebar {
-    text-align: center;
-  }
-}
-</style>
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
 
+    @media (min-width: 48rem) {
+      .sidebar {
+        text-align: center;
+      }
+    }
+
+    img.centred {
+      margin: 0px auto;
+      display: block;
+    }
+</style>
+  
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- RSS -->
-  <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 
   <!-- MathJax -->
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

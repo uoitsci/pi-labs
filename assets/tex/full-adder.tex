@@ -1,0 +1,26 @@
+%!TEX root = diagrams.tex
+
+\beginpgfgraphicnamed{full-adder}
+\begin{circuitikz}
+	\draw
+	(3,0) node[xor port] (myxor) {} to
+	(7,0) node[xor port,anchor=in 2] (myxor1) {}
+	(0,-3) node[and port,rotate=270] (myand) {}
+	(5,-3) node[and port,rotate=270] (myand1) {}
+	
+	(2.5,-6) node[or port,rotate=270] (myor) {}
+	(myxor.in 1) -- +(-2.5,0) node[anchor=east] (a) {A}
+	(myxor.in 2) -- +(-2.5,0) node[anchor=east] (b) {B}
+	(myor.out) node[anchor=north] (co) {Carry out}
+	(myxor.in 2 -| myand.in 1) node[circ] {} -- (myand.in 1)
+	(myxor.in 1 -| myand.in 2) node[circ] {} -- (myand.in 2)
+	(myand.out) |- (myor.in 2)
+	(myand1.out) |- (myor.in 1)
+	
+	(myand1.in 1) -- +(0,2.75) node[anchor=south] (cin) {Carry in}
+	(myand1.in 1 |- myxor1.in 1) node[circ] {} -- (myxor1.in 1)
+	(myxor1.in 2 -| myand1.in 2) node[circ] {} -- (myand1.in 2)
+	(myxor1.out) node[anchor=west] (sum) {Sum}
+	;
+\end{circuitikz}
+\endpgfgraphicnamed

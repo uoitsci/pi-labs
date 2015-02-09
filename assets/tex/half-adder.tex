@@ -1,0 +1,16 @@
+%!TEX root = diagrams.tex
+
+\beginpgfgraphicnamed{half-adder}
+\begin{circuitikz}
+	\draw
+	(3,0) node[american xor port] (myxor) {}
+	(0,-3) node[american and port,rotate=270] (myand) {}
+	(myxor.out) node[anchor=west] {Sum}
+	(myand.out) node[anchor=north] {Carry}
+	(myxor.in 1) -- +(-2.5,0) node[anchor=east] (a) {A}
+	(myxor.in 2) -- +(-2.5,0) node[anchor=east] (b) {B}
+	(myxor.in 2 -| myand.in 1) node[circ] {} -- (myand.in 1)
+	(myxor.in 1 -| myand.in 2) node[circ] {} -- (myand.in 2)
+	;
+\end{circuitikz}
+\endpgfgraphicnamed

@@ -6,263 +6,153 @@ Weight = 4
 
 In this lab we are going to experiment with gates and circuit design.  We'll use our understanding of gate behaviour to design a half adder and a full adder circuit, each of which will be implemented on the breadboard and interfaces with the Raspberry Pi.
 
-# The 74xx Series
+## The 74xx Series
+
 The 74xx series of chips generally contain logic gates and other components.  For example, the 7402 chip contains 4 NOR gates on a single 14-pin chip.  There are many variations, including some that have memory (flip-flops, latches).  The table below summarizes some of these chips.
 
-<table class="wikitable">
-<caption>Summary of Notable 74xx Chips</caption>
-  <tr>
-    <th>Base Model</th>
-	<th>Description</th>
-  </tr>
-  <tr>
-    <td>7400</td>
-    <td>Four 2-input NAND gates</td>
-  </tr>
-  <tr>
-    <td>7402</td>
-    <td>Four 2-input NOR gates</td>
-  </tr>
-  <tr>
-    <td>7404</td>
-    <td>Four 1-input inverters (NOT gates)</td>
-  </tr>
-  <tr>
-    <td>7408</td>
-    <td>Four 2-input AND gates</td>
-  </tr>
-  <tr>
-    <td>7432</td>
-    <td>Four 2-input OR gates</td>
-  </tr>
-  <tr>
-    <td>7486</td>
-    <td>Four 2-input XOR gates</td>
-  </tr>
-</table> 
+Base Model | Description
+-----------|-------------
+7400       | Quad 2-input NAND gates
+7402       | Quad 2-input NOR gates
+7404       | Six 1-input inverters (NOT gates)
+7408       | Quad 2-input AND gates
+7432       | Quad 2-input OR gates
+7486       | Quad 2-input XOR gates
 
-Nearly all of these chips has a very similar pin layout.  The diagram below describes the pin layout for the 7400 chip:
+Nearly all of the above chips have an identical pinout (the exceptions are the 7402 and the 7404).  The diagram below illustrates the pinout of the 7400 chip.
 
-{{<img src="/images/7400_pinout.png" alt="Pinouts for the 7400 chip">}}
+{{< img src="/images/7400_nand_gate.png" hidpi="/images/7400_nand_gate@2x.png" alt="Pinout of the 7400 chip" caption="Pinout of the 7400 chip" attr="Tosaka on Wikipedia, reproduced under CC BY 3.0" attrlink="http://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG" >}}
 
-To use one of these chips, connect pin 7 to ground, and pin 14 to a power source (e.g. one of the 5v pins on the Raspberry Pi's GPIO array).  You can then connect two inputs (either GPIO output ports or directly from power source) to pins 1 and 2, and connect the output (pin 3) to either an LED (with an appropriate resistor) or a GPIO input port.  You can also combine gates together, by connecting output pins to input pins.
+To use one of these chips, connect pin #7 to ground, and pin #14 to a power source (e.g. one of the +5.0V pins on the Raspberry Pi's GPIO array).  The chips require +5.0V and will not operate with +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port (with a voltage regulator).
 
-Note:  Be sure to orient the chip so that the dot appears on the left side.  Failure to do so could reverse the power and ground wiring, which will make the chip get very hot.  If this happens, do not touch the chip and immediately disconnect power.  Wait until the chip has had a chance to cool before re-orienting it.
+**Note:**  *Be sure to orient the chip so that the notch appears on the left side.  Failure to do so could reverse the power and ground wiring, which will make the chip get very hot.  If this happens, do not touch the chip and immediately disconnect power.  Wait until the chip has had a chance to cool before re-orienting it.  If the chip continues to heat up, notify your TA.*
 
-# Half Adders
+You can also combine gates together by connecting output pins to input pins.
+
+Recall the output voltage of the 74xx series chips is equal to the input from $V\_{cc}$.  The chips operate at +5.0V but the Raspberry Pi's GPIO pins are only +3.3V.  In order to safeguard the GPIO pins, we use a voltage regulator.
+
+### Voltage Regulators
+
+A voltage regulator is an integrated circuit (IC) that produces a constant output voltage ($V\_{out}$) given a higher input voltage ($V\_{in}$).  They are used to protect sensitive components from damage by regulating the input voltage to an output voltage that the component can tolerate.
+
+The equation below gives the voltage range that is acceptable to $V\_{in}$ that will produce the expected $V\_{out}$.  $V\_{d}$ is the voltage drop of the regulator.
+
+$$V\_{out} + V\_{d} \< V\_{in} \< V\_{max}$$
+
+In the case of the LD33CV used in these labs, the range is +4.3V to +15.0V.  The LD33CV is a low-dropout regulator that works by acting as a variable resistor, adjusting the resistance it provides to reduce the difference between the expected and actual output voltage.
+
+{{< img src="/images/LDO_VR_3.3V.png" hidpi="/images/LDO_VR_3.3V@2x.png" alt="LDO Voltage regulator" caption="Diagram of the LD33CV (pinout from left-to-right is GND, $V_{out}$, and $V_{in}$)" >}}
+
+## Half Adders
+
 A half adder is a circuit that adds two binary digits, producing a sum and a carry bit.  The carry bit is one when the two bits add up to more than can be stored in a single digit.  This happens when both input bits are one (high), which produces a zero (low) sum bit and a one (high) carry bit.
 
-## Circuit Design
-One can easily construct a half adder for two input bits (X and Y) by drawing the truth table for both sum (S) and carry (C), as shown below:
+### Circuit Design
 
-<table class="wikitable">
-  <caption>Truth table for a half adder (HA)</caption>
-  <tr>
-    <th>X</th>
-	<th>Y</th>
-	<th>S</th>
-	<th>C</th>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>1</td>
-    <td>1</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-  </tr>
-</table>
+One can easily construct a half adder for two input bits (X and Y) by drawing the truth table for both sum (S) and carry \(C), as shown below.
 
-Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder:
+A | B | S | C
+------|------|------|------
+0 | 0 | 0 | 0
+0 | 1 | 1 | 0
+1 | 0 | 1 | 0
+1 | 1 | 0 | 1
 
-{{<img src="/images/half_adder_circuit.png" alt="The circuit for a half adder (HA)">}}
+Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder.
 
-## Hardware Setup
-Take out the Raspberry Pi and lay it on a flat surface.  Identify the 74xx chips required by examining the model numbers written on the top of the chip.  You will need a 7408 (4 AND gates) and 7486 (4 XOR gates) for this part.  Each of the two chips must be mounted across the gap in the middle of the breadboard, so that each side of pins has its own breadboard column for connecting wires.
+{{<img src="/images/half-adder.png" hidpi="/images/half-adder@2x.png" alt="The circuit for a half adder">}}
 
-Connect a red wire to a power supply of 5v on the GPIO header, and plug it into the red line at the top of the breadboard.  This will supply power to both chips.  Connect a black wire to one of the ground GPIO pins, and plug it into the blue line at the bottom of the breadboard.  For each of the two gate chips, plug another red wire from the red line to pin #14 (top left) on the chip, and another black wire from the blue line to pin #7 (bottom right) on the chip.  This will power the chips.
+### Hardware Setup
 
-Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO pins #21 and #22.  Connect the output from the XOR gate to GPIO pin #23, and the output from the AND gate to GPIO pin #24.  The completed circuit wiring is shown below:
+Take out the Raspberry Pi and lay it on a flat surface.  Identify the 74xx chips required by examining the model numbers written on the top of the chip.  You will need a 7408 (quad AND gate) and 7486 (quad XOR gate) for this part.  Each of the two chips must be mounted across the gap in the middle of the breadboard, so that each side of pins has its own breadboard column for connecting wires.
 
-{{<img src="/images/HalfAdder_bb.png" alt="The hardware configuration for a half adder">}}
+Connect a red wire to a power supply of +5.0V on the GPIO header, and plug it into the red line at the top of the breadboard.  This will supply power to both chips.  Connect a black wire to one of the ground GPIO pins, and plug it into the blue line at the bottom of the breadboard.  For each of the two gate chips, plug another red wire from the red line to pin #14 (top left) on the chip, and another black wire from the blue line to pin #7 (bottom right) on the chip.  This will power the chips.
 
-## Testing out your circuit
-Connect the cables for the Raspberry Pi as usual, and boot to the Raspbian graphical environment.  Create a new Python file, called half_adder_test.py, containing the following code:
+Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO17 and GPIO22.  Connect the output from the XOR gate to GPIO23, and the output from the AND gate to GPIO24.  The completed circuit wiring is shown below.
+
+{{<img src="/images/HalfAdder_bb.png" hidpi="/images/HalfAdder_bb@2x.png" alt="The hardware configuration for a half adder">}}
+
+#### Testing Out Your Circuit
+
+Connect the cables for the Raspberry Pi as usual, and boot to the Raspbian graphical environment.  Create a new Python file, called `half_adder_test.py`, containing the code below.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(16, GPIO.IN)  # s (sum),   GPIO #23
-GPIO.setup(18, GPIO.IN)  # c (carry), GPIO #24
-GPIO.setup(15, GPIO.OUT) # x,         GPIO #22
-GPIO.setup(11, GPIO.OUT) # y,         GPIO #17
 
-print "x y s c"
-print "-------"
-for x in [0,1]:
-   for y in [0,1]:
-      GPIO.output(15, x)
-	  GPIO.output(11, y)
-	  s = GPIO.input(16)
-	  c = GPIO.input(18)
-	  
-	  print x, y, s, c
+# GPIO 22, 17, 23, and 24, respectively
+(A, B, S, C) = (15, 11, 16, 18)
+
+GPIO.setup(A, GPIO.OUT) # GPIO #22
+GPIO.setup(B, GPIO.OUT) # GPIO #17
+GPIO.setup(S, GPIO.IN)  # GPIO #23
+GPIO.setup(C, GPIO.IN)  # GPIO #24
+
+print("A B S C")
+print("-------")
+
+for a in [False, True]:
+   for b in [False, True]:
+      GPIO.output(A, a)
+      GPIO.output(B, b)
+      s = GPIO.input(S)
+      c = GPIO.input(C)
+      
+      print("{} {} {} {}".format(a, b, s, c))
 
 GPIO.cleanup()
 {{< /highlight >}}
 
 The program's output should match the above truth table.
 
-# Full Adders
+## Full Adders
+
 A full adder is a circuit that adds two binary digits, plus a carry in, producing a sum and a carry out bit.  The carry bit is one (high) when the three bits add up to more than can be stored in a single digit.  This happens when two or more of the input bits is one (high).
 
-## Circuit Design
-The same process used for the half adder can be used to design the circuit for a full adder, starting with the truth table (which is filled out by hand, based on what we know about the behaviour of the circuit):
+### Circuit Design
 
-<table class="wikitable">
-  <caption>Truth table for a full adder (FA)</caption>
-  <tr>
-    <th>X</th>
-	<th>Y</th>
-	<th>C(in)</th>
-	<th>S</th>
-	<th>C(out)</th>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>0</td>
-    <td>1</td>
-    <td>1</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>1</td>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0</td>
-    <td>0</td>
-    <td>1</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-    <td>0</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>0</td>
-    <td>0</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-</table>
+The same process used for the half adder can be used to design the circuit for a full adder, starting with the truth table (which is filled out by hand, based on what we know about the behaviour of the circuit).
 
-Using a Karnaugh map, and knowledge of XOR, we can get simplified Boolean algebraic expressions for each of the two output variables:
+A | B | Carry in | Sum | Carry out
+-------|-------|-------|-------|-------
+0 | 0 | 0 | 0 | 0
+0 | 0 | 1 | 1 | 0
+0 | 1 | 0 | 1 | 0
+0 | 1 | 1 | 0 | 1
+1 | 0 | 0 | 1 | 0
+1 | 0 | 1 | 0 | 1
+1 | 1 | 0 | 0 | 1
+1 | 1 | 1 | 1 | 1
 
-<pre>
-   S = X XOR Y XOR C(in)
-</pre>
+Using a Karnaugh map, and knowledge of XOR, we can get simplified Boolean algebraic expressions for each of the two output variables.
 
-<pre>
-   C(out) = ((X XOR Y) AND C(in)) OR (X AND Y)
-</pre>
+$$S = A \oplus B \oplus C\_{in}$$
 
-The circuit corresponding to these Boolean algebraic expressions is shown below:
+$$C\_{out} = ((A \oplus B) \land C\_{in}) \lor (A \land B)$$
 
-{{<img src="/images/full_adder_circuit.png" alt="The circuit for a full adder">}}
+The circuit corresponding to these Boolean algebraic expressions is shown below.
 
-## Hardware Setup
+{{<img src="/images/full-adder.png" hidpi="/images/full-adder@2x.png" alt="The circuit for a full adder">}}
+
+### Hardware Setup
+
 Disconnect all of the gate inputs and outputs from the half adder.  We'll need to add a 7432 chip for the single OR gate that is shown in the circuit diagram.  Connect power and ground to this chip accordingly.  Connect the gate inputs and outputs according to the following table:
 
-<table class="wikitable">
-  <caption>Gate Inputs for a Full Adder</caption>
-  <tr>
-    <th>Gate</th>
-	<th>Input 1</th>
-	<th>Input 2</th>
-	<th>Output</th>
-  </tr>
-  <tr>
-    <td>XOR 1</td>
-    <td>x (pin #15, GPIO #22)</td>
-    <td>y (pin #11, GPIO #17)</td>
-    <td>XOR 2 input 1</td>
-  </tr>
-  <tr>
-    <td>XOR 2</td>
-    <td>c(in) (pin #7, GPIO #4)</td>
-    <td>XOR 1 output</td>
-    <td>s (pin #16, GPIO #23)</td>
-  </tr>
-  <tr>
-    <td>AND 1</td>
-    <td>c(in) (pin #7, GPIO #4)</td>
-    <td>XOR 1 output</td>
-    <td>OR input 1</td>
-  </tr>
-  <tr>
-    <td>AND 2</td>
-    <td>x (pin #15, GPIO #22)</td>
-    <td>y (pin #11, GPIO #17)</td>
-    <td>OR input 2</td>
-  </tr>
-  <tr>
-    <td>OR</td>
-    <td>AND 1 output</td>
-    <td>AND 2 output</td>
-    <td>c(out) (pin #18, GPIO #24)</td>
-  </tr>
-</table>
+Gate  | Input 1 | Input 2 | Output
+------|---------|---------|-------
+$\text{XOR}\_1$ | A (GPIO22, pin #15) | B (GPIO17, pin #11) | XOR 2 input 1
+XOR 2 | XOR 1 output | $C\_{in}$ (GPIO04, pin #7) | LD33CV 1 $V\_{in}$
+AND 1 | $C\_{in}$ (GPIO04, pin #7) | XOR 1 output | OR input 1
+AND 2 | A (pin #15, GPIO #22) | B (GPIO17, pin #11) | OR input 2
+OR    | AND 1 output | AND 2 output | LD33CV 2 $V\_{in}$
 
-The resulting circuit should look something like the following illustration:
+After the above connections have been made, connect LD33CV 1 $V\_{out}$ to S (GPIO23, pin #16), and LD33CV 2 $V\_{out}$ to $C\_{out}$ (GPIO24, pin #18).
 
-{{<img src="/images/FullAdder_bb.png" alt="The hardware configuration for a full adder">}}
+The resulting circuit should look something like the following illustration.
+
+{{<img src="/images/FullAdder_bb.png" hidpi="/images/FullAdder_bb@2x.png" alt="The hardware configuration for a full adder" id="full-adder-bb">}}
 
 ## Exercise
-Write some code in Python to test your full adder circuit will all possible inputs.  Use the half_adder_test.py as a starting point.
+
+Write some code in Python to test your full adder circuit will all possible inputs.  Use the `half_adder_test.py` as a starting point.
