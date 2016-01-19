@@ -1,6 +1,7 @@
 baseurl = "http://rpi.science.uoit.ca/"
 languageCode = "en-us"
 title = "RPi Labs"
+PygmentsCodeFences = true
 pygmentsstyle = "tango"
 
 [params]
