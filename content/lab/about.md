@@ -25,7 +25,7 @@ We will use this breadboard in future labs, but not this time.  To start, we’l
 
 Next, plug in an HDMI cable with the other end attached to a display.  The TA may help you determine which display and HDMI cable to use.  We are ready to boot our RPi.  Attach the microUSB AC adapter and you should see the RPi’s boot process on the display.
 
-After a short time, the RPi will be booted into text mode.  Log into the RPi using the username ‘pi’ and the password ‘raspberry’.  At the command prompt, type ‘startx’ and hit enter to start graphical mode.
+After a short time, the RPi will be booted into text mode.  Log into the RPi using your science.uoit.ca username and password.  At the command prompt, type ‘startx’ and hit enter to start graphical mode.
 
 Once in graphical mode, take a few minutes to examine some of the application icons on the desktop, as well as applications available in the menu (which is accessible from the bottom left corner, similar to the start menu in Windows).
 
@@ -50,7 +50,7 @@ Sometimes, this interactive mode is what you want and sometimes you want to edit
 print "testing 1 2 3..."
 {{< /highlight >}}
 
-Choose ‘File’, ‘Save As’ and save this file in /home/pi/Documents with the name basics.py.  Hit F5 to run your program, and you should see the output ‘testing 1 2 3…’ in the first IDLE window.  Spend a few minutes familiarizing yourself with the menu in the IDLE windows.  It has common text editor functionality, along with some basic programming environment features (e.g. Comment Out Region).
+Choose ‘File’, ‘Save As’ and save this file in ~/Documents with the name basics.py.  Hit F5 to run your program, and you should see the output ‘testing 1 2 3…’ in the first IDLE window.  Spend a few minutes familiarizing yourself with the menu in the IDLE windows.  It has common text editor functionality, along with some basic programming environment features (e.g. Comment Out Region).
 
 ## Python Language Introduction
 In this part of the lab, we’ll experiment with some Python language features, under the assumption that you have previously written programs in C++.  First of all, let’s consider variables and values.  In the Python shell, type in the following:
