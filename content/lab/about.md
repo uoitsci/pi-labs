@@ -11,8 +11,6 @@ The Raspberry Pi (RPi) is a credit card-sized computer that is relatively low co
 
 The RPi has its operating system on a MicroSD card, that is plugged into your device, called Raspbian.  Raspbian is a scaled down version of Debian Linux, built for the ARM architecture and including some useful packages.
 
-Important note:  These RPis are shared, and you should not expect your work to still be there from a previous lab.  Also, it is not recommended that you leave your completed work on the Raspberry Pi.  You should delete all work after you've completed it.
-
 # Python programming language
 Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programming language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
 
@@ -21,15 +19,26 @@ To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include 
 
 The most important component is the RPi itself.  Remove it from its Mylar bag and set it down carefully on a flat surface.  Note that it has been mounted onto a plastic mounting board along with a breadboard.
 
-We will use this breadboard in future labs, but not this time.  To start, we'll need power, keyboard, mouse, and display connections.  Start by plugging in a USB keyboard and mouse.  In the figure below, a wireless keyboard transmitter was plugged in, but you can also use separate wired keyboard and mouse.
+We will use this breadboard in future labs, but not this time.  To start, we'll need power, keyboard, mouse, network, and display connections.  Start by plugging in a USB keyboard and mouse.
 
-Next, plug in an HDMI cable with the other end attached to a display.  The TA may help you determine which display and HDMI cable to use.  We are ready to boot our RPi.  Attach the microUSB AC adapter and you should see the RPi's boot process on the display.
+{{<img src="/images/pi_wired.jpg" hidpi="/images/pi_wired@2x.jpg" alt="Raspberry Pi Model B+ wired" caption="Raspberry Pi Model B+ wired">}}
 
-After a short time, the RPi will be booted into text mode.  Log into the RPi using your science.uoit.ca username and password.  At the command prompt, type 'startx' and hit enter to start graphical mode.
+Next, plug in an HDMI cable with the other end attached to a display.  The TA may help you determine which display and HDMI cable to use.  Plug in the network cable into the RPi and one of the ethernet ports in the lab.  We are ready to boot our RPi.  Attach the microUSB AC adapter and you should see the RPi's boot process on the display.
 
-Once in graphical mode, take a few minutes to examine some of the application icons on the desktop, as well as applications available in the menu (which is accessible from the bottom left corner, similar to the start menu in Windows).
+After a short time, the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 
-Double click the desktop icon 'IDLE' (not to be confused with 'IDLE3') to start the Python development environment.
+Note:  Your username is the first character of your first name, followed by up to 7 characters of your last name.  Your password is your student/banner ID.
+
+e.g.
+
+Banner ID | First Name | Last Name | Username | Password
+--------- | ---------- | --------- | -------- | --------
+100000001 | John       | von Doe   | jvondoe  | 100000001
+100000002 | Jane       | Williams  | jwilliam | 100000002
+
+Once logged in, take a few minutes to examine some of the application icons on the desktop, as well as applications available in the menu (which is accessible from the bottom left corner, similar to the start menu in Windows).
+
+Double click the desktop icon 'IDLE3' to start the Python development environment.
 
 ## Running Python on the Raspberry Pi
 IDLE is a relatively simple IDE for Python.  It doesn't have the capabilities of Visual Studio, but it will do for our purposes.  When you see:
@@ -134,16 +143,16 @@ for name in names:
 There is a function `range()` that can generate a list, that is very useful in for loops.  You can pass 3 values to range:  the minimum, the maximum, and the step size, and `range()` will generate a list that starts at the minimum value (default 0), proceeds to the next by adding the step size (default 1), until the maximum value is reached.  The maximum value is not included in the resulting list.  Try out `range()` a bit in the Python shell:
 	
 ```python
-range(10)
-range(5, 10)
-range(5, 15, 2)
+>>> list(range(10))
+>>> list(range(5, 10))
+>>> list(range(5, 15, 2))
 ```
 
 We are finally ready to use a familiar form of for loop:
 
 ```python
 for val in range(0, 20):
-   print val
+   print(val)
 ```
 
 There is a lot more to Python, but this should be enough to get us through these labs.
