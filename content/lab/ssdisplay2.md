@@ -96,6 +96,8 @@ Let's connect the seven segment display along with a momentary button, as in the
 
 {{%img src="/images/7Segment_SpeedTest.png"%}}
 
+Note: In this example, the circuit is designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs accordingly in your program.
+
 ## Exercise #1
 
 Write a program that uses the button to increment the count displayed on the seven segment display.  The counter will increase if the button is depressed, and remain the same otherwise.
