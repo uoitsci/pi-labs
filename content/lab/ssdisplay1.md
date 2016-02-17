@@ -110,7 +110,7 @@ All the 10 decimal digits (and all 16 hexadecimal digits) can be represented in 
     </tr>
 </table>
 
-# Controlling the four-digit seven-segment display
+# Controlling the 4-digit 7-segment display
 
 The four-digit seven-segment display that we are going to use has 4 pins (+, -, D, C).  The table below describes each pin, as well as how it should be connected to the Raspberry Pi:
 
@@ -145,8 +145,6 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
     </tr>
 </table>
 
-# Controlling the four-digit seven-segment display from the Raspberry Pi
-
 ## Connections
 
 First we are going to connect the four-digit seven-segment display to the GPIO pins as follows:
@@ -168,20 +166,10 @@ Once connected as in the above diagram, you can test if everything was properly 
 {{< highlight python >}}
 segment = SevenSegment(address=0x70)
 
-a = 10
-b = 11
-c = 12
-d = 13
-segment.writeDigit(0, a)
-segment.writeDigit(1, b)
-segment.writeDigit(3, c)
-segment.writeDigit(4, d)
-
-try:
-    while True:
-	   pass
-except KeyboardInterrupt:
-    pass
+segment.writeDigit(0, 10)
+segment.writeDigit(1, 11)
+segment.writeDigit(3, 12)
+segment.writeDigit(4, 13)
 {{< /highlight >}}
 
 Note:  The digit '2' is the colon in our display.  You can turn it on or off:
@@ -198,9 +186,9 @@ segment.setColon(False)
 Now, we are going to write a Python program to test our seven segment display.  Write a program that does the following:
 
 <ol>
-    <li>Write a function 'writeDec' which outputs a single decimal value (0 <= n <= 9999)</li>
+    <li>Write a function 'writeDec' which outputs a decimal value [0,9999]</li>
     <li>Count from 0000 to 1000, in decimal, with no delay</li>
-    <li>Write a function 'writeHex' which outputs a single hexadecimal value (0 <= n <= FFFF)</li>
+    <li>Write a function 'writeHex' which outputs a hexadecimal value [0,FFFF]</li>
     <li>Count from 0000 to 1000, in hexadecimal, with no delay</li>
 </ol>
 

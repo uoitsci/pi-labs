@@ -118,9 +118,13 @@ Once stop is displayed, record the time and start polling the button input (GPIO
 
 {{< highlight python >}}
 import datetime
+
 startTime = datetime.datetime.now()
+
 ... do something ...
+
 endTime = datetime.datetime.now()
+
 elapsed = endTime - startTime
 elapsedSeconds = elapsed.total_seconds()
 {{< /highlight >}}
