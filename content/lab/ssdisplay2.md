@@ -75,7 +75,7 @@ For example, to generate a capital H:
             0x40 (centre)<br />
             0x02 (top right)<br />
             0x04 (bottom right)<br />
-            ----
+            ----<br />
             0x76
         </td>
         <td>
@@ -84,7 +84,7 @@ For example, to generate a capital H:
             0100 0000 (centre)<br />
             0000 0010 (top right)<br />
             0000 0100 (bottom right)<br />
-            ---------
+            ---------<br />
             0111 0110
         </td>
     </tr>
