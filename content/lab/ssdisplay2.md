@@ -90,17 +90,17 @@ For example, to generate a capital H:
     </tr>
 </table>
 
-# Circuit
+## Circuit
 
 Let's connect the seven segment display along with a momentary button, as in the following diagram:
 
 {{%img src="/images/7Segment_SpeedTest.png"%}}
 
-# Exercise #1
+## Exercise #1
 
 Write a program that uses the button to increment the count displayed on the seven segment display.  The counter will increase if the button is depressed, and remain the same otherwise.
 
-# Exercise #2
+## Exercise #2
 
 Now, we are going to write a program inspired by the reaction tester at the Ontario Science Centre.  The tester is similar in appearance to the driver's seat of a vehicle.  The simulation starts when the user presses the accelerator pedal.  At a random time, a STOP indicator is shown. When the user sees the STOP indicator, they are supposed to hit the brake pedal.  The tester then shows you a comparative view of your reaction time.
 
