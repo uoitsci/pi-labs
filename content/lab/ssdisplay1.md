@@ -181,6 +181,7 @@ try:
     while True:
 	   pass
 except KeyboardInterrupt:
+    pass
 {{< /highlight >}}
 
 Note:  The digit '2' is the colon in our display.  You can turn it on or off:
