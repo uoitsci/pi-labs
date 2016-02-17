@@ -39,7 +39,7 @@ The HT16K33 7-segment display uses the I<sup>2</sup>C bus.  An I<sup>2</sup>C bu
 All the 10 decimal digits (and all 16 hexadecimal digits) can be represented in a 7-segment display:
 
 <table class="wikitable">
-    <caption>Displaying the digits 0 to 9</caption>
+    <caption>Displaying the hexadecimal digits 0 to F</caption>
     <tr>
         <th>Digit</th>
         <th>Input</th>

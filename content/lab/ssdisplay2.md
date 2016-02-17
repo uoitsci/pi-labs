@@ -52,13 +52,13 @@ You can create your own character output on a per-segment basis.  Each character
         <td>01000000</td>
     </tr>
     <tr>
-        <td>Decimal</td>
+        <td>Decimal point</td>
         <td>0x80</td>
         <td>10000000</td>
     </tr>
 </table>
 
-For example, to generate a capital H, 
+For example, to generate a capital H:
 
 <table class="wikitable">
     <caption>Calculating codes for a capital H</caption>
