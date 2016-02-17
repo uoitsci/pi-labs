@@ -96,7 +96,7 @@ Let's connect the seven segment display along with a momentary button, as in the
 
 {{%img src="/images/7Segment_SpeedTest.png"%}}
 
-Note: In this example, the circuit is designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs as GPIO.PUD_UP in your program.
+Note: In this example, the circuit has been designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs as GPIO.PUD_UP in your program.
 
 ## Exercise #1
 
