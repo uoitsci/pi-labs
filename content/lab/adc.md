@@ -1,7 +1,7 @@
 +++
 draft = false
 title = "Analog to Digital Conversion"
-Weight = 5
+Weight = 6
 +++
 The Raspberry Pi computer does not have a way to read analog inputs. It's a digital-only computer. Analog inputs are handy because many sensors are analog outputs, so we need a way to read that inputs. For that we are going to use an analog-to-digital converter, in our case the chip MCP3008.
 

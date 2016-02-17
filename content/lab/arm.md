@@ -1,7 +1,7 @@
 +++
 draft = false
 title = "ARM assembler in Raspberry Pi"
-Weight = 9
+Weight = 10
 +++
 
 Machine language is built up from discrete statements or instructions implemented by a particular processor. ARM is a family of instruction set architectures for computer processors and is the one used by the processor of the Raspberry Pi. The machine language is interpreted by the computer in term of binary codes. Binary code is what a computer can run. It is composed of instructions, that are encoded in a binary representation (such encodings are documented in the ARM manuals). You could write binary code encoding instructions but that would be painstaking. So instead we will write assembler language. Assembler language is just a thin syntax layer on top of the binary code.
