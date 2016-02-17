@@ -7,6 +7,7 @@ Weight = 2
 In this lab we are going to introduce the GPIO interface of the Raspberry Pi.
 
 ## What is GPIO?
+
 In one corner of the Raspberry Pi is a 40-pin expansion header.  The pins are numbered from 1 to 40, with the even numbers on the outside edge of the board as shown below.
 
 {{<img src="/images/rasbperry_pi_bplus_top.jpg" hidpi="/images/rasbperry_pi_bplus_top@2x.jpg" alt="Raspberry Pi Model B+ GPIO expansion headers" caption="Raspberry Pi Model B+ GPIO expansion headers" attr="Lucasbosch on Wikipedia, reproduced under CC BY-SA 3.0" attrlink="http://commons.wikimedia.org/wiki/File:Raspberry_Pi_B%2B_top.jpg">}}
@@ -168,6 +169,8 @@ Value           | +3.3V    | < +3.3V  | 0V
 ----------------|----------|----------|---------
 `GPIO.PUD_DOWN` | Active   | Inactive | Inactive
 `GPIO.PUD_UP`   | Inactive | Active   | Active
+
+The same effect could be produced by using an actual resistor before (PUD_UP) or after (PUD_DOWN) the button in the circuit, but you can also take advantage of the fact that the Raspberry Pi's GPIO pins have pull down and pull up resistors.
 
 ## Example 2:  Button Input
 
