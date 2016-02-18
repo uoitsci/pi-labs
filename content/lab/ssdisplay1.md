@@ -176,7 +176,7 @@ sudo i2cdetect -y 1
 
 ## Test program
 
-Once connected as in the above diagram, you can test if everything was properly connected using the following program. This program displays 'AbCd:
+Once connected as in the above diagram, you can test if everything was properly connected using the following program. This program displays 'AbCd':
 
 {{< highlight python >}}
 segment = SevenSegment(address=0x70)
