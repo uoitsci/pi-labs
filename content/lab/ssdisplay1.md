@@ -145,6 +145,16 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
     </tr>
 </table>
 
+## Download the support code
+
+AdaFruit, who makes the 7 segment display, has created a Python class for our display, called SevenSegment.  To get this code, along with some test code, download the following package from their GitHub repository:
+
+{{< highlight bash >}}
+git clone https://github.com/adafruit/AdaFruit-Raspberry-Pi-Python-Code
+cd AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack
+sudo python ex_7segment_clock.py
+{{< /highlight >}}
+
 ## Connections
 
 First we are going to connect the four-digit seven-segment display to the GPIO pins as follows:
@@ -183,7 +193,7 @@ segment.setColon(False)
 
 ## Exercise
 
-Now, we are going to write a Python program to test our seven segment display.  Write a program that does the following:
+Now, we are going to write a Python program to test our seven segment display.  For simplicity, put your code into <span style="font-family: monospace">AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack</span>.  Write a program that does the following:
 
 <ol>
     <li>Write a function 'writeDec' which outputs a decimal value [0,9999]</li>
