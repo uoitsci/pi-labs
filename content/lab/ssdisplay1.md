@@ -152,7 +152,6 @@ AdaFruit, who makes the 7 segment display, has created a Python class for our di
 {{< highlight bash >}}
 git clone https://github.com/adafruit/AdaFruit-Raspberry-Pi-Python-Code
 cd AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack
-sudo python ex_7segment_clock.py
 {{< /highlight >}}
 
 ## Connections
@@ -161,7 +160,13 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 
 {{%img src="/images/7Segment_Output.png"%}}
 
-## Finding the display's address
+## Testing connections
+
+Let's run the provided test program, which shows the current time on the 7 segment display, to be sure it is working properly.
+
+{{< highlight bash >}}
+sudo python ex_7segment_clock.py
+{{< /highlight >}}
 
 To verify that the address of our seven segment display is 0x70, try the following command in the terminal:
 
