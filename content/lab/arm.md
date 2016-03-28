@@ -17,7 +17,7 @@ We have to start with something, so we will start with a ridiculously simple pro
 .func main        /* 'main' is a function */
 
 main:             /* This is main */
-       mov r2,#2  /* Put a 2 inside the register r0 */
+       mov r0,#2  /* Put a 2 inside the register r0 */
        bx lr      /* Return from main */
 {{< /highlight >}}
 
