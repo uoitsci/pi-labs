@@ -27,14 +27,14 @@ Next, plug in an HDMI cable with the other end attached to a display.  The TA ma
 
 After a short time, the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 
-Note:  Your username is the first character of your first name, followed by up to 7 characters of your last name.  Your password is your student/banner ID.
+Note:  Your username is your student/banner ID.  Your password is your student/banner ID, followed by an underscore.
 
 e.g.
 
-Banner ID | First Name | Last Name | Username | Password
---------- | ---------- | --------- | -------- | --------
-100000001 | John       | von Doe   | jvondoe  | 100000001
-100000002 | Jane       | Williams  | jwilliam | 100000002
+Banner ID | Username  | Password
+--------- | --------- | --------
+100000001 | 100000001 | 100000001_
+100000002 | 100000002 | 100000002_
 
 Once logged in, take a few minutes to examine some of the application icons on the desktop, as well as applications available in the menu (which is accessible from the bottom left corner, similar to the start menu in Windows).
 

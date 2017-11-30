@@ -1,7 +1,7 @@
 +++
 draft = false
 title = "Controlling a Servo from the Raspberry Pi"
-Weight = 6
+Weight = 7
 +++
 
 A *Servomotor*, or servo, is a small device that has an output shaft. This shaft can be positioned to specific angular positions by sending the servo a coded signal. As long as the coded signal exists on the input line, the servo will maintain the angular position of the shaft. As the coded signal changes, the angular position of the shaft changes.
