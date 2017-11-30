@@ -23,25 +23,11 @@ Nearly all of the above chips have an identical pinout (the exceptions are the 7
 
 {{< img src="/images/7400_nand_gate.png" hidpi="/images/7400_nand_gate@2x.png" alt="Pinout of the 7400 chip" caption="Pinout of the 7400 chip" attr="Tosaka on Wikipedia, reproduced under CC BY 3.0" attrlink="http://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG" >}}
 
-To use one of these chips, connect pin #7 to ground, and pin #14 to a power source (e.g. one of the +5.0V pins on the Raspberry Pi's GPIO array).  The chips require +5.0V and will not operate with +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port (with a voltage regulator).
+To use one of these chips, connect pin #7 to ground, and pin #14 to +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port.
 
 **Note:**  *Be sure to orient the chip so that the notch appears on the left side.  Failure to do so could reverse the power and ground wiring, which will make the chip get very hot.  If this happens, do not touch the chip and immediately disconnect power.  Wait until the chip has had a chance to cool before re-orienting it.  If the chip continues to heat up, notify your TA.*
 
 You can also combine gates together by connecting output pins to input pins.
-
-Recall the output voltage of the 74xx series chips is equal to the input from $V\_{cc}$.  The chips operate at +5.0V but the Raspberry Pi's GPIO pins are only +3.3V.  In order to safeguard the GPIO pins, we use a voltage regulator.
-
-### Voltage Regulators
-
-A voltage regulator is an integrated circuit (IC) that produces a constant output voltage ($V\_{out}$) given a higher input voltage ($V\_{in}$).  They are used to protect sensitive components from damage by regulating the input voltage to an output voltage that the component can tolerate.
-
-The equation below gives the voltage range that is acceptable to $V\_{in}$ that will produce the expected $V\_{out}$.  $V\_{d}$ is the voltage drop of the regulator.
-
-$$V\_{out} + V\_{d} \< V\_{in} \< V\_{max}$$
-
-In the case of the LD33CV used in these labs, the range is +4.3V to +15.0V.  The LD33CV is a low-dropout regulator that works by acting as a variable resistor, adjusting the resistance it provides to reduce the difference between the expected and actual output voltage.
-
-{{< img src="/images/LDO_VR_3.3V.png" hidpi="/images/LDO_VR_3.3V@2x.png" alt="LDO Voltage regulator" caption="Diagram of the LD33CV (pinout from left-to-right is GND, $V_{out}$, and $V_{in}$)" >}}
 
 ## Half Adders
 
@@ -66,7 +52,7 @@ Recognizing that the S column is identical to the truth table for XOR, and that 
 
 Take out the Raspberry Pi and lay it on a flat surface.  Identify the 74xx chips required by examining the model numbers written on the top of the chip.  You will need a 7408 (quad AND gate) and 7486 (quad XOR gate) for this part.  Each of the two chips must be mounted across the gap in the middle of the breadboard, so that each side of pins has its own breadboard column for connecting wires.
 
-Connect a red wire to a power supply of +5.0V on the GPIO header, and plug it into the red line at the top of the breadboard.  This will supply power to both chips.  Connect a black wire to one of the ground GPIO pins, and plug it into the blue line at the bottom of the breadboard.  For each of the two gate chips, plug another red wire from the red line to pin #14 (top left) on the chip, and another black wire from the blue line to pin #7 (bottom right) on the chip.  This will power the chips.
+Connect a red wire to a power supply of +3.3V on the GPIO header, and plug it into the red line at the top of the breadboard.  This will supply power to both chips.  Connect a black wire to one of the ground GPIO pins, and plug it into the blue line at the bottom of the breadboard.  For each of the two gate chips, plug another red wire from the red line to pin #14 (top left) on the chip, and another black wire from the blue line to pin #7 (bottom right) on the chip.  This will power the chips.
 
 Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO17 and GPIO22.  Connect the output from the XOR gate to GPIO23, and the output from the AND gate to GPIO24.  The completed circuit wiring is shown below.
 
