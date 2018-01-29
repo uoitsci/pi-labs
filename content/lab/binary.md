@@ -39,15 +39,15 @@ The binary representation of the number 118 is 1110110.
 
 ## Bitwise operations
 
-Bitwise operations are those that operates on binary numbers at the level of their individual bits. 
+Bitwise operations are those that operates on binary numbers at the level of their individual bits.
 
 In the explanations below, any indication of a bit's position is counted from the right (least significant) side, advancing left. For example, the binary value 0001 (decimal 1) has zeroes at every position but the first one.
 
 ## Operator NOT
-The bitwise `NOT` also called *complement* is an unary operation (only operates on one binary number). This operation perform a *logical negation* on each bit: bits that are 0 becomes 1, and those that are 1 becomes 0. For example: 
+The bitwise `NOT` also called *complement* is an unary operation (only operates on one binary number). This operation perform a *logical negation* on each bit: bits that are 0 becomes 1, and those that are 1 becomes 0. For example:
 
 <pre>
-NOT 0111 
+NOT 0111
   = 1000
 </pre>
 
@@ -93,7 +93,7 @@ In python the bitwise operators has the following symbols:
 The *bit shifts* are sometimes considered bitwise operations, because they treat a value as a series of bits rather than as a numerical quantity. In these operations the digits are moved, or shifted, to the left or right. Examples:
 
 <pre>
-SHIFT-LEFT 0101 
+SHIFT-LEFT 0101
          = 1010
 </pre>
 
@@ -106,7 +106,7 @@ SHIFT-RIGHT 0101
 
 {{%img src="/images/shift-right.png"%}}
 
-## Bit shift in python 
+## Bit shift in python
 In python the left and right shift operators are `<<` and `>>`, respectively. The number of places to shift is given as the second argument to the shift operators. For example:
 
 {{< highlight python >}}
@@ -129,7 +129,7 @@ We are going to do a fun exercise. Lets create a circuit with 3 LEDs representin
 
 {{%img src="/images/binary.png"%}}
 
-Notice that we are using GPIO pins 8, 10 and 12 as output pins for the LEDs. The following program will show the different binary numbers from 0 to 7 displayed using the LEDs:
+Notice that we are using GPIO pins 17, 27 and 22 as output pins for the LEDs. The following program will show the different binary numbers from 0 to 7 displayed using the LEDs:
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
@@ -137,9 +137,9 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(8, GPIO.OUT)
-GPIO.setup(10, GPIO.OUT)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
 
 c = 0
 
@@ -147,9 +147,9 @@ try:
         while True:
 		c = (c + 1) % 8
 
-		GPIO.output(8, (c >> 0) & 1)
-		GPIO.output(10, (c >> 1) & 1)
-		GPIO.output(12, (c >> 2) & 1)
+		GPIO.output(11, (c >> 0) & 1)
+		GPIO.output(13, (c >> 1) & 1)
+		GPIO.output(15, (c >> 2) & 1)
 
 		time.sleep(1)
 except KeyboardInterrupt:
