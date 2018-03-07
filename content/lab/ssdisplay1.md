@@ -181,19 +181,23 @@ Once connected as in the above diagram, you can test if everything was properly 
 {{< highlight python >}}
 segment = SevenSegment(address=0x70)
 
-segment.writeDigit(0, 10)
-segment.writeDigit(1, 11)
-segment.writeDigit(3, 12)
-segment.writeDigit(4, 13)
+segment.set_digit(0, 10)
+segment.set_digit(1, 11)
+segment.set_digit(2, 12)
+segment.set_digit(3, 13)
+
+segment.write_display()
 {{< /highlight >}}
 
-Note:  The digit '2' is the colon in our display.  You can turn it on or off:
+Note:  You can turn the colon (:) on or off:
 
 {{< highlight python >}}
 segment = SevenSegment(address=0x70)
 
 segment.setColon(True)
 segment.setColon(False)
+
+segment.write_display()
 {{< /highlight >}}
 
 ## Exercise
@@ -217,4 +221,3 @@ num = 12345
 for i in range(0, 5):
     print "get_digit(", i, ", 12345) =", get_digit(i, num)
 {{< /highlight >}}
-
