@@ -150,8 +150,8 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
 AdaFruit, who makes the 7 segment display, has created a Python class for our display, called SevenSegment.  To get this code, along with some test code, download the following package from their GitHub repository:
 
 {{< highlight bash >}}
-git clone https://github.com/adafruit/AdaFruit-Raspberry-Pi-Python-Code
-cd AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack
+git clone https://github.com/adafruit/Adafruit_Python_LED_Backpack
+cd Adafruit_Python_LED_Backpack
 {{< /highlight >}}
 
 ## Connections
@@ -165,6 +165,7 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 Let's run the provided test program, which shows the current time on the 7 segment display, to be sure it is working properly.
 
 {{< highlight bash >}}
+cd examples
 sudo python ex_7segment_clock.py
 {{< /highlight >}}
 
@@ -179,12 +180,16 @@ sudo i2cdetect -y 1
 Once connected as in the above diagram, you can test if everything was properly connected using the following program. This program displays 'AbCd':
 
 {{< highlight python >}}
-segment = SevenSegment(address=0x70)
+from Adafruit_LED_Backpack import SevenSegment
 
-segment.set_digit(0, 10)
-segment.set_digit(1, 11)
-segment.set_digit(2, 12)
-segment.set_digit(3, 13)
+seg = SevenSegment.SevenSegment(address=0x70)
+
+seg.begin()
+
+segment.set_digit(0, 'A')
+segment.set_digit(1, 'b')
+segment.set_digit(2, 'C')
+segment.set_digit(3, 'd')
 
 segment.write_display()
 {{< /highlight >}}
