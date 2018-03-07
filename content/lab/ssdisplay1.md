@@ -197,7 +197,7 @@ segment.write_display()
 Note:  You can turn the colon (:) on or off:
 
 {{< highlight python >}}
-segment = SevenSegment(address=0x70)
+segment = SevenSegment.SevenSegment(address=0x70)
 
 segment.setColon(True)
 segment.setColon(False)
