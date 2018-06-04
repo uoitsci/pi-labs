@@ -1,10 +1,23 @@
-baseurl = "https://rpi.science.uoit.ca"
+#baseurl = "https://rpi.science.uoit.ca"
+baseurl = "http://localhost:8080/"
 languageCode = "en-CA"
 title = "RPi Labs"
-PygmentsCodeFences = true
-pygmentsstyle = "tango"
+#PygmentsCodeFences = true
+#pygmentsstyle = "tango"
+theme = "hyde-hyde"
 
 [params]
 Description = "Laboratories on Raspberry Pi for CSCI 2050U"
 Copyright = " "
 Logo = "/images/logo.png"
+authorimage = "/images/logo.png"
+highlightjs = true
+highlightjslanguages = ["python"]
+
+[[menu.main]]
+name = "Home"
+url = "/"
+
+[[menu.main]]
+name = "Labs"
+url = "/lab/"
