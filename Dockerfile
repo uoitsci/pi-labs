@@ -25,7 +25,7 @@ FROM nginx:alpine
 
 #COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=build /site/public /var/www/site
+COPY --from=build /site/public /usr/share/nginx/html
 
 WORKDIR /var/www/site
 
