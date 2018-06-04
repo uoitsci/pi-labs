@@ -1,10 +1,10 @@
-baseurl = "http://rpi.science.uoit.ca/"
-languageCode = "en-us"
+baseurl = "https://rpi.science.uoit.ca"
+languageCode = "en-CA"
 title = "RPi Labs"
 PygmentsCodeFences = true
 pygmentsstyle = "tango"
 
 [params]
-Description = "Laboratories on Raspberry Pi for UOIT students"
+Description = "Laboratories on Raspberry Pi for CSCI 2050U"
 Copyright = " "
 Logo = "/images/logo.png"

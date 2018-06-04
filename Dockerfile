@@ -18,7 +18,7 @@ COPY ./ /site
 
 WORKDIR /site
 
-RUN /usr/bin/hugo
+RUN /usr/bin/hugo -t hyde
 
 # The second serves the site.
 FROM nginx:alpine
@@ -27,6 +27,6 @@ FROM nginx:alpine
 
 COPY --from=build /site/public /usr/share/nginx/html
 
-WORKDIR /var/www/site
+WORKDIR /usr/share/nginx/html
 
 EXPOSE 80
