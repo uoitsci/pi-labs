@@ -18,7 +18,7 @@ COPY ./ /site
 
 WORKDIR /site
 
-RUN /usr/bin/hugo -t hyde
+RUN /usr/bin/hugo
 
 # The second serves the site.
 FROM nginx:alpine
