@@ -126,7 +126,7 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
     <tr>
         <td>+</td>
         <td>Power</td>
-        <td>5.0v</td>
+        <td>5.0V</td>
     </tr>
     <tr>
         <td>-</td>
@@ -147,11 +147,11 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
 
 ## Download the support code
 
-AdaFruit, who makes the 7 segment display, has created a Python class for our display, called SevenSegment.  To get this code, along with some test code, download the following package from their GitHub repository:
+Adafruit, who makes the 7-segment display, has created a Python library for our display, which provides the `SevenSegment` class.  The library is preinstalled on the Pi, but you'll need to download the example code from GitHub.
 
 {{< highlight bash >}}
-git clone https://github.com/adafruit/AdaFruit-Raspberry-Pi-Python-Code
-cd AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack
+git clone https://github.com/adafruit/Adafruit_Python_LED_Backpack
+cd Adafruit_Python_LED_Backpack
 {{< /highlight >}}
 
 ## Connections
@@ -165,7 +165,7 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 Let's run the provided test program, which shows the current time on the 7 segment display, to be sure it is working properly.
 
 {{< highlight bash >}}
-sudo python ex_7segment_clock.py
+sudo python examples/ex_7segment_clock.py
 {{< /highlight >}}
 
 To verify that the address of our seven segment display is 0x70, try the following command in the terminal:
@@ -179,35 +179,40 @@ sudo i2cdetect -y 1
 Once connected as in the above diagram, you can test if everything was properly connected using the following program. This program displays 'AbCd':
 
 {{< highlight python >}}
-segment = SevenSegment(address=0x70)
+from Adafruit_LED_Backpack.SevenSegment import SevenSegment
 
-segment.writeDigit(0, 10)
-segment.writeDigit(1, 11)
-segment.writeDigit(3, 12)
-segment.writeDigit(4, 13)
+segment = SevenSegment()
+
+segment.set_digit(0, 'A')
+segment.set_digit(1, 'B')
+segment.set_digit(2, 'C')
+segment.set_digit(3, 'D')
+
+# The display won't update without this line
+segment.write_display()
 {{< /highlight >}}
 
-Note:  The digit '2' is the colon in our display.  You can turn it on or off:
-
 {{< highlight python >}}
-segment = SevenSegment(address=0x70)
+from Adafruit_LED_Backpack.SevenSegment import SevenSegment
 
-segment.setColon(True)
-segment.setColon(False)
+segment = SevenSegment()
+
+segment.set_colon(True)
+segment.set_colon(False)
+
+segment.write_display()
 {{< /highlight >}}
 
 ## Exercise
 
-Now, we are going to write a Python program to test our seven segment display.  For simplicity, put your code into <span style="font-family: monospace">AdaFruit-Raspberry-Pi-Python-Code/Adafruit_LEDBackpack</span>.  Write a program that does the following:
+Write a program that does the following:
 
-<ol>
-    <li>Write a function 'writeDec' which outputs a decimal value [0,9999]</li>
-    <li>Count from 0000 to 1000, in decimal, with no delay</li>
-    <li>Write a function 'writeHex' which outputs a hexadecimal value [0,FFFF]</li>
-    <li>Count from 0000 to 1000, in hexadecimal, with no delay</li>
-</ol>
+* Write a function 'writeDec' which outputs a decimal value [0,9999]
+* Count from 0000 to 1000, in decimal, with no delay
+* Write a function 'writeHex' which outputs a hexadecimal value [0,FFFF]
+* Count from 0000 to 1000, in hexadecimal, with no delay
 
-Hint:  You can use // and % to extract a single digit from a number.  The following code demonstrates how to retrieve the ith number (counted from 0, starting on the right) of the number in num:
+Hint:  You can use // and % to extract a single digit from a number.  The following code demonstrates how to retrieve the $i$-th number (counted from 0, starting on the right) of the number in num:
 
 {{< highlight python >}}
 def get_digit(i, num):
@@ -215,6 +220,6 @@ def get_digit(i, num):
 
 num = 12345
 for i in range(0, 5):
-    print "get_digit(", i, ", 12345) =", get_digit(i, num)
+    print("get_digit(", i, ", 12345) =", get_digit(i, num))
 {{< /highlight >}}
 
