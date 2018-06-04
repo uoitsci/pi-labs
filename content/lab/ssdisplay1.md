@@ -166,6 +166,8 @@ Let's run the provided test program, which shows the current time on the 7 segme
 
 {{< highlight bash >}}
 sudo python examples/ex_7segment_clock.py
+cd examples
+sudo python ex_7segment_clock.py
 {{< /highlight >}}
 
 To verify that the address of our seven segment display is 0x70, try the following command in the terminal:
@@ -191,6 +193,8 @@ segment.set_digit(3, 'D')
 # The display won't update without this line
 segment.write_display()
 {{< /highlight >}}
+
+Note:  You can turn the colon (:) on or off:
 
 {{< highlight python >}}
 from Adafruit_LED_Backpack.SevenSegment import SevenSegment
@@ -222,4 +226,3 @@ num = 12345
 for i in range(0, 5):
     print("get_digit(", i, ", 12345) =", get_digit(i, num))
 {{< /highlight >}}
-
