@@ -12,7 +12,12 @@ Copyright = " "
 Logo = "/images/logo.png"
 authorimage = "/images/logo.png"
 highlightjs = true
-highlightjslanguages = ["python"]
+highlightjslanguages = ["python", "armasm"]
+#highlightjsstyle = "zenburn"
+highlightjsstyle = "monokai"
+
+[params.social]
+github = "uoitsci/pi-labs"
 
 [[menu.main]]
 name = "Home"

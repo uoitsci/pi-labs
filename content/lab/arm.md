@@ -11,7 +11,7 @@ Since the computer cannot run assembler we have to get binary code from it. We u
 # Our first ARM programs
 We have to start with something, so we will start with a ridiculously simple program which does nothing but return an error code.
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
 .text             /* -- Code section */
 .global main      /* 'main' is our entry point and must be global */
 .func main        /* 'main' is a function */
@@ -56,25 +56,25 @@ Let's review every line of our minimal assembler file.
 
 These are comments. Comments are enclosed in /* and */. Use them to document your assembler as they are ignored. As usually, do not nest /* and */ inside /* because it does not work.
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
 .global main /* 'main' is our entry point and must be global */
 {{< /highlight >}}
 
 This is a directive for GNU Assembler. A directive tells GNU Assembler to do something special. They start with a dot (.) followed by the name of the directive and some arguments. In this case we are saying that main is a global name. This is needed because the C runtime will call main. If it is not global, it will not be callable by the C runtime and the linking phase will fail.
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
 .func main   /* 'main' is a function */
 {{< /highlight >}}
 
 Another GNU assembler directive. Here we state that main is a function. This is important because an assembler program usually contains instructions (i.e. code) but may also contain data. We need to explicitly state that main actually refers to a function, because it is code.
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
 main:          /* This is main */
 {{< /highlight >}}
 
 Every line in GNU Assembler that is not a directive will always be like label: instruction. We can omit label: and instruction (empty and blank lines are ignored). A line with only label:, applies that label to the next line (you can have more than one label referring to the same thing this way). The instruction part is the ARM assembler language itself. In this case we are just defining main as there is no instruction.
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
     mov r0, #2 /* Put a 2 inside the register r0 */
 {{< /highlight >}}
     
@@ -83,7 +83,7 @@ This is the mov instruction which means move. We move a value 2 to the register 
 
 In summary, this instruction puts a 2 inside the register r0 (this effectively overwrites whatever register r0 may have at that point).
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
     bx lr      /* Return from main */
 {{< /highlight >}}
     
@@ -101,7 +101,7 @@ Those 16 integer registers in ARM have names from r0 to r15. They can hold 32 bi
 
 Almost every processor can do some basic arithmetic computations using the integer registers. So do ARM processors.  You can ADD two registers. Let's retake our example from above:
 
-{{< highlight nasm >}}
+{{< highlight "ARM Assembly" >}}
 /* -- sum01.s */
 .global main
 .func main
@@ -114,8 +114,3 @@ main:
 {{< /highlight >}}
 
 If we compile and run this program the error code is, as expected, 7.
-
-
-
-
-

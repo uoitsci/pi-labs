@@ -48,7 +48,9 @@ There are 4 different types of GPIO pins on the Raspberry Pi.  Of these, three m
 
 In total there are 24 GPIO ports.  Although any GPIO pins may be used, when possible the green pins should be used first.
 
-__Note:__ _Only the first 26 pins are used for these labs._
+{{< message >}}
+Only the first 26 pins are used for these labs.
+{{< /message >}}
 
 ## Using the GPIO Pins From Python
 

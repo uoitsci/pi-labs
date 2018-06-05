@@ -27,7 +27,9 @@ Next, plug in an HDMI cable with the other end attached to a display.  The TA ma
 
 After a short time, the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 
-Note:  Your username is your student/banner ID.  Your password is your student/banner ID, followed by an underscore.
+{{< message >}}
+Your username is your student/banner ID.  Your password is your student/banner ID, followed by an underscore.
+{{< /message >}}
 
 e.g.
 
@@ -121,7 +123,9 @@ else:
 
 Try experimenting with different values for X until you understand how the conditional works.
 
-Note:  Python uses space to structure code blocks.  In C++, you surrounded your code block in { and }, but in Python you indent your code block.  Be sure to be consistent with your spacing or you might confuse Python if code is inside or outside of a block.
+{{< message >}}
+Python uses space to structure code blocks.  In C++, you surrounded your code block in { and }, but in Python you indent your code block.  Be sure to be consistent with your spacing or you might confuse Python if code is inside or outside of a block.
+{{< /message >}}
 
 Let's examine a while loop now.  Again, the major difference with C++ is the use of indentation to show what code is inside the loop.
 

@@ -25,7 +25,9 @@ Nearly all of the above chips have an identical pinout (the exceptions are the 7
 
 To use one of these chips, connect pin #7 to ground, and pin #14 to +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port.
 
-**Note:**  *Be sure to orient the chip so that the notch appears on the left side.  Failure to do so could reverse the power and ground wiring, which will make the chip get very hot.  If this happens, do not touch the chip and immediately disconnect power.  Wait until the chip has had a chance to cool before re-orienting it.  If the chip continues to heat up, notify your TA.*
+{{< message type="warning" icon="exclamation" >}}
+Be sure to orient the chip so that the notch appears on the left side.  Failure to do so could reverse the power and ground wiring, which will make the chip get very hot.  If this happens, do not touch the chip and immediately disconnect power.  Wait until the chip has had a chance to cool before re-orienting it.  If the chip continues to heat up, notify your TA.
+{{< /message >}}
 
 You can also combine gates together by connecting output pins to input pins.
 

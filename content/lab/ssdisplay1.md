@@ -194,7 +194,7 @@ segment.set_digit(3, 'D')
 segment.write_display()
 {{< /highlight >}}
 
-Note:  You can turn the colon (:) on or off:
+You can turn the colon (:) on or off:
 
 {{< highlight python >}}
 from Adafruit_LED_Backpack.SevenSegment import SevenSegment
