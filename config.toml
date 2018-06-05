@@ -1,5 +1,5 @@
-#baseurl = "https://rpi.science.uoit.ca"
-baseurl = "http://localhost:8080/"
+baseurl = "https://rpi.science.uoit.ca"
+#baseurl = "http://localhost:8080/"
 languageCode = "en-CA"
 title = "RPi Labs"
 #PygmentsCodeFences = true
