@@ -18,7 +18,7 @@ COPY ./ /site
 
 WORKDIR /site
 
-RUN /usr/bin/hugo
+RUN /usr/bin/hugo --gc
 
 # The second serves the site.
 FROM nginx:alpine
