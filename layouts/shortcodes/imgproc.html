@@ -1,0 +1,8 @@
+{{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get "resource")) }}
+{{ $width := .Get "width" | default "750" }}
+{{ $width2x := (mul (int $width) 2) }}
+{{ .Scratch.Set "image" ($original.Resize (printf "%sx" $width)) }}
+{{ .Scratch.Set "image2x" ($original.Resize (printf "%dx" $width2x)) }}
+{{ $image := .Scratch.Get "image" }}
+{{ $image2x := .Scratch.Get "image2x" }}
+<img class="centered" src="{{ $image.RelPermalink }}" srcset="{{ $image.RelPermalink }} 1x, {{ $image2x.RelPermalink }} 2x" alt={{ .Get "caption" }}>

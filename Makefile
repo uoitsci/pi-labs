@@ -28,7 +28,7 @@ assets/%_breadboard.png : assets/%.fzz
 	$(FRITZING) -svg $(PWD)/assets
 
 static/images/%.png : assets/%_breadboard.png
-	$(CONVERT) $< -resize $(WIDTH) $@
+	#$(CONVERT) $< -resize $(WIDTH) $@
 	$(OPTIPNG) -o7 $@
 
 #static/images/%.png : assets/%_breadboard.svg
