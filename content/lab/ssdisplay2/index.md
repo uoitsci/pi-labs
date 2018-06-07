@@ -95,7 +95,7 @@ For example, to generate a capital H:
 
 Let's connect the seven segment display along with a momentary button, as in the following diagram:
 
-{{%img src="/images/7Segment_SpeedTest.png"%}}
+{{%img src="//via.placeholder.com/700x250?text=7Segment_SpeedTest.png"%}}
 
 {{< message >}}
 In this example, the circuit has been designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs as GPIO.PUD_UP in your program.

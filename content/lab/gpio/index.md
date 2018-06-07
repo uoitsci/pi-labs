@@ -45,7 +45,7 @@ There are 4 different types of GPIO pins on the Raspberry Pi.  Of these, three m
   <dt>Blue</dt>
   <dd>These pins may operate as GPIO or used as an I<sup>2</sup>C bus.</dd>
   <dt>Orange</dt>
-  <dd>These pins may operate as GPIO or used for <abbr title="Universal asynchronous receiver/transmitter">UART</abbr></dd>.
+  <dd>These pins may operate as GPIO or used for <abbr title="Universal asynchronous receiver/transmitter">UART</abbr>.</dd>
   <dt>Purple</dt>
   <dd>These pins may operate as GPIO or used as an <abbr title="Serial Peripheral Interface">SPI</abbr> bus.</dd>
 </dl>
