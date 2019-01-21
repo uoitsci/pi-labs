@@ -10,7 +10,7 @@ In this lab we are going to introduce the GPIO interface of the Raspberry Pi.
 
 In one corner of the Raspberry Pi is a 40-pin expansion header.  The pins are numbered from 1 to 40, with the even numbers on the outside edge of the board as shown below.
 
-{{< figure caption="Raspberry Pi Model 3B+ GPIO expansion headers" attr="By Gareth Halfacree from Bradford, UK (Raspberry Pi 3 B+) [CC BY-SA 2.0], via Wikimedia Commons" attrlink="https://commons.wikimedia.org/wiki/File:Raspberry_Pi_3_B%2B_(39906369025).png" >}}
+{{< figure caption="Raspberry Pi 3 Model B+ GPIO expansion headers" attr="By Gareth Halfacree from Bradford, UK (Raspberry Pi 3 B+) [CC BY-SA 2.0], via Wikimedia Commons" attrlink="https://commons.wikimedia.org/wiki/File:Raspberry_Pi_3_B%2B_(39906369025).png" >}}
 {{< imgproc1 resource="raspberry_pi_3bplus_top" >}}
 {{< /figure >}}
 
@@ -58,11 +58,7 @@ Only the first 26 pins are used for these labs.
 
 ## Using the GPIO Pins From Python
 
-The examples below use the RPi.GPIO Python package.  It may be installed with the following command.
-
-{{< highlight bash >}}
-$ sudo pip install RPi.GPIO
-{{< /highlight >}}
+The examples below use the RPi.GPIO Python package.  It comes pre-installed in Raspbian.
 
 To use the GPIO interface from Python the first step is to import the Raspberry Pi GPIO module.
 

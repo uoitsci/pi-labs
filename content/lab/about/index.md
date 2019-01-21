@@ -2,32 +2,40 @@
 draft = false
 title = "About Python"
 Weight = 1
+
+[[resources]]
+  name = "pi_wired"
+  src = "pi_wired.jpg"
 +++
 
 In this lab we are going to introduce the Python programming language that we are going to use to program our Raspberry Pi projects.
 
 # Raspberry Pi
-The Raspberry Pi (RPi) is a credit card-sized computer that is relatively low cost, and has been used for a wide variety of projects.  Many people have used RPis to be their media centre, and nearly as many have developed game consoles, which run emulators of old gaming systems and arcade machines (e.g. Sega Genesis, Atari 2600, Nintendo 64).  There are many other projects. 
+The Raspberry Pi (RPi) is a credit card-sized computer that is relatively low cost, and has been used for a wide variety of projects.  Many people have used RPis to be their media centre, and nearly as many have developed game consoles, which run emulators of old gaming systems and arcade machines (e.g. Sega Genesis, Atari 2600, Nintendo 64).  There are many other projects.
 
-The RPi has its operating system on a MicroSD card, that is plugged into your device, called Raspbian.  Raspbian is a scaled down version of Debian Linux, built for the ARM architecture and including some useful packages.
+The RPi runs a Linux distribution called Raspbian.  Raspbian is a scaled down version of Debian Linux, built for the ARM architecture and including some useful packages.  In most cases the operating system (OS) is loaded from the microSD card, but in the lab we load the OS over the network.
 
 # Python programming language
 Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programming language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
 
 ## Hardware Setup
-To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, a microUSB AC adapter, an Ethernet cable, a multimeter, and various wires and components.
+To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, an Ethernet cable, a multimeter, and various wires and components.
 
 The most important component is the RPi itself.  Remove it from its Mylar bag and set it down carefully on a flat surface.  Note that it has been mounted onto a plastic mounting board along with a breadboard.
-i 
-We will use this breadboard in future labs, but not this time.  To start, we'll need power, keyboard, mouse, network, and display connections.  Start by plugging in a USB keyboard and mouse.
 
-{{< figure caption="Raspberry Pi Model B+ wired" >}}
+We will use this breadboard in future labs, but not this time.  To start, we'll need keyboard, mouse, network, and display connections.  Start by plugging in an HDMI cable.  Ensure the monitor is on.
+
+{{< figure caption="Raspberry Pi 3 Model B+ wired" >}}
 {{< imgproc1 resource="pi_wired" >}}
 {{< /figure >}}
 
-Next, plug in an HDMI cable with the other end attached to a display.  The TA may help you determine which display and HDMI cable to use.  Plug in the network cable into the RPi and one of the ethernet ports in the lab.  We are ready to boot our RPi.  Attach the microUSB AC adapter and you should see the RPi's boot process on the display.
+Next, plug in the network cable into the RPi and one of the ethernet ports in the lab.  The RPi is powered over the network.  Wait for the boot screen to appear on the monitor (approximately 30s after plugging in the network cable) before plugging in the keyboard and mouse.  This is a bug in the RPi's firmware.
 
-After a short time, the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
+{{% message %}}
+In the UA 2460 lab the RPi will **not** boot if the keyboard is plugged in first.  You **must** unplug the keyboard before booting the RPi.  To restart the RPi, remove the network cable and plug it back in.
+{{% /message %}}
+
+After a short time (~60s), the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 
 {{< message >}}
 Your username is your student/banner ID.  Your password is your student/banner ID, followed by an underscore.
@@ -40,9 +48,9 @@ Banner ID | Username  | Password
 100000001 | 100000001 | 100000001_
 100000002 | 100000002 | 100000002_
 
-Once logged in, take a few minutes to examine some of the application icons on the desktop, as well as applications available in the menu (which is accessible from the bottom left corner, similar to the start menu in Windows).
+Once logged in, take a few minutes to examine some of the applications available in the menu (which is accessible from the top left corner, similar to the start menu in Windows).
 
-Double click the desktop icon 'IDLE3' to start the Python development environment.
+In the menu, navigate to Programming -> Python 3 (IDLE) to start the Python development environment.
 
 ## Running Python on the Raspberry Pi
 IDLE is a relatively simple IDE for Python.  It doesn't have the capabilities of Visual Studio, but it will do for our purposes.  When you see:
