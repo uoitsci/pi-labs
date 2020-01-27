@@ -1,0 +1,27 @@
+{{/* Current max document width is 750 */}}
+{{- $scratch := newScratch }}
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- $scratch.Set "image" $img -}}
+
+{{- $maxWidth := 650 -}}
+
+{{- $retinaWidth := (mul $maxWidth 2) -}}
+
+{{- if gt $img.Width $retinaWidth -}}
+  {{- $finalWidth := (printf "%dx" $retinaWidth) -}}
+  {{- $scratch.Set "image2x" ($img.Resize $finalWidth) -}}
+{{- end -}}
+
+{{- if gt $img.Width $maxWidth -}}
+  {{- $finalWidth := (printf "%dx" $maxWidth) -}}
+  {{- $scratch.Set "image" ($img.Resize $finalWidth) -}}
+{{- end -}}
+
+{{- $image := $scratch.Get "image" -}}
+
+<figure>
+  <img class="centred" src="{{ $image.RelPermalink }}"{{ with .Text }} alt="{{ . }}"{{ end }}{{ with .Title }} title="{{ . }}"{{ end }}{{ with ($scratch.Get "image2x") }}srcset="{{ $image.RelPermalink }} 1x, {{ .RelPermalink }} 2x"{{ end }}>
+{{- if $.Text -}}
+<figcaption>{{ $.Text }}{{ with .Title }} &mdash; {{ . | markdownify }}{{ end }}</figcaption>
+{{- end -}}
+</figure>

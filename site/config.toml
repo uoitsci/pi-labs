@@ -1,4 +1,4 @@
-baseurl = "https://rpi.science.uoit.ca/"
+baseurl = "https://rpi.science.ontariotechu.ca/"
 #baseurl = "http://localhost:8081/"
 languageCode = "en-CA"
 title = "RPi Labs"
@@ -26,3 +26,6 @@ url = "/"
 [[menu.main]]
 name = "Labs"
 url = "/lab/"
+
+[markup.goldmark.renderer]
+unsafe = true

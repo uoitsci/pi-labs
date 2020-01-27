@@ -31,9 +31,7 @@ $$C\_{out} = ((A \oplus B) \land C\_{in}) \lor (A \land B)$$
 
 The circuit corresponding to these Boolean algebraic expressions is shown below.
 
-{{<figure width="436" caption="The circuit for a full adder">}}
-{{<imgproc1 resource="full-adder">}}
-{{</figure>}}
+![The circuit for a full adder](full-adder.png)
 
 ### Hardware Setup
 
@@ -49,9 +47,7 @@ OR    | AND 1 output | AND 2 output | $C\_{out}$ (GPIO24, pin #18)
 
 The resulting circuit should look something like the following illustration.
 
-{{<figure caption="The hardware configuration for a full adder">}}
-{{<imgproc1 resource="FullAdder">}}
-{{</figure>}}
+![The hardware configuration for a full adder](FullAdder.png)
 
 ## Exercise
 

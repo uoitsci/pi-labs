@@ -17,37 +17,37 @@ You can create your own character output on a per-segment basis.  Each character
         <th>Binary</th>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_a" >}}</td>
+        <td>![](ssd_a.png)</td>
         <td>0x01</td>
         <td>00000001</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_b" >}}</td>
+        <td>![](ssd_b.png)</td>
         <td>0x02</td>
         <td>00000010</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_c" >}}</td>
+        <td>![](ssd_c.png)</td>
         <td>0x04</td>
         <td>00000100</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_d" >}}</td>
+        <td>![](ssd_d.png)</td>
         <td>0x08</td>
         <td>00001000</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_e" >}}</td>
+        <td>![](ssd_e.png)</td>
         <td>0x10</td>
         <td>00010000</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_f" >}}</td>
+        <td>![](ssd_f.png)</td>
         <td>0x20</td>
         <td>00100000</td>
     </tr>
     <tr>
-        <td>{{< imgproc1 resource="ssd_g" >}}</td>
+        <td>![](ssd_g.png)</td>
         <td>0x40</td>
         <td>01000000</td>
     </tr>
@@ -69,7 +69,7 @@ For example, to generate a capital H:
         <th>Binary</th>
     </tr>
     <tr>
-        <td>{{<figure width="40">}}{{<imgproc1 resource="ssd_bcefg">}}{{</figure>}}</td>
+        <td>![](ssd_bcefg.png)</td>
         <td>
             0x10 (bottom left)<br />
             0x20 (top left)<br />
@@ -95,7 +95,7 @@ For example, to generate a capital H:
 
 Let's connect the seven segment display along with a momentary button, as in the following diagram:
 
-{{%img src="//via.placeholder.com/700x250?text=7Segment_SpeedTest.png"%}}
+![](7Segment_SpeedTest.png)
 
 {{< message >}}
 In this example, the circuit has been designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs as GPIO.PUD_UP in your program.

@@ -8,15 +8,11 @@ A *seven-segment display* (SSD), is a form of electronic display device for disp
 
 The seven elements of the display can be lit in different combinations to represent the Arabic numerals. The seven segments are arranged as a rectangle of two vertical segments on each side with one horizontal segment on the top, middle, and bottom. Additionally, the seventh segment bisects the rectangle horizontally. The segments of a 7-segment display are referred to by the letters A to G, where the optional DP decimal point (an *eighth segment*) is used for the display of non-integer numbers.
 
-{{<figure caption="Labelled segments of 7-segment display" attr="By user:h2g2bob [GFDL, CC-BY-SA-3.0, or CC BY-SA 2.5], from Wikimedia Commons" attrlink="https://commons.wikimedia.org/wiki/File:7_segment_display_labeled.svg" width="250">}}
-{{<imgproc1 resource="7_segment_display_labeled">}}
-{{</figure>}}
+![Labelled segments of 7-segment display](7_segment_display_labeled.png "[By user:h2g2bob [GFDL, CC-BY-SA-3.0, or CC BY-SA 2.5], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7_segment_display_labeled.svg)")
 
 There are 128 different ouput that can be generated with a 7-segment display:
 
-{{<figure caption="Possible outputs of a 7-segment display" attr="[Public domain], from Wikimedia Commons" attrlink="https://commons.wikimedia.org/wiki/File:7-segment.svg" width="600">}}
-{{<imgproc1 resource="7-segment-combinations">}}
-{{</figure>}}
+![Possible outputs of a 7-segment display](7-segment-combinations.png "[[Public domain], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7-segment.svg)")
 
 ## The I<sup>2</sup>C bus
 
@@ -58,9 +54,7 @@ F|0x71
 
 The four-digit seven-segment display that we are going to use has 4 pins (+, -, D, C).  The table below describes each pin, as well as how it should be connected to the Raspberry Pi:
 
-{{<figure width="350">}}
-{{<imgproc1 resource="4x7segdisplay">}}
-{{</figure>}}
+![](4x7segdisplay.png)
 
 {{<figure title="The I<sup>2</sup>C bus lines">}}
 7-Segment Pin | Purpose | GPIO Pin
@@ -84,9 +78,7 @@ cd Adafruit_Python_LED_Backpack
 
 First we are going to connect the four-digit seven-segment display to the GPIO pins as follows:
 
-{{<figure>}}
-{{<imgproc1 resource="7Segment_Output">}}
-{{</figure>}}
+![](7Segment_Output.png)
 
 ## Testing connections
 

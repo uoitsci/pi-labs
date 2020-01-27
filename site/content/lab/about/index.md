@@ -2,10 +2,6 @@
 draft = false
 title = "About Python"
 Weight = 1
-
-[[resources]]
-  name = "pi_wired"
-  src = "pi_wired.jpg"
 +++
 
 In this lab we are going to introduce the Python programming language that we are going to use to program our Raspberry Pi projects.
@@ -19,21 +15,20 @@ The RPi runs a Linux distribution called Raspbian.  Raspbian is a scaled down ve
 Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programming language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
 
 ## Hardware Setup
+
 To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, an Ethernet cable, a multimeter, and various wires and components.
 
 The most important component is the RPi itself.  Remove it from its Mylar bag and set it down carefully on a flat surface.  Note that it has been mounted onto a plastic mounting board along with a breadboard.
 
 We will use this breadboard in future labs, but not this time.  To start, we'll need keyboard, mouse, network, and display connections.  Start by plugging in an HDMI cable.  Ensure the monitor is on.
 
-{{< figure caption="Raspberry Pi 3 Model B+ wired" >}}
-{{< imgproc1 resource="pi_wired" >}}
-{{< /figure >}}
+![Raspberry Pi 3 Model B+ wired](pi_wired.jpg)
 
 Next, plug in the network cable into the RPi and one of the ethernet ports in the lab.  The RPi is powered over the network.  Wait for the boot screen to appear on the monitor (approximately 30s after plugging in the network cable) before plugging in the keyboard and mouse.  This is a bug in the RPi's firmware.
 
-{{% message %}}
+{{< message >}}
 In the UA 2460 lab the RPi will **not** boot if the keyboard is plugged in first.  You **must** unplug the keyboard before booting the RPi.  To restart the RPi, remove the network cable and plug it back in.
-{{% /message %}}
+{{< /message >}}
 
 After a short time (~60s), the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 

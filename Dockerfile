@@ -1,16 +1,8 @@
-# This first container builds the site.
-FROM dettmering/hugo-build:0.53 as build
+FROM monachus/hugo:v0.63.1 as build
 
-COPY ./ /site
+FROM nginx
 
-WORKDIR /site
-
-RUN /usr/bin/hugo
-
-# The second serves the site.
-FROM nginx:stable-alpine
-
-COPY --from=build /site/public /usr/share/nginx/html
+COPY --from=build /usr/share/nginx/html /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
 

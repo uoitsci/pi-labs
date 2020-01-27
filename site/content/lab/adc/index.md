@@ -11,9 +11,7 @@ An *analog-to-digital converter* (ADC, A/D, or A to D) is a device that converts
 
 The MCP3008 chip is an SPI-based analogue to digital converter (ADC). It has 8 analog input channels that can be configured, so it can handle up to 8 ADC conversions. The MCP3008 is a 10-bit ADC so its output will vary from 0 to 1023. The pinout of the MCP3008 is the following:
 
-{{<figure width="280" caption="MCP3008 SDI ADC Pinout" attr="Tony DiCola [CC BY 3.0]" attrlink="https://learn.adafruit.com/assets/30456">}}
-{{<imgproc1 resource="mcp3008pin">}}
-{{</figure>}}
+![MCP3008 SDI ADC Pinout](mcp3008pin.png "[Tony DiCola [CC BY 3.0]](https://learn.adafruit.com/assets/30456)")
 
 Typically the VDD pin is connected to  3.3V power. The AGND and DGND pins can be connected directly to the ground reference point. The VREF pin is the reference voltage which is the largest possible voltage that the ADC can interpret. In our scenario we will connect the VREF pin to 3.3V (same as VDD). So if 3.3V was sampled on any of the ADC's channels it would be interpreted as the maximum digital value that can be represented by this 10-bit ADC i.e. $2^{10} – 1 = 1023$. Similarly the smallest analog voltage that the ADC can detect (also known as the 'LSB size') is VREF/1024. Which in our case is $\frac{3.3\text{V}}{1024}= 3.22\text{mV}$ and represents a digital value of 1. The equation that converts between the analog voltage and its digital interpretation is given by "Digital output code = 1024*VIN/VREF"; where VIN is the analog input voltage and VREF is the reference voltage.
 
@@ -33,17 +31,13 @@ The operation of the SPI bus is conceptually simple. Both the master controller 
 # ADC using SPI from a Raspberry Pi
 In order to read analog data we need to use the following pins: VDD (power), DGND (digital ground) to power the MCP3008 chip. We also need four 'SPI' data pins: DOUT (Data Out from MCP3008), CLK (Clock pin), DIN (Data In from Raspberry Pi),  and /CS (Chip Select).  Finally of course, a source of analog data, we'll be using the basic 10k trim pot. A trimpot is a three-terminal resistor with a sliding or rotating contact that forms an adjustable voltage divider:
 
-{{<figure width="300" caption="10k Ohm Trimpot">}}
-{{<imgproc1 resource="trimpot">}}
-{{</figure>}}
+![10k Ohm Trimpot](trimpot.jpg)
 
 The MCP3008 has a few more pins we need to connect: AGND (analog ground, used sometimes in precision circuitry, which this is not) connects to GND, and VREF (analog voltage reference, used for changing the 'scale' - we want the full scale so tie it to 3.3V)
 
 Below is a wiring diagram:
 
-{{<figure caption="ADC circuit">}}
-{{<imgproc1 resource="ADC">}}
-{{</figure>}}
+![ADC circuit](ADC.png)
 
 The connections of the MCP3008 chip is the following:
 

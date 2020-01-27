@@ -46,38 +46,29 @@ In the explanations below, any indication of a bit's position is counted from th
 ## Operator NOT
 The bitwise `NOT` also called *complement* is an unary operation (only operates on one binary number). This operation perform a *logical negation* on each bit: bits that are 0 becomes 1, and those that are 1 becomes 0. For example:
 
-<pre>
-NOT 0111
-  = 1000
-</pre>
-
+    NOT 0111
+      = 1000
 
 ## Operator AND
 The bitwise `AND` takes two binary representation of equal lenght and performs the *logical AND* on each pair of corresponding bits. The result in each position is one if both bits are 1, otherwise the result is 0. For example:
 
-<pre>
-    0101
-AND 0011
-  = 0001
-</pre>
+        0101
+    AND 0011
+      = 0001
 
 ## Operator OR
 The bitwise `OR` takes two bit patterns of equal length and performs the *logical inclusive OR* operation on each pair of corresponding bits. The result in each position is 1 if at least one of the bits is 1, otherwise the result is 0. For example:
 
-<pre>
-    0101
- OR 0011
-  = 0111
-</pre>
+        0101
+     OR 0011
+      = 0111
 
 ## Operator XOR
 The bitwise `XOR` takes two bit patterns of equal length and performs the *logical exclusive OR* operation on each pair of corresponding bits. The result in each position if 1 if only one of the bits is one, otherwise the result is 0. For example:
 
-<pre>
-    0101
-XOR 0011
-  = 0110
-</pre>
+        0101
+    XOR 0011
+      = 0110
 
 The `XOR` operator can be seen as a comparison of two bits patterns, given the result in each position 1 if both bits differs and 0 if they are the same.
 
@@ -92,23 +83,15 @@ In python the bitwise operators has the following symbols:
 # Bit shift
 The *bit shifts* are sometimes considered bitwise operations, because they treat a value as a series of bits rather than as a numerical quantity. In these operations the digits are moved, or shifted, to the left or right. Examples:
 
-<pre>
-SHIFT-LEFT 0101
-         = 1010i
-</pre>
+    SHIFT-LEFT 0101
+             = 1010
 
-{{<figure width="167">}}
-{{<imgproc1 resource="shift-left">}}
-{{</figure>}}
+![](shift-left.png)
 
-<pre>
-SHIFT-RIGHT 0101
-          = 0010
-</pre>
+    SHIFT-RIGHT 0101
+              = 0010
 
-{{<figure width="167">}}
-{{<imgproc1 resource="shift-right">}}
-{{</figure>}}
+![](shift-right.png)
 
 ## Bit shift in python
 In python the left and right shift operators are `<<` and `>>`, respectively. The number of places to shift is given as the second argument to the shift operators. For example:
@@ -131,7 +114,7 @@ The result of the above operation will be 1 if the bit in the i-th position has 
 # Representing binary numbers with LED on the Raspberry Pi
 We are going to do a fun exercise. Lets create a circuit with 3 LEDs representing each one a bit in a binary number of size 3, and increment that number every second. The circuit would be the following:
 
-{{<imgproc resource="binary">}}
+![](binary.png)
 
 Notice that we are using GPIO pins 17, 27 and 22 as output pins for the LEDs. The following program will show the different binary numbers from 0 to 7 displayed using the LEDs:
 
@@ -148,16 +131,16 @@ GPIO.setup(15, GPIO.OUT)
 c = 0
 
 try:
-        while True:
-		c = (c + 1) % 8
+    while True:
+        c = (c + 1) % 8
 
-		GPIO.output(11, (c >> 0) & 1)
-		GPIO.output(13, (c >> 1) & 1)
-		GPIO.output(15, (c >> 2) & 1)
+        GPIO.output(11, (c >> 0) & 1)
+        GPIO.output(13, (c >> 1) & 1)
+        GPIO.output(15, (c >> 2) & 1)
 
-		time.sleep(1)
+        time.sleep(1)
 except KeyboardInterrupt:
-        GPIO.cleanup()
+    GPIO.cleanup()
 {{< /highlight >}}
 
 ## Exercise

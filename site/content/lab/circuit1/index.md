@@ -21,9 +21,7 @@ Base Model | Description
 
 Nearly all of the above chips have an identical pinout (the exceptions are the 7402 and the 7404).  The diagram below illustrates the pinout of the 7400 chip.
 
-{{<figure width="250" caption="Pinout of the 7400 chip" attr="By Tosaka [CC BY 3.0], via Wikimedia Commons" attrlink="https://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG">}}
-{{<imgproc1 resource="7400_Quad_2-input_NAND_Gates">}}
-{{</figure>}}
+![Pinout of the 7400 chip](7400_Quad_2-input_NAND_Gates.png "[By Tosaka [CC BY 3.0], via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG)")
 
 To use one of these chips, connect pin #7 to ground, and pin #14 to +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port.
 
@@ -50,9 +48,7 @@ A | B | S | C
 
 Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder.
 
-{{<figure caption="The circuit for a half adder" width="224">}}
-{{<imgproc1 resource="half-adder">}}
-{{</figure>}}
+![The circuit for a half adder](half-adder.png)
 
 ### Hardware Setup
 
@@ -62,9 +58,7 @@ Connect a red wire to a power supply of +3.3V on the GPIO header, and plug it in
 
 Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO17 and GPIO22.  Connect the output from the XOR gate to GPIO23, and the output from the AND gate to GPIO24.  The completed circuit wiring is shown below.
 
-{{<figure caption="The circuit for a half adder">}}
-{{<imgproc1 resource="HalfAdder">}}
-{{</figure>}}
+![The circuit for a half adder](HalfAdder.png)
 
 ## Exercise
 

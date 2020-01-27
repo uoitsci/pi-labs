@@ -2,3 +2,5 @@ assets/
 public/
 static/videos/
 resources/_gen/
+Dockerfile
+tmp/
