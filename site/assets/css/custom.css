@@ -1,0 +1,10 @@
+.centered, .center, .centred {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.toc-wrapper {
+  padding: 0 10px;
+}

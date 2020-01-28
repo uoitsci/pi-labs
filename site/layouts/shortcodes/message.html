@@ -1,5 +1,5 @@
 <!-- message -->
-<aside class="message {{ .Get "type" | default "note" }}">
+<aside class="message important {{ .Get "type" | default "note" }}">
   <i class="fas fa-{{ .Get "icon" | default "info" }}-circle fa-lg"></i>
   <strong>{{ humanize ( .Get "type" | default "note" ) }}</strong>
   <p>{{- .Inner | markdownify -}}</p>

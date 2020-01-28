@@ -5,6 +5,7 @@ title = "RPi Labs"
 #PygmentsCodeFences = true
 #pygmentsstyle = "tango"
 theme = "hyde-hyde"
+enableGitInfo = true
 
 [params]
 Description = "Laboratories on Raspberry Pi for CSCI 2050U"
@@ -13,8 +14,8 @@ Logo = "/images/logo.png"
 authorimage = "/images/logo.png"
 highlightjs = true
 highlightjslanguages = ["python", "armasm"]
-#highlightjsstyle = "zenburn"
 highlightjsstyle = "monokai"
+#toc = "hugo"
 
 [params.social]
 github = "uoitsci/pi-labs"

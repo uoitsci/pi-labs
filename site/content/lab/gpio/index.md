@@ -108,7 +108,7 @@ In general the longest leg of the LED is the anode, while the shortest is the ca
 
 To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.  As you can verify in the pinout diagram above, this corresponds to the GPIO #18 (as labelled in the header).
 
-{{< fig src="led_circuit_rev3.png" >}}
+![](led_circuit_rev3.png)
 
 As the output voltage of the GPIO pins is +3.3V and the LED only uses +2.1V, we must add a resistor.  The specification of this LED says it consumes 20mA.  Each pin supplies up to 16mA, so the actual forward current consumed by the LED is 16mA, not 20mA.
 

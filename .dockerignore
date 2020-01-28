@@ -1,6 +1,14 @@
-assets/
-public/
-static/videos/
-resources/_gen/
-Dockerfile
-tmp/
+# Ignore everything
+*
+
+# Allow some files/directories
+!site/assets/css/
+!site/content/
+!site/layouts/
+!site/static/
+!site/themes/
+!site/config.toml
+!.git
+
+# Ignore videos
+site/static/videos/
