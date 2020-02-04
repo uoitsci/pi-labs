@@ -16,7 +16,7 @@ There are 128 different ouput that can be generated with a 7-segment display:
 
 ## The I<sup>2</sup>C bus
 
-The HT16K33 7-segment display uses the I<sup>2</sup>C bus.  An I<sup>2</sup>C bus can support up to 256 different devices (e.g. sensors, motors, outputs) at the same time.  Each component has a unique hexadecimal address.  The HT16K33 generally uses a 0x70 address, but we'll verify that later.  The I<sup>2</sup>C bus uses only two GPIO pins:
+The HT16K33 7-segment display uses the I<sup>2</sup>C bus.  An I<sup>2</sup>C bus can support up to 256 different devices (e.g. sensors, motors, outputs) at the same time.  Each component has a unique hexadecimal address.  The HT16K33 generally uses a `0x70` address, but we'll verify that later.  The I<sup>2</sup>C bus uses only two GPIO pins:
 
 {{<figure title="The I<sup>2</sup>C bus lines">}}
 Line | Purpose
@@ -59,7 +59,7 @@ The four-digit seven-segment display that we are going to use has 4 pins (+, -, 
 {{<figure title="The I<sup>2</sup>C bus lines">}}
 7-Segment Pin | Purpose | GPIO Pin
 --------------|---------|---------
-+|Power|5.0V
++|Power|3.3V
 -|Ground|GND
 D|SDA (Data for I<sup>2</sup>C)|SDA
 C|SCL (Clock for I<sup>2</sup>C)|SCL
