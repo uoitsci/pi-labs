@@ -95,5 +95,9 @@ except KeyboardInterrupt:
     GPIO.cleanup()
 {{< /highlight >}}
 
+{{< message >}}
+The servo is being powered by a lower voltage than it's rated for.  While it works, it will be slower than usual.
+{{< /message >}}
+
 ## Exercise
 Add two buttons to the circuit and extend the above program to control the servo in the following way: One button will make the servo turn to its 0 degrees, the other will make it turn to its 180 degrees and both buttons at the same time will make the servo turn towards it neutral position (90 degrees).
