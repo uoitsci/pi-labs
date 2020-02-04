@@ -30,3 +30,6 @@ url = "/lab/"
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[markup.goldmark.extensions]
+table = true

@@ -8,88 +8,22 @@ Weight = 9
 
 You can create your own character output on a per-segment basis.  Each character is simply an 8-bit binary number, or two hexadecimal digits.  The table below describes the hexadecimal and binary codes for each segment:
 
-{{<figure title="Segment Codes" width="40">}}
-<table class="wikitable">
-    <caption>Segment Codes</caption>
-    <tr>
-        <th>Segment</th>
-        <th>Hexadecimal</th>
-        <th>Binary</th>
-    </tr>
-    <tr>
-        <td>![](ssd_a.png)</td>
-        <td>0x01</td>
-        <td>00000001</td>
-    </tr>
-    <tr>
-        <td>![](ssd_b.png)</td>
-        <td>0x02</td>
-        <td>00000010</td>
-    </tr>
-    <tr>
-        <td>![](ssd_c.png)</td>
-        <td>0x04</td>
-        <td>00000100</td>
-    </tr>
-    <tr>
-        <td>![](ssd_d.png)</td>
-        <td>0x08</td>
-        <td>00001000</td>
-    </tr>
-    <tr>
-        <td>![](ssd_e.png)</td>
-        <td>0x10</td>
-        <td>00010000</td>
-    </tr>
-    <tr>
-        <td>![](ssd_f.png)</td>
-        <td>0x20</td>
-        <td>00100000</td>
-    </tr>
-    <tr>
-        <td>![](ssd_g.png)</td>
-        <td>0x40</td>
-        <td>01000000</td>
-    </tr>
-    <tr>
-        <td>Decimal point</td>
-        <td>0x80</td>
-        <td>10000000</td>
-    </tr>
-</table>
-{{</figure>}}
+| Character | Hexidecimal | Binary |
+| --------- | ----------- | ------ |
+| ![](ssd_a.png) | `0x01` | `00000001` |
+| ![](ssd_b.png) | `0x02` | `00000010` |
+| ![](ssd_c.png) | `0x04` | `00000100` |
+| ![](ssd_d.png) | `0x08` | `00001000` |
+| ![](ssd_e.png) | `0x10` | `00010000` |
+| ![](ssd_f.png) | `0x20` | `00100000` |
+| ![](ssd_g.png) | `0x40` | `01000000` |
+| Decimal point | `0x80` | `10000000` |
 
 For example, to generate a capital H:
 
-<table class="wikitable">
-    <caption>Calculating codes for a capital H</caption>
-    <tr>
-        <th>Character</th>
-        <th>Hexadecimal</th>
-        <th>Binary</th>
-    </tr>
-    <tr>
-        <td>![](ssd_bcefg.png)</td>
-        <td>
-            0x10 (bottom left)<br />
-            0x20 (top left)<br />
-            0x40 (centre)<br />
-            0x02 (top right)<br />
-            0x04 (bottom right)<br />
-            ----<br />
-            0x76
-        </td>
-        <td>
-            0001 0000 (bottom left)<br />
-            0010 0000 (top left)<br />
-            0100 0000 (centre)<br />
-            0000 0010 (top right)<br />
-            0000 0100 (bottom right)<br />
-            ---------<br />
-            0111 0110
-        </td>
-    </tr>
-</table>
+| Character | Hexidecimal | Binary |
+| --------- | ----------- | ------ |
+| ![](ssd_bcefg.png) | <pre>0x10 (bottom left)<br />0x20 (top left)<br />0x40 (centre)<br />0x02 (top right)<br />0x04 (bottom right)<br />===================<br />0x76</pre> | <pre>0001 0000 (bottom left)<br />0010 0000 (top left)<br />0100 0000 (centre)<br />0000 0010 (top right)<br />0000 0100 (bottom right)<br />========================<br />0111 0110</pre>
 
 ## Circuit
 

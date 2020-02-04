@@ -1,5 +1,15 @@
 <script src="//polyfill.io/v3/polyfill.js?features=es6"></script>
 <script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
 
 {{ $customStyle := resources.Get "css/custom.css" | fingerprint }}
 <link rel="stylesheet" href="{{ $customStyle.RelPermalink }}" integrity="{{ $customStyle.Data.Integrity }}">
