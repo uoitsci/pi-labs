@@ -1,19 +1,9 @@
 <!-- image -->
-<figure{{ with .Get "class" }} class="{{.}}"{{ end }}>
-    {{ if .Get "link"}}<a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>{{ end }}
-      <!--<img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }}/>-->
-      {{ .Inner | markdownify }}
-    {{ if .Get "link"}}</a>{{ end }}
-    {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
-    <figcaption>{{ if isset .Params "title" }}
-        <h4>{{ .Get "title" | safeHTML }}</h4>{{ end }}
-        {{ if or (.Get "caption") (.Get "attr")}}<p>
-        {{ .Get "caption" }}
-        {{ with .Get "attrlink"}}&mdash;<a href="{{.}}"> {{ end }}
-            {{ .Get "attr" }}
-        {{ if .Get "attrlink"}}</a> {{ end }}
-        </p> {{ end }}
-    </figcaption>
-    {{ end }}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{ with .Get "width" }}<div style="width: {{ . }};" class="centred">{{ end }}
+  {{ .Inner | markdownify }}
+  {{ with .Get "width" }}</div>{{ end }}
+  {{- with .Get "caption" -}}
+  <figcaption class="centred">{{ . | markdownify }}</figcaption>
+  {{- end -}}
 </figure>
-<!-- image -->

@@ -6,7 +6,7 @@ enableGitInfo = true
 
 [params]
 Description = "Laboratories on Raspberry Pi for CSCI 2050U"
-Copyright = " "
+#Copyright = " "
 Logo = "/images/logo.png"
 authorimage = "/images/logo.png"
 highlightjs = true

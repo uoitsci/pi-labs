@@ -31,7 +31,9 @@ The operation of the SPI bus is conceptually simple. Both the master controller 
 # ADC using SPI from a Raspberry Pi
 In order to read analog data we need to use the following pins: VDD (power), DGND (digital ground) to power the MCP3008 chip. We also need four 'SPI' data pins: DOUT (Data Out from MCP3008), CLK (Clock pin), DIN (Data In from Raspberry Pi),  and /CS (Chip Select).  Finally of course, a source of analog data, we'll be using the basic 10k trim pot. A trimpot is a three-terminal resistor with a sliding or rotating contact that forms an adjustable voltage divider:
 
+{{< figure caption="10k Ohm Trimpot" width="300px" >}}
 ![10k Ohm Trimpot](trimpot.jpg)
+{{< /figure >}}
 
 The MCP3008 has a few more pins we need to connect: AGND (analog ground, used sometimes in precision circuitry, which this is not) connects to GND, and VREF (analog voltage reference, used for changing the 'scale' - we want the full scale so tie it to 3.3V)
 

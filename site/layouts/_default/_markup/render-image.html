@@ -27,7 +27,9 @@
 {{- $image2x := $scratch.Get "image2x" -}}
 {{- $image4x := $scratch.Get "image4x" -}}
 
+{{- if $.Text -}}
 <figure>
+{{- end -}}
   {{- with $image4x -}}
   <div class="zoom">{{ end }}
     <img width="{{ $image.Width }}"
@@ -46,5 +48,5 @@
 {{- if $.Text -}}
     
   <figcaption class="centred">{{ $.Text }}{{ with .Title }} &mdash; {{ . | markdownify }}{{ end }}</figcaption>
-{{- end -}}
 </figure>
+{{- end -}}
