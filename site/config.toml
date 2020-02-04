@@ -1,9 +1,6 @@
 baseurl = "https://rpi.science.ontariotechu.ca/"
-#baseurl = "http://localhost:8081/"
 languageCode = "en-CA"
 title = "RPi Labs"
-#PygmentsCodeFences = true
-#pygmentsstyle = "tango"
 theme = "hyde-hyde"
 enableGitInfo = true
 
@@ -15,7 +12,6 @@ authorimage = "/images/logo.png"
 highlightjs = true
 highlightjslanguages = ["python", "armasm"]
 highlightjsstyle = "monokai"
-#toc = "hugo"
 
 [params.social]
 github = "uoitsci/pi-labs"
@@ -32,4 +28,8 @@ url = "/lab/"
 unsafe = true
 
 [markup.goldmark.extensions]
+definitionList = true
 table = true
+
+[imaging]
+resampleFilter = "lanczos"

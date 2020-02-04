@@ -18,16 +18,17 @@ Each of these GPIO pins are identified below.
 
 There are several different types of pins in the expansion header.
 
-<dl>
-  <dt>Light Red</dt>
-  <dd>Connected to the Pi's 5V rail, provides a consistent +5.0V.</dd>
-  <dt>Dark Red</dt>
-  <dd>Connected to the Pi's 3.3V rail, provides a consistent +3.3V.</dd>
-  <dt>Black</dt>
-  <dd>Connected to the Pi's ground, provides a consistent 0V.</dd>
-  <dt>Yellow <span class="masthead-title"><small>New in Model B+</small></span></dt>
-  <dd>I<sup>2</sup>C bus dedicated to expansion boards</dd>
-</dl>
+Light Red
+: Connected to the Pi's 5V rail, provides a consistent +5.0V.
+
+Dark Red
+: Connected to the Pi's 3.3V rail, provides a consistent +3.3V.
+
+Black
+: Connected to the Pi's ground, provides a consistent 0V.
+
+Yellow <span class="masthead-title"><small>New in Model B+</small></span>
+: I<sup>2</sup>C bus dedicated to expansion boards
 
 All the remaining pins are known as the **General-purpose input/output (GPIO)**.  The GPIO is a generic pin on a circuit whose behaviour, including whether it is an input or output, may be controlled by the user at run-time.
 
@@ -35,16 +36,17 @@ The GPIO pins are connected to the +3.3V rails.  When used for input they are ab
 
 There are 4 different types of GPIO pins on the Raspberry Pi.  Of these, three may be used as GPIO or special purposes.
 
-<dl>
-  <dt>Green</dt>
-  <dd>These are generic GPIO pins without a special purpose.</dd>
-  <dt>Blue</dt>
-  <dd>These pins may operate as GPIO or used as an I<sup>2</sup>C bus.</dd>
-  <dt>Orange</dt>
-  <dd>These pins may operate as GPIO or used for <abbr title="Universal asynchronous receiver/transmitter">UART</abbr>.</dd>
-  <dt>Purple</dt>
-  <dd>These pins may operate as GPIO or used as an <abbr title="Serial Peripheral Interface">SPI</abbr> bus.</dd>
-</dl>
+Green
+: These are generic GPIO pins without a special purpose.
+
+Blue
+: These pins may operate as GPIO or used as an I<sup>2</sup>C bus.
+
+Orange
+: These pins may operate as GPIO or used for <abbr title="Universal asynchronous receiver/transmitter">UART</abbr>.
+
+Purple
+: These pins may operate as GPIO or used as an <abbr title="Serial Peripheral Interface">SPI</abbr> bus.
 
 In total there are 24 GPIO ports.  Although any GPIO pins may be used, when possible the green pins should be used first.
 
@@ -176,7 +178,7 @@ The same effect could be produced by using an actual resistor before (PUD_UP) or
 
 In our previous example we demonstrated the usage of a GPIO pin as output.  In order to demonstrate using a GPIO pin for input, we are going to extend the previous example to make the LED blink when a button is pressed.
 
-Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 (which corresponds to GPIO#17) and another to +3.3V.
+Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 (which corresponds to GPIO #17) and another to +3.3V.
 
 Your circuit should be similar to the following.
 

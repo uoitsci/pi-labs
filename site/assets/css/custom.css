@@ -8,3 +8,7 @@
 .toc-wrapper {
   padding: 0 10px;
 }
+
+dl > dt {
+  font-weight: bold;
+}
