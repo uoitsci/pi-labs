@@ -129,7 +129,7 @@ else:
 Try experimenting with different values for X until you understand how the conditional works.
 
 {{< message >}}
-Python uses space to structure code blocks.  In C++, you surrounded your code block in { and }, but in Python you indent your code block.  Be sure to be consistent with your spacing or you might confuse Python if code is inside or outside of a block.
+Python uses whitespace to structure code blocks.  In C++, you surrounded your code block in `{` and `}`, but in Python you _indent_ your code block.  Be sure to be consistent with your spacing or you might confuse Python if code is inside or outside of a block.  Avoid mixing spaces and tabs.
 {{< /message >}}
 
 Let's examine a while loop now.  Again, the major difference with C++ is the use of indentation to show what code is inside the loop.
