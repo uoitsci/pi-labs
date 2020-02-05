@@ -18,7 +18,13 @@ dl > dt {
 }
 
 #ot-logo {
-  position: absolute;
+  padding-top: 100px;
+  /*position: absolute;
   margin: 0 auto;
-  bottom: 0;
+  bottom: 0;*/
+}
+
+img.img--headshot {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
