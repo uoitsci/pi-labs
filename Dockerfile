@@ -1,9 +1,8 @@
 # Based on https://github.com/oskapt/docker-hugo
 FROM debian:stretch as build
 
-# Install pygments (for syntax highlighting) 
 RUN apt-get -qq update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends libstdc++6 git ca-certificates asciidoc curl \
+	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends libstdc++6 git ca-certificates curl \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Configuration variables
@@ -26,7 +25,7 @@ EXPOSE 1313
 ADD . ${SITE_DIR}
 WORKDIR ${SITE_DIR}/site
 
-RUN hugo -d /usr/share/nginx/html/
+RUN hugo -d /usr/share/nginx/html/ --cleanDestinationDir
 
 FROM nginx
 

@@ -3,6 +3,7 @@
 
 # Allow some files/directories
 !site/assets/css/
+!site/assets/scss/
 !site/content/
 !site/layouts/
 !site/static/

@@ -30,6 +30,3 @@ unsafe = true
 [markup.goldmark.extensions]
 definitionList = true
 table = true
-
-#[imaging]
-#resampleFilter = "linear" #"lanczos"
