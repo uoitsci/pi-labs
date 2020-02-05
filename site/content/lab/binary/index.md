@@ -86,12 +86,12 @@ The *bit shifts* are sometimes considered bitwise operations, because they treat
     SHIFT-LEFT 0101
              = 1010
 
-![](shift-left.png)
+{{<img src="shift-left.png">}}
 
     SHIFT-RIGHT 0101
               = 0010
 
-![](shift-right.png)
+{{<img src="shift-right.png">}}
 
 ## Bit shift in python
 In python the left and right shift operators are `<<` and `>>`, respectively. The number of places to shift is given as the second argument to the shift operators. For example:
@@ -112,9 +112,9 @@ To test for different bits in python you can use the combination of the shift op
 The result of the above operation will be 1 if the bit in the i-th position has value 1, zero otherwise.
 
 # Representing binary numbers with LED on the Raspberry Pi
-We are going to do a fun exercise. Lets create a circuit with 3 LEDs representing each one a bit in a binary number of size 3, and increment that number every second. The circuit would be the following:
+We are going to do a fun exercise. Let's create a circuit with 3 LEDs representing each one a bit in a binary number of size 3, and increment that number every second. The circuit would be the following:
 
-![](binary.png)
+{{<img src="binary.png">}}
 
 Notice that we are using GPIO pins 17, 27 and 22 as output pins for the LEDs. The following program will show the different binary numbers from 0 to 7 displayed using the LEDs:
 

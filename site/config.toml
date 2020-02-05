@@ -31,5 +31,5 @@ unsafe = true
 definitionList = true
 table = true
 
-[imaging]
-resampleFilter = "lanczos"
+#[imaging]
+#resampleFilter = "linear" #"lanczos"

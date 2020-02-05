@@ -8,19 +8,21 @@ A *seven-segment display* (SSD), is a form of electronic display device for disp
 
 The seven elements of the display can be lit in different combinations to represent the Arabic numerals. The seven segments are arranged as a rectangle of two vertical segments on each side with one horizontal segment on the top, middle, and bottom. Additionally, the seventh segment bisects the rectangle horizontally. The segments of a 7-segment display are referred to by the letters A to G, where the optional DP decimal point (an *eighth segment*) is used for the display of non-integer numbers.
 
-{{< figure width="150px" >}}
-![Labelled segments of 7-segment display](7_segment_display_labeled.png "[By user:h2g2bob [GFDL, CC-BY-SA-3.0, or CC BY-SA 2.5], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7_segment_display_labeled.svg)")
-{{< /figure >}}
+{{<figure caption="Labelled segments of 7-segment display" attr="[By user:h2g2bob [GFDL, CC-BY-SA-3.0, or CC BY-SA 2.5], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7_segment_display_labeled.svg)">}}
+{{<img width="150" zoom="false" src="7_segment_display_labeled.png">}}
+{{</figure>}}
 
 There are 128 different ouput that can be generated with a 7-segment display:
 
-![Possible outputs of a 7-segment display](7-segment-combinations.png "[[Public domain], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7-segment.svg)")
+{{<figure caption="Possible outputs of a 7-segment display" attr="[[Public domain], from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7-segment.svg)">}}
+{{<img src="7-segment-combinations.png">}}
+{{</figure>}}
 
 ## The I<sup>2</sup>C bus
 
 The HT16K33 7-segment display uses the I<sup>2</sup>C bus.  An I<sup>2</sup>C bus can support up to 256 different devices (e.g. sensors, motors, outputs) at the same time.  Each component has a unique hexadecimal address.  The HT16K33 generally uses a `0x70` address, but we'll verify that later.  The I<sup>2</sup>C bus uses only two GPIO pins:
 
-{{<figure caption="The I<sup>2</sup>C bus lines" width="400px">}}
+{{<figure caption="The I<sup>2</sup>C bus lines" width="50%">}}
 Line | Purpose
 -----|--------
 SDA  | Data
@@ -31,7 +33,7 @@ SCL  | Clock
 
 All the 10 decimal digits (and all 16 hexadecimal digits) can be represented in a 7-segment display:
 
-{{<figure caption="Displaying the hexadecimal digits 0 to F" width="400px">}}
+{{<figure caption="Displaying the hexadecimal digits 0 to F" width="50%">}}
 Digit | Input
 ------|------
 0|0x3F
@@ -56,11 +58,11 @@ F|0x71
 
 The four-digit seven-segment display that we are going to use has 4 pins (+, -, D, C).  The table below describes each pin, as well as how it should be connected to the Raspberry Pi:
 
-{{< figure caption="Seven segment display" width="400px" >}}
-![](4x7segdisplay.png)
-{{< /figure >}}
+{{<figure caption="Seven segment display" width="50%">}}
+{{<img src="4x7segdisplay.png">}}
+{{</figure>}}
 
-{{<figure caption="The I<sup>2</sup>C bus lines" width="400px">}}
+{{<figure caption="The I<sup>2</sup>C bus lines" width="75%">}}
 7-Segment Pin | Purpose | GPIO Pin
 --------------|---------|---------
 +|Power|3.3V
@@ -82,7 +84,7 @@ cd Adafruit_Python_LED_Backpack
 
 First we are going to connect the four-digit seven-segment display to the GPIO pins as follows:
 
-![](7Segment_Output.png)
+{{<img src="7Segment_Output.png">}}
 
 ## Testing connections
 
@@ -96,7 +98,7 @@ python examples/ex_7segment_clock.py
 The _example_ program does **not** support Python 3.  The library itself **does**.
 {{< /warning >}}
 
-To verify that the address of our seven segment display is 0x70, try the following command in the terminal:
+To verify that the address of our seven segment display is `0x70`, try the following command in the terminal:
 
 {{< highlight bash >}}
 i2cdetect -y 1

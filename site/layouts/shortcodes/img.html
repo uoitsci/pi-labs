@@ -1,0 +1,56 @@
+{{/* Current max document width is 750 */}}
+{{- $scratch := newScratch }}
+{{- $img := .Page.Resources.GetMatch (.Get "src") -}}
+{{- $scratch.Set "image" $img -}}
+
+{{- $scratch.Set "maxWidth" 650 -}}
+{{- $contentMaxWidth := (int ($scratch.Get "maxWidth")) -}}
+{{- if $.Parent -}}
+{{- with .Parent.Get "width" -}}
+{{- $scratch.Set "maxWidth" ($.Parent.Get "width") -}}
+{{- end -}}
+{{- end -}}
+
+{{- with .Get "width" -}}
+{{- $scratch.Set "maxWidth" ($.Get "width") -}}
+{{- end -}}
+
+{{- if in ($scratch.Get "maxWidth") "%" -}}
+{{- $scratch.Set "maxWidth" (div (mul (int (replace ($scratch.Get "maxWidth") "%" "")) $contentMaxWidth) 100) -}}
+{{- end -}}
+
+{{- $maxWidth := (int ($scratch.Get "maxWidth")) -}}
+
+{{- $retinaWidth := (mul $maxWidth 2) -}}
+{{- $zoomWidth := (mul $maxWidth 4) -}}
+
+{{- if gt $img.Width $zoomWidth -}}
+  {{- $finalWidth := (printf "%dx" $zoomWidth) -}}
+  {{- $scratch.Set "image4x" ($img.Resize $finalWidth) -}}
+{{- end -}}
+
+{{- if gt $img.Width $retinaWidth -}}
+  {{- $finalWidth := (printf "%dx" $retinaWidth) -}}
+  {{- $scratch.Set "image2x" ($img.Resize $finalWidth) -}}
+{{- end -}}
+
+{{- if gt $img.Width $maxWidth -}}
+  {{- $finalWidth := (printf "%dx" $maxWidth) -}}
+  {{- $scratch.Set "image" ($img.Resize $finalWidth) -}}
+{{- end -}}
+
+{{- $image := $scratch.Get "image" -}}
+{{- $image2x := $scratch.Get "image2x" -}}
+{{- $image4x := $scratch.Get "image4x" -}}
+
+{{- with $image4x -}}
+<div class="zoom">{{ end }}
+  <img width="{{ $image.Width }}"
+       class="centered"
+       src="{{ $image.RelPermalink }}"
+       {{ if .Parent }}{{ with .Parent.Get "caption" }}alt="{{ . }}"{{ end }}{{ end }}
+       {{ if .Parent }}{{ with .Parent.Get "caption" }}title="{{ . }}"{{ end }}{{ end }}
+       srcset="{{ $image.RelPermalink }} 1x{{ with $image2x }}, {{ .RelPermalink }} 2x{{ end }}{{ with $image4x }}, {{ .RelPermalink }} 4x{{ end }}"
+       {{- with $image4x -}}data-src="{{ .RelPermalink }}"{{- end -}}>
+{{- with $image4x -}}
+</div>{{ end }}

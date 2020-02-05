@@ -22,7 +22,9 @@ The most important component is the RPi itself.  Remove it from its Mylar bag an
 
 We will use this breadboard in future labs, but not this time.  To start, we'll need keyboard, mouse, network, and display connections.  Start by plugging in an HDMI cable.  Ensure the monitor is on.
 
-![Raspberry Pi 3 Model B+ wired](pi_wired.jpg)
+{{<figure caption="Raspberry Pi 3 Model B+ wired">}}
+{{<img src="pi_wired.jpg">}}
+{{</figure>}}
 
 Next, plug in the network cable into the RPi and one of the ethernet ports in the lab.  The RPi is powered over the network.  Wait for the boot screen to appear on the monitor (approximately 30s after plugging in the network cable) before plugging in the keyboard and mouse.  This is a bug in the RPi's firmware.
 
@@ -87,7 +89,7 @@ print(x)
 print(x * 2)
 ```
 
-Save this program over your basics.py program from part 2 and execute it with F5.  Notice that this program does not execute line-by-line, but executes the entire program when you hit F5.
+Save this program over your basics.py program from part 2 and execute it with <kbd>F5</kbd>.  Notice that this program does not execute line-by-line, but executes the entire program when you hit <kbd>F5</kbd>.
 
 Let's add some other variables to the end of our program:
 
@@ -119,11 +121,11 @@ Now, let's try out conditionals.
 ```python
 x = 8
 if x < 10:
-   print("x is small")
+    print("x is small")
 elif X < 20:
-   print("x is medium")
+    print("x is medium")
 else:
-   print("x is large")
+    print("x is large")
 ```
 
 Try experimenting with different values for X until you understand how the conditional works.
@@ -137,8 +139,8 @@ Let's examine a while loop now.  Again, the major difference with C++ is the use
 ```python
 x = 8
 while x > 0:
-   print(x)
-   x = x - 1
+    print(x)
+    x = x - 1
 ```
 
 In Python, for loops work using lists so let's examine those in more detail before we learn the for loop syntax.  A list is merely a collection of elements of the same type surrounded by square brackets (e.g. `[1, 2, 3, 4, 5]`).  We can loop over any list:
@@ -146,7 +148,7 @@ In Python, for loops work using lists so let's examine those in more detail befo
 ```python
 names = ["Bob", "Sally", "Kunal", "Ahmed", "Carla"]
 for name in names:
-   print(name)
+    print(name)
 ```
 
 There is a function `range()` that can generate a list, that is very useful in for loops.  You can pass 3 values to range:  the minimum, the maximum, and the step size, and `range()` will generate a list that starts at the minimum value (default 0), proceeds to the next by adding the step size (default 1), until the maximum value is reached.  The maximum value is not included in the resulting list.  Try out `range()` a bit in the Python shell:
@@ -161,7 +163,7 @@ We are finally ready to use a familiar form of for loop:
 
 ```python
 for val in range(0, 20):
-   print(val)
+    print(val)
 ```
 
 There is a lot more to Python, but this should be enough to get us through these labs.

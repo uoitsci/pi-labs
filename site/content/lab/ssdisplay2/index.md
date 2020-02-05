@@ -10,26 +10,26 @@ You can create your own character output on a per-segment basis.  Each character
 
 | Character | Hexidecimal | Binary |
 | --------- | ----------- | ------ |
-| ![](ssd_a.png) | `0x01` | `0000 0001` |
-| ![](ssd_b.png) | `0x02` | `0000 0010` |
-| ![](ssd_c.png) | `0x04` | `0000 0100` |
-| ![](ssd_d.png) | `0x08` | `0000 1000` |
-| ![](ssd_e.png) | `0x10` | `0001 0000` |
-| ![](ssd_f.png) | `0x20` | `0010 0000` |
-| ![](ssd_g.png) | `0x40` | `0100 0000` |
+| {{<img width="100" src="ssd_a.png">}} | `0x01` | `0000 0001` |
+| {{<img width="100" src="ssd_b.png">}} | `0x02` | `0000 0010` |
+| {{<img width="100" src="ssd_c.png">}} | `0x04` | `0000 0100` |
+| {{<img width="100" src="ssd_d.png">}} | `0x08` | `0000 1000` |
+| {{<img width="100" src="ssd_e.png">}} | `0x10` | `0001 0000` |
+| {{<img width="100" src="ssd_f.png">}} | `0x20` | `0010 0000` |
+| {{<img width="100" src="ssd_g.png">}} | `0x40` | `0100 0000` |
 | Decimal point | `0x80` | `1000 0000` |
 
 For example, to generate a capital H:
 
 | Character | Hexidecimal | Binary |
 | --------- | ----------- | ------ |
-| ![](ssd_bcefg.png) | `0x10 (bottom left)`<br />`0x20 (top left)`<br />`0x40 (centre)`<br />`0x02 (top right)`<br />`0x04 (bottom right)`<br />`===================`<br />`0x76` | `0001 0000 (bottom left)`<br />`0010 0000 (top left)`<br />`0100 0000 (centre)`<br />`0000 0010 (top right)`<br />`0000 0100 (bottom right)`<br />`========================`<br />`0111 0110`
+| {{<img width="100" src="ssd_bcefg.png">}} | `0x10 (bottom left)`<br />`0x20 (top left)`<br />`0x40 (centre)`<br />`0x02 (top right)`<br />`0x04 (bottom right)`<br />`===================`<br />`0x76` | `0001 0000 (bottom left)`<br />`0010 0000 (top left)`<br />`0100 0000 (centre)`<br />`0000 0010 (top right)`<br />`0000 0100 (bottom right)`<br />`========================`<br />`0111 0110`
 
 ## Circuit
 
 Let's connect the seven segment display along with a momentary button, as in the following diagram:
 
-![](7Segment_SpeedTest.png)
+{{<img src="7Segment_SpeedTest.png">}}
 
 {{< message >}}
 In this example, the circuit has been designed to use the pull-up resistors in the Raspberry Pi's GPIO pins.  Be sure to configure the GPIO inputs as GPIO.PUD_UP in your program.

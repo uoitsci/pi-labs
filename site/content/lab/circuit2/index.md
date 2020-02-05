@@ -12,6 +12,7 @@ A full adder is a circuit that adds two binary digits, plus a carry in, producin
 
 The same process used for the half adder can be used to design the circuit for a full adder, starting with the truth table (which is filled out by hand, based on what we know about the behaviour of the circuit).
 
+{{<figure width="75%">}}
 A | B | Carry in | Sum | Carry out
 -------|-------|-------|-------|-------
 0 | 0 | 0 | 0 | 0
@@ -22,16 +23,17 @@ A | B | Carry in | Sum | Carry out
 1 | 0 | 1 | 0 | 1
 1 | 1 | 0 | 0 | 1
 1 | 1 | 1 | 1 | 1
+{{</figure>}}
 
 Using a Karnaugh map, and knowledge of XOR, we can get simplified Boolean algebraic expressions for each of the two output variables.
 
-$$S = A \oplus B \oplus C\_{in}$$
-
-$$C\_{out} = ((A \oplus B) \land C\_{in}) \lor (A \land B)$$
+$$\begin{align*}S &= A \oplus B \oplus C\_{in} \\\\ C\_{out} &= ((A \oplus B) \land C\_{in}) \lor (A \land B)\end{align*}$$
 
 The circuit corresponding to these Boolean algebraic expressions is shown below.
 
-![The circuit for a full adder](full-adder.png)
+{{<figure width="75%" caption="The circuit for a full adder">}}
+{{<img src="full-adder.png">}}
+{{</figure>}}
 
 ### Hardware Setup
 
@@ -47,7 +49,9 @@ OR    | AND 1 output | AND 2 output | C<sub>out</sub> (GPIO24, pin #18)
 
 The resulting circuit should look something like the following illustration.
 
-![The hardware configuration for a full adder](FullAdder.png)
+{{<figure caption="The hardware configuration for a full adder">}}
+{{<img src="FullAdder.png">}}
+{{</figure>}}
 
 ## Exercise
 

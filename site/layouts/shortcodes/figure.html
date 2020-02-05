@@ -1,9 +1,9 @@
 <!-- image -->
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
-  {{ with .Get "width" }}<div style="width: {{ . }};" class="centred">{{ end }}
+  {{ with .Get "width" }}<div style="width: {{ . }};" class="centered">{{ end }}
   {{ .Inner | markdownify }}
   {{ with .Get "width" }}</div>{{ end }}
-  {{- with .Get "caption" -}}
-  <figcaption class="centred">{{ . | markdownify }}</figcaption>
+  {{- if .Get "caption" -}}
+  <figcaption class="centered">{{ .Get "caption" | markdownify }}{{ if (.Get "attr") }} &mdash; <em>{{ $.Get "attr" | markdownify }}</em>{{ end }}</figcaption>
   {{- end -}}
 </figure>

@@ -10,11 +10,16 @@ In this lab we are going to introduce the GPIO interface of the Raspberry Pi.
 
 In one corner of the Raspberry Pi is a 40-pin expansion header.  The pins are numbered from 1 to 40, with the even numbers on the outside edge of the board as shown below.
 
-![Raspberry Pi 3 Model B+ GPIO expansion headers](raspberry_pi_3bplus_top.jpg "[By Gareth Halfacree from Bradford, UK (Raspberry Pi 3B+) [CC BY-SA 2.0], via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_3_B%2B_(39906369025).png)")
+
+{{<figure caption="Raspberry Pi 3 Model B+ GPIO expansion headers" attr="[By Gareth Halfacree from Bradford, UK (Raspberry Pi 3B+) [CC BY-SA 2.0], via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_3_B%2B_(39906369025).png)">}}
+{{<img src="raspberry_pi_3bplus_top.jpg">}}
+{{</figure>}}
 
 Each of these GPIO pins are identified below.
 
-![Raspberry Pi B+ GPIO 40 Pin Block Pinout](gpio_pins.png "[Christopher Stanton, Element 14 Community](http://www.element14.com/community/docs/DOC-68203/l/raspberry-pi-b-gpio-40-pin-block-pinout)")
+{{<figure width="75%" caption="Raspberry Pi B+ GPIO 40 Pin Block Pinout" attr="[Christopher Stanton, Element 14 Community](http://www.element14.com/community/docs/DOC-68203/l/raspberry-pi-b-gpio-40-pin-block-pinout)">}}
+{{<img src="gpio_pins.png">}}
+{{</figure>}}
 
 There are several different types of pins in the expansion header.
 
@@ -102,7 +107,7 @@ GPIO.output(12, GPIO.LOW)
 
 A **light-emitting diode (LED)** is a two-lead semiconductor that emits light.  It resembles a simple p-n junction diode, which emits light when activated
 
-![](led.png)
+{{<img src="led.png">}}
 
 As LEDs are diodes, current only flows in one direction.  Thus you must connect the anode to the power source and the cathode to the ground.  Reversing these connections will not permit current to flow through and thus it will not emit light.
 
@@ -110,7 +115,7 @@ In general the longest leg of the LED is the anode, while the shortest is the ca
 
 To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.  As you can verify in the pinout diagram above, this corresponds to the GPIO #18 (as labelled in the header).
 
-![](led_circuit_rev3.png)
+{{<img src="led_circuit_rev3.png">}}
 
 As the output voltage of the GPIO pins is +3.3V and the LED only uses +2.1V, we must add a resistor.  The specification of this LED says it consumes 20mA.  Each pin supplies up to 16mA, so the actual forward current consumed by the LED is 16mA, not 20mA.
 
@@ -182,7 +187,7 @@ Start with the circuit from Example 1.  Insert a momentary pushbutton switch int
 
 Your circuit should be similar to the following.
 
-![](led_button_circuit.png)
+{{<img src="led_button_circuit.png">}}
 
 When the button is pressed, the circuit between the +3.3V pin and pin #11 is completed.  This causes the input value of #11 to be `GPIO.HIGH`.  As we want a value of `GPIO.HIGH` to be read when the button has been pressed, we use set the `pull_up_down` argument to `GPIO.PUD_DOWN`.
 

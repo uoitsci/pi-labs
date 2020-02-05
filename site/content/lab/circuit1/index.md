@@ -10,6 +10,7 @@ In this lab we are going to experiment with gates and circuit design.  We'll use
 
 The 74xx series of chips generally contain logic gates and other components.  For example, the 7402 chip contains 4 NOR gates on a single 14-pin chip.  There are many variations, including some that have memory (flip-flops, latches).  The table below summarizes some of these chips.
 
+{{<figure width="75%">}}
 Base Model | Description
 -----------|-------------
 7400       | Quad 2-input NAND gates
@@ -18,10 +19,13 @@ Base Model | Description
 7408       | Quad 2-input AND gates
 7432       | Quad 2-input OR gates
 7486       | Quad 2-input XOR gates
+{{</figure>}}
 
 Nearly all of the above chips have an identical pinout (the exceptions are the 7402 and the 7404).  The diagram below illustrates the pinout of the 7400 chip.
 
-![Pinout of the 7400 chip](7400_Quad_2-input_NAND_Gates.png "[By Tosaka [CC BY 3.0], via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG)")
+{{<figure width="75%" caption="Pinout of the 7400 chip" attr="[By Tosaka [CC BY 3.0], via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:7400_Quad_2-input_NAND_Gates.PNG)">}}
+{{<img src="7400_Quad_2-input_NAND_Gates.png">}}
+{{</figure>}}
 
 To use one of these chips, connect pin #7 to ground, and pin #14 to +3.3V.  You may then connect two inputs (either GPIO output ports or directly from power source) to pin #1 and pin #2, and connect the output (pin #3) to either an LED (with an appropriate resistor) or a GPIO input port.
 
@@ -39,16 +43,20 @@ A half adder is a circuit that adds two binary digits, producing a sum and a car
 
 One can easily construct a half adder for two input bits (X and Y) by drawing the truth table for both sum (S) and carry \(C), as shown below.
 
+{{<figure width="75%">}}
 A | B | S | C
 ------|------|------|------
 0 | 0 | 0 | 0
 0 | 1 | 1 | 0
 1 | 0 | 1 | 0
 1 | 1 | 0 | 1
+{{</figure>}}
 
 Recognizing that the S column is identical to the truth table for XOR, and that the C column is identical to the truth table for AND, we can design a very simple circuit for a half adder.
 
-![The circuit for a half adder](half-adder.png)
+{{<figure width="50%" caption="The circuit for a half adder">}}
+{{<img src="half-adder.png">}}
+{{</figure>}}
 
 ### Hardware Setup
 
@@ -58,7 +66,9 @@ Connect a red wire to a power supply of +3.3V on the GPIO header, and plug it in
 
 Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO17 and GPIO22.  Connect the output from the XOR gate to GPIO23, and the output from the AND gate to GPIO24.  The completed circuit wiring is shown below.
 
-![The circuit for a half adder](HalfAdder.png)
+{{<figure caption="Half adder on a breadboard">}}
+{{<img src="HalfAdder.png">}}
+{{</figure>}}
 
 ## Exercise
 
