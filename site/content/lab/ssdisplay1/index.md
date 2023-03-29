@@ -148,7 +148,7 @@ Hint:  You can use // and % to extract a single digit from a number.  The follow
 
 {{< highlight python >}}
 def get_digit(i, num):
-    return (num / 10 ** i) % 10
+    return (num // 10 ** i) % 10
 
 num = 12345
 for i in range(0, 5):
