@@ -1,13 +1,14 @@
 # Based on https://github.com/oskapt/docker-hugo
-FROM debian:stretch as build
+FROM debian:bullseye as build
 
 RUN apt-get -qq update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends libstdc++6 git ca-certificates curl \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Configuration variables
-ENV HUGO_VERSION 0.64.0
-ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+ENV HUGO_VERSION 0.110.0
+#ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 ENV SITE_DIR '/usr/share/blog'
 
 # Download and install hugo

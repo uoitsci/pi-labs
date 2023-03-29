@@ -9,28 +9,34 @@ In this lab we are going to introduce the Python programming language that we ar
 # Raspberry Pi
 The Raspberry Pi (RPi) is a credit card-sized computer that is relatively low cost, and has been used for a wide variety of projects.  Many people have used RPis to be their media centre, and nearly as many have developed game consoles, which run emulators of old gaming systems and arcade machines (e.g. Sega Genesis, Atari 2600, Nintendo 64).  There are many other projects.
 
-The RPi runs a Linux distribution called Raspbian.  Raspbian is a scaled down version of Debian Linux, built for the ARM architecture and including some useful packages.  In most cases the operating system (OS) is loaded from the microSD card, but in the lab we load the OS over the network.
+The RPi runs a Linux distribution called Raspberry Pi OS.  Raspberry Pi OS is a scaled down version of Debian Linux, built for the ARM architecture and including some useful packages.  In most cases the operating system (OS) is loaded from the microSD card, but in the lab we load the OS over the network.
 
 # Python programming language
 Python is a simple to learn yet powerful programming language that was conceived in the late 1980s and nowadays is a widely used programming language backed with a huge community. There are hundreds of modules that can be used for free for almost anything you might need to do. And YES, you can write and run python in the Raspberry Pi, and there are modules that allow us to interact with the GPIO ports, the camera, etc.
 
 ## Hardware Setup
 
-To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, an Ethernet cable, a multimeter, and various wires and components.
+To get started, obtain a Raspberry Pi kit.  The contents of the RPi kit include an RPi, a multimeter, and various wires and components.
 
 The most important component is the RPi itself.  Remove it from its Mylar bag and set it down carefully on a flat surface.  Note that it has been mounted onto a plastic mounting board along with a breadboard.
 
-We will use this breadboard in future labs, but not this time.  To start, we'll need keyboard, mouse, network, and display connections.  Start by plugging in an HDMI cable.  Ensure the monitor is on.
+We will use this breadboard in future labs, but not this time.  To start, we'll need keyboard, mouse, network, and display connections.  Start by plugging in a micro HDMI cable.  Ensure the monitor is on.
 
-{{<figure caption="Raspberry Pi 3 Model B+ wired">}}
-{{<img src="pi_wired.jpg">}}
+{{<figure caption="Micro HDMI cable inserted">}}
+{{<img src="1_hdmi.jpg">}}
 {{</figure>}}
 
-Next, plug in the network cable into the RPi and one of the ethernet ports in the lab.  The RPi is powered over the network.  Wait for the boot screen to appear on the monitor (approximately 30s after plugging in the network cable) before plugging in the keyboard and mouse.  This is a bug in the RPi's firmware.
+Plug in the USB keyboard.  The keyboard has a built-in USB hub; there is no need to plug the mouse directly into the Pi.
 
-{{< message >}}
-In the UA 2460 lab the RPi will **not** boot if the keyboard is plugged in first.  You **must** unplug the keyboard before booting the RPi.  To restart the RPi, remove the network cable and plug it back in.
-{{< /message >}}
+{{<figure caption="USB &amp; network cable inserted">}}
+{{<img src="2_net.jpg">}}
+{{</figure>}}
+
+Next, plug the network cable into the RPi.  The RPi is powered over the network.
+
+{{<figure caption="Raspberry Pi 4 Model B wired">}}
+{{<img src="connected_pi_closeup.jpg">}}
+{{</figure>}}
 
 After a short time (~60s), the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
 
