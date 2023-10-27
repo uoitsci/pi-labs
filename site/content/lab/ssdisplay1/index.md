@@ -73,11 +73,11 @@ C|SCL (Clock for I<sup>2</sup>C)|SCL
 
 ## Download the support code
 
-Adafruit, who makes the 7-segment display, has created a Python library for our display, which provides the `SevenSegment` class.  The library is preinstalled on the Pi, but you'll need to download the example code from GitHub.
+Adafruit, who makes the 7-segment display, has created a Python library for our display, which provides the `segments` class.  The library is preinstalled on the Pi, but you'll need to download the example code from GitHub.
 
 {{< highlight bash >}}
-git clone https://github.com/adafruit/Adafruit_Python_LED_Backpack
-cd Adafruit_Python_LED_Backpack
+git clone https://github.com/adafruit/Adafruit_CircuitPython_HT16K33
+cd Adafruit_CircuitPython_HT16K33
 {{< /highlight >}}
 
 ## Connections
@@ -91,12 +91,8 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 Let's run the provided test program, which shows the current time on the 7 segment display, to be sure it is working properly.
 
 {{< highlight bash >}}
-python examples/ex_7segment_clock.py
+python examples/ht16k33_segments_7x4customchars.py
 {{< /highlight >}}
-
-{{< warning >}}
-The _example_ program does **not** support Python 3.  The library itself **does**.
-{{< /warning >}}
 
 To verify that the address of our seven segment display is `0x70`, try the following command in the terminal:
 
@@ -109,30 +105,55 @@ i2cdetect -y 1
 Once connected as in the above diagram, you can test if everything was properly connected using the following program. This program displays 'AbCd':
 
 {{< highlight python >}}
-from Adafruit_LED_Backpack.SevenSegment import SevenSegment
+# Import all board pins.
+import board
+import busio
 
-segment = SevenSegment()
+# Import the HT16K33 LED segment module.
+from adafruit_ht16k33 import segments
 
-segment.set_digit(0, 'A')
-segment.set_digit(1, 'B')
-segment.set_digit(2, 'C')
-segment.set_digit(3, 'D')
+# Create the I2C interface.
+i2c = busio.I2C(board.SCL, board.SDA)
 
-# The display won't update without this line
-segment.write_display()
+# Create the LED segment class.
+# This creates a 7 segment 4 character display:
+display = segments.Seg7x4(i2c)
+
+# Clear the display.
+display.fill(0)
+
+# Set the first character to 'A':
+display[0] = "A"
+# Set the second character to 'B':
+display[1] = "B"
+# Set the third character to 'C':
+display[2] = "C"
+# Set the fourth character to 'D':
+display[3] = "D"
 {{< /highlight >}}
 
 You can turn the colon (:) on or off:
 
 {{< highlight python >}}
-from Adafruit_LED_Backpack.SevenSegment import SevenSegment
+# Import all board pins.
+import board
+import busio
 
-segment = SevenSegment()
+# Import the HT16K33 LED segment module.
+from adafruit_ht16k33 import segments
 
-segment.set_colon(True)
-segment.set_colon(False)
+# Create the I2C interface.
+i2c = busio.I2C(board.SCL, board.SDA)
 
-segment.write_display()
+# Create the LED segment class.
+# This creates a 7 segment 4 character display:
+display = segments.Seg7x4(i2c)
+
+# Clear the display.
+display.fill(0)
+
+display.colon = True
+display.colon = False
 {{< /highlight >}}
 
 ## Exercise

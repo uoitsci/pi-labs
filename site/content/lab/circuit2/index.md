@@ -41,11 +41,11 @@ In addition to the components from the half adder, we'll need to add a 7432 chip
 
 Gate  | Input 1 | Input 2 | Output
 ------|---------|---------|-------
-XOR 1 | A (GPIO22, pin #15) | B (GPIO17, pin #11) | XOR 2 input 1
-XOR 2 | XOR 1 output | C<sub>in</sub> (GPIO04, pin #7) | S (GPIO23, pin #16)
-AND 1 | C<sub>in</sub> (GPIO04, pin #7) | XOR 1 output | OR input 1
-AND 2 | A (pin #15, GPIO #22) | B (GPIO17, pin #11) | OR input 2
-OR    | AND 1 output | AND 2 output | C<sub>out</sub> (GPIO24, pin #18)
+XOR 1 | A (GPIO22) | B (GPIO17) | XOR 2 input 1
+XOR 2 | XOR 1 output | C<sub>in</sub> (GPIO4) | S (GPIO23)
+AND 1 | C<sub>in</sub> (GPIO4) | XOR 1 output | OR input 1
+AND 2 | A (GPIO22) | B (GPIO17) | OR input 2
+OR    | AND 1 output | AND 2 output | C<sub>out</sub> (GPIO24)
 
 The resulting circuit should look something like the following illustration.
 

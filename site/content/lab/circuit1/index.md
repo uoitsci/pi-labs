@@ -77,10 +77,10 @@ Write some code in Python to test your half adder circuit will all possible inpu
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 # GPIO 22, 17, 23, and 24, respectively
-(A, B, S, C) = (15, 11, 16, 18)
+(A, B, S, C) = (22, 17, 23, 24)
 
 GPIO.setup(A, GPIO.OUT) # GPIO #22
 GPIO.setup(B, GPIO.OUT) # GPIO #17

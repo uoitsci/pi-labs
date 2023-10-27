@@ -24,10 +24,10 @@ When these servos are commanded to move, they will move to the position and hold
 To control the servo motor from the Raspberry Pi we are going to use the PWM module in RPi.GPIO. The first step is to create the PWM instance associated with the GPIO pin:
 
 {{< highlight python >}}
-p = GPIO.PWM(12, 50)
+p = GPIO.PWM(18, 50)
 {{< /highlight >}}
 
-In the above case we have instantiated the PWM module for the pin number 12 with a frequency of 50Hz. That frequency was selected because the servo motor expect a pulse every 20ms (period), that means 50 pulses per second or Hertz. Once instantiated the PWM module, to start sending a pulse we do:
+In the above case we have instantiated the PWM module for the GPIO18 with a frequency of 50Hz. That frequency was selected because the servo motor expect a pulse every 20ms (period), that means 50 pulses per second or Hertz. Once instantiated the PWM module, to start sending a pulse we do:
 
 {{< highlight python >}}
 p.start(dc)
@@ -70,11 +70,11 @@ The following program will control the servo making it move to its neutral posit
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
 
-p = GPIO.PWM(12, 50)
+p = GPIO.PWM(18, 50)
 
 p.start(7.5)
 

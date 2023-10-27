@@ -71,5 +71,5 @@ elapsedSeconds = elapsed.total_seconds()
 Display the user's reaction time using the seven segment display.
 
 {{< message >}}
-You will have to do your best to display 'go' and 'stop', as the seven segment display is intended for decimal digits.
+There is a built-in function to display 4-char string. To call the function, use display.print("STOP")
 {{< /message >}}

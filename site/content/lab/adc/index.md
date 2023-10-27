@@ -53,14 +53,14 @@ MCP 3008 Pin | RPi Pin
 VDD  | 3.3V (red)
 VREF | 3.3V (red)
 AGND | GND (black)
-CLK  | #11 (orange)
-DOUT | #13 (yellow)
-DIN  | #15 (blue)
-CS   | #19 (purple)
+CLK  | GPIO17 (orange)
+DOUT | GPIO27 (yellow)
+DIN  | GPIO22 (blue)
+CS   | GPIO10 (purple)
 DGND | GND (black)
 {{</figure>}}
 
-Next connect up the potentiometer. Pin #1 (left) goes to GND (black), #2 (middle) connects to MCP3008 CH0 (analog input #0) with a pink wire, and #3 (right) connects to 3.3V (red).
+Next connect up the potentiometer. Pin #3 (left) connects to 3.3V (red), #2 (middle) connects to MCP3008 CH0 (analog input #0) with a pink wire, and #1 (right) goes to GND (black).
 
 The following python program read the value of the potentiometer and print it value to the screen:
 
@@ -69,12 +69,12 @@ The following python program read the value of the potentiometer and print it va
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
-CLK  = 11
-DOUT = 13
-DIN  = 15
-CS   = 19
+CLK  = 17
+DOUT = 27
+DIN  = 22
+CS   = 10
 
 GPIO.setup(CLK,  GPIO.OUT)
 GPIO.setup(DOUT, GPIO.IN)

@@ -72,7 +72,7 @@ import RPi.GPIO as GPIO
 Then it is necessary to initialize the GPIO interface.
 
 {{< highlight python >}}
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 {{< /highlight >}}
 
 Now we are ready to start using the GPIO pins.  You may declare each pin as input (`GPIO.IN`) or output (`GPIO.OUT`), define your logic, etc.
@@ -88,19 +88,19 @@ GPIO.cleanup()
 To set a GPIO pin to output mode from Python, you must set it to `GPIO.OUT`.
 
 {{< highlight python >}}
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
 {{< /highlight >}}
 
 The pin is now set to output.  You may set it to +3.3V (high)
 
 {{< highlight python >}}
-GPIO.output(12, GPIO.HIGH)
+GPIO.output(18, GPIO.HIGH)
 {{< /highlight >}}
 
 or 0V (low)
 
 {{< highlight python >}}
-GPIO.output(12, GPIO.LOW)
+GPIO.output(18, GPIO.LOW)
 {{< /highlight >}}
 
 ## Example 1:  Controlling an LED
@@ -113,7 +113,7 @@ As LEDs are diodes, current only flows in one direction.  Thus you must connect 
 
 In general the longest leg of the LED is the anode, while the shortest is the cathode.  The flat side of the LED lens is always the cathode.
 
-To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses pin #12.  As you can verify in the pinout diagram above, this corresponds to the GPIO #18 (as labelled in the header).
+To control an LED from the Pi we are going to connect it to a GPIO pin.  While any GPIO pin may be used, this example uses the GPIO18.
 
 {{<img src="led_circuit_rev3.png">}}
 
@@ -129,20 +129,20 @@ As the formula indicates, we need a resistor value of at least 75&#8486;, so a r
 
 With the circuit constructed, we may now control the LED with the Raspberry Pi.
 
-The following code initializes the GPIO, sets pin #12 to output, turns the LED on, sleeps for 3 seconds, then finally turns the LED off.
+The following code initializes the GPIO18 to output, turns the LED on, sleeps for 3 seconds, then finally turns the LED off.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18, GPIO.OUT)
 
-GPIO.output(12, GPIO.HIGH)
+GPIO.output(18, GPIO.HIGH)
 
 time.sleep(3)
 
-GPIO.output(12, GPIO.LOW)
+GPIO.output(18, GPIO.LOW)
 
 GPIO.cleanup()
 {{< /highlight >}}
@@ -152,7 +152,7 @@ GPIO.cleanup()
 Similarly to how we defined a GPIO output pin, we may define a GPIO input pin.
 
 {{< highlight python >}}
-GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 {{< /highlight >}}
 
 Notice the extra argument `pull_up_down` provided to the setup function.  The purpose of this argument will be explained later.
@@ -160,7 +160,7 @@ Notice the extra argument `pull_up_down` provided to the setup function.  The pu
 In order to read a value from this pin, we use the `input` method.  This returns either `GPIO.HIGH` or `GPIO.LOW`, depending on if the input is considered active or not.
 
 {{< highlight python >}}
-GPIO.input(11)
+GPIO.input(17)
 {{< /highlight >}}
 
 When an input pin is considered active depends on the value passed to the `pull_up_down` argument.  There are two possible values.
@@ -183,28 +183,28 @@ The same effect could be produced by using an actual resistor before (PUD_UP) or
 
 In our previous example we demonstrated the usage of a GPIO pin as output.  In order to demonstrate using a GPIO pin for input, we are going to extend the previous example to make the LED blink when a button is pressed.
 
-Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to pin #11 (which corresponds to GPIO #17) and another to +3.3V.
+Start with the circuit from Example 1.  Insert a momentary pushbutton switch into the breadboard.  Connect one terminal to GPIO17 and another to +3.3V.
 
 Your circuit should be similar to the following.
 
 {{<img src="led_button_circuit.png">}}
 
-When the button is pressed, the circuit between the +3.3V pin and pin #11 is completed.  This causes the input value of #11 to be `GPIO.HIGH`.  As we want a value of `GPIO.HIGH` to be read when the button has been pressed, we use set the `pull_up_down` argument to `GPIO.PUD_DOWN`.
+When the button is pressed, the circuit between the +3.3V pin and GPIO17 is completed.  This causes the input value of #17 to be `GPIO.HIGH`.  As we want a value of `GPIO.HIGH` to be read when the button has been pressed, we use set the `pull_up_down` argument to `GPIO.PUD_DOWN`.
 
 The following Python program turns on the LED when the button is pressed.  The LED is turned off otherwise.
 
 {{< highlight python >}}
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(12, GPIO.OUT)
-GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.output(12, GPIO.LOW)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.output(18, GPIO.LOW)
 
 try:
     while True:
-        GPIO.output(12, GPIO.input(11))
+        GPIO.output(18, GPIO.input(17))
 except KeyboardInterrupt:
     GPIO.cleanup()
 {{< /highlight >}}
