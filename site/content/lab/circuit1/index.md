@@ -67,7 +67,7 @@ Connect a red wire to a power supply of +3.3V on the GPIO header, and plug it in
 Now, connect the inputs for both the first XOR gate and the first AND gate to the GPIO17 and GPIO22.  Connect the output from the XOR gate to GPIO23, and the output from the AND gate to GPIO24.  The completed circuit wiring is shown below.
 
 {{<figure caption="Half adder on a breadboard">}}
-{{<img src="HalfAdder.png">}}
+{{<img src="HalfAdder_rev2.png">}}
 {{</figure>}}
 
 ## Exercise

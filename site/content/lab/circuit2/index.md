@@ -50,7 +50,7 @@ OR    | AND 1 output | AND 2 output | C<sub>out</sub> (GPIO24)
 The resulting circuit should look something like the following illustration.
 
 {{<figure caption="The hardware configuration for a full adder">}}
-{{<img src="FullAdder.png">}}
+{{<img src="FullAdder_rev2.png">}}
 {{</figure>}}
 
 ## Exercise
