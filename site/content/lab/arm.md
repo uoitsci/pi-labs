@@ -17,8 +17,8 @@ We have to start with something, so we will start with a ridiculously simple pro
 .func main        /* 'main' is a function */
 
 main:             /* This is main */
-       mov w0,#2  /* Put a 2 inside the register w0 */
-       ret      /* Return from main */
+       mov r0,#2  /* Put a 2 inside the register r0 */
+       bx lr      /* Return from main */
 {{< /highlight >}}
 
 Create a file called first.s and write the contents shown above. Save it.
@@ -76,21 +76,27 @@ main:          /* This is main */
 Every line in GNU Assembler that is not a directive will always be like label: instruction. We can omit `label:` and instruction (empty and blank lines are ignored). A line with only `label:`, applies that label to the next line (you can have more than one label referring to the same thing this way). The instruction part is the ARM assembler language itself. In this case we are just defining main as there is no instruction.
 
 {{< highlight "ARM Assembly" >}}
-    mov w0, #2 /* Put a 2 inside the register w0 */
+    mov r0, #2 /* Put a 2 inside the register r0 */
 {{< /highlight >}}
     
 Whitespace is ignored at the beginning of the line, but the indentation suggests visually that this instruction belongs to the main function.
-This is the mov instruction which means move. We move a value `2` to the register `w0`. In the next chapter we will see more about registers, do not worry now. Yes, the syntax is awkward because the destination is actually at left. In ARM syntax it is always at left so we are saying something like move to register `w0` the immediate value `2`. We will see what immediate value means in ARM in the next chapter, do not worry again.
+This is the mov instruction which means move. We move a value `2` to the register `r0`. In the next chapter we will see more about registers, do not worry now. Yes, the syntax is awkward because the destination is actually at left. In ARM syntax it is always at left so we are saying something like move to register `r0` the immediate value `2`. We will see what immediate value means in ARM in the next chapter, do not worry again.
 
-In summary, this instruction puts a `2` inside the register `w0` (this effectively overwrites whatever register `w0` may have at that point).
+In summary, this instruction puts a `2` inside the register `r0` (this effectively overwrites whatever register `r0` may have at that point).
 
-And the error code? Well, the result of main is the error code of the program and when leaving the function such result must be stored in the register `w0`, so the `mov` instruction performed by our main is actually setting the error code to `2`.
+{{< highlight "ARM Assembly" >}}
+    bx lr      /* Return from main */
+{{< /highlight >}}
+    
+This instruction `bx` means branch and exchange. We do not really care at this point about the exchange part. Branching means that we will change the flow of the instruction execution. An ARM processor runs instructions sequentially, one after the other, thus after the `mov` above, this `bx` will be run (this sequential execution is not specific to ARM, but what happens in almost all architectures). A branch instruction is used to change this implicit sequential execution. In this case we branch to whatever `lr` register says. We do not care now what `lr` contains. It is enough to understand that this instruction just leaves the main function, thus effectively ending our program.
+
+And the error code? Well, the result of main is the error code of the program and when leaving the function such result must be stored in the register `r0`, so the `mov` instruction performed by our main is actually setting the error code to `2`.
 
 # Registers
 
 At its core, a processor in a computer is nothing but a powerful calculator. Calculations can only be carried using values stored in very tiny memories called registers. The ARM processor in a Raspberry Pi has 16 integer registers and 32 floating point registers. A processor uses these registers to perform integer computations and floating point computations, respectively. We will put floating registers aside for now and eventually we will get back to them in a future installment. Let’s focus on the integer registers.
 
-Those 16 integer registers in ARM have names from `w0` to `w15`. They can hold 32 bits. Of course these 32 bits can encode whatever you want. That said, it is convenient to represent integers in two's complement as there are instructions which perform computations assuming this encoding. So from now, except noted, we will assume our registers contain integer values encoded in two's complement.
+Those 16 integer registers in ARM have names from `r0` to `r15`. They can hold 32 bits. Of course these 32 bits can encode whatever you want. That said, it is convenient to represent integers in two's complement as there are instructions which perform computations assuming this encoding. So from now, except noted, we will assume our registers contain integer values encoded in two's complement.
 
 # Basic arithmetic
 
@@ -102,10 +108,10 @@ Almost every processor can do some basic arithmetic computations using the integ
 .func main
  
 main:
-    mov w1, #3      /* w1 ← 3 */
-    mov w2, #4      /* w2 ← 4 */
-    add w0, w1, w2  /* w0 ← w1 + w2 */
-    ret
+    mov r1, #3      /* r1 ← 3 */
+    mov r2, #4      /* r2 ← 4 */
+    add r0, r1, r2  /* r0 ← r1 + r2 */
+    bx lr
 {{< /highlight >}}
 
 If we compile and run this program the error code is, as expected, `7`.

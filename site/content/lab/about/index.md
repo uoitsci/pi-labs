@@ -38,18 +38,18 @@ Next, plug the network cable into the RPi.  The RPi is powered over the network.
 {{<img src="connected_pi_closeup.jpg">}}
 {{</figure>}}
 
-After a short time (~60s), the RPi will boot to a graphical login screen.  Log into the RPi using your science.uoit.ca username and password.
+After a short time (~60s), the RPi will boot to a graphical login screen.  Log into the RPi with the provided format below.
 
 {{< message >}}
-Your username is your student/banner ID.  Your password is your student/banner ID, followed by an underscore.
+Your username is your student/banner ID with the first number replaced with an "s".  Your password is your student/banner ID, followed by an underscore.
 {{< /message >}}
 
 e.g.
 
 Banner ID | Username  | Password
 --------- | --------- | --------
-100000001 | 100000001 | 100000001_
-100000002 | 100000002 | 100000002_
+100000001 | s00000001 | 100000001_
+100000002 | s00000002 | 100000002_
 
 Once logged in, take a few minutes to examine some of the applications available in the menu (which is accessible from the top left corner, similar to the start menu in Windows).
 
