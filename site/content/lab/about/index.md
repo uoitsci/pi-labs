@@ -51,9 +51,9 @@ Banner ID | Username  | Password
 100000001 | s00000001 | 100000001_
 100000002 | s00000002 | 100000002_
 
-Once logged in, take a few minutes to examine some of the applications available in the menu (which is accessible from the top left corner, similar to the start menu in Windows).
+Once logged in, take a few minutes to examine some of the applications available in the start menu on the top left corner. It has the icon of Raspberry Pi.
 
-In the menu, navigate to Programming -> Python 3 (IDLE) to start the Python development environment.
+In the start menu, navigate to Programming -> Python 3 (IDLE) to start the Python development environment.
 
 ## Running Python on the Raspberry Pi
 IDLE is a relatively simple IDE for Python.  It doesn't have the capabilities of Visual Studio, but it will do for our purposes.  When you see:
@@ -62,19 +62,19 @@ IDLE is a relatively simple IDE for Python.  It doesn't have the capabilities of
 >>> 
 ```
 
-This is the interactive Python shell.  It is a place where you can enter Python code directly, and have it execute immediately.  At the Python shell, type in the following (don't type the prompt):
+This is the interactive Python shell.  It is a place where you can enter Python code directly, and have it execute immediately.  At the Python shell, type in the following (don’t type the ">>>" prompt):
 
 ```python
 >>> 2 + 9
 ```
 
-Sometimes, this interactive mode is what you want and sometimes you want to edit a program in a file.  Let's create a program in a file.  In the 'File' menu, choose 'New Window' to open a text editor.  In the window that appears, type in the following test program:
+Sometimes, this interactive mode is what you want and sometimes you want to edit a program in a file.  Let's create a program in a file.  In the 'File' menu, choose 'New File' to open a text editor.  In the new window that appears, type in the following test program:
 
 ```python
 print("testing 1 2 3...")
 ```
 
-Choose 'File', 'Save As' and save this file in ~/Documents with the name basics.py.  Hit F5 to run your program, and you should see the output 'testing 1 2 3...' in the first IDLE window.  Spend a few minutes familiarizing yourself with the menu in the IDLE windows.  It has common text editor functionality, along with some basic programming environment features (e.g. Comment Out Region).
+Choose 'File', 'Save As' and save this file in ~/Documents with the name basics.py.  In the 'Run' menu, select 'Run Module' to run your program, and you should see the output 'testing 1 2 3...' in the first IDLE window.  Spend a few minutes familiarizing yourself with the menu in the IDLE windows.  It has common text editor functionality, along with some basic programming environment features (e.g. Comment Out Region).
 
 ## Python Language Introduction
 In this part of the lab, we'll experiment with some Python language features, under the assumption that you have previously written programs in C++.  First of all, let's consider variables and values.  In the Python shell, type in the following:
@@ -95,7 +95,7 @@ print(x)
 print(x * 2)
 ```
 
-Save this program over your basics.py program from part 2 and execute it with <kbd>F5</kbd>.  Notice that this program does not execute line-by-line, but executes the entire program when you hit <kbd>F5</kbd>.
+Save this program over your basics.py program from part 2 and run it.  Notice that this program does not execute line-by-line, but executes the entire program when you run it.
 
 Let's add some other variables to the end of our program:
 
@@ -108,18 +108,18 @@ width = 7.25
 Represented in our program are three different value types: integer, floating point, and string.  Let's print some values.  Add the following code to the end of the program:
 
 ```python
-print("x: ")
+print("x:")
 print(x)
 print("Name:", name)
-print("width:",)
+print("width:", end="")
 print(width)
 print("length:" + str(length))
 ```
 
-Save and run the program.  Notice what happened?  In some cases, spaces were added automatically by print, and in other cases a newline was added.  You'll need to be careful about that if you want precise output in Python.  To suppress the spaces, follow the pattern for length above.  To suppress the newline, add the extra comma on the right side, like with the following line:
+Save and run the program.  Notice what happened?  In some cases, spaces were added automatically by print, and in other cases a newline was added.  You'll need to be careful about that if you want precise output in Python.  To suppress the spaces, follow the pattern for the length above.  To suppress the newline, add the extra argument on the right side, like with the following line:
 
 ```python
-print("width:",)
+print("width:", end="")
 ```
 
 Now, let's try out conditionals.
