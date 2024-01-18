@@ -62,7 +62,7 @@ IDLE is a relatively simple IDE for Python.  It doesn't have the capabilities of
 >>> 
 ```
 
-This is the interactive Python shell.  It is a place where you can enter Python code directly, and have it execute immediately.  At the Python shell, type in the following (don’t type the ">>>" prompt):
+This is the interactive Python shell.  It is a place where you can enter Python code directly, and have it execute immediately.  At the Python shell, type in the following (don’t type the "`>>>`" prompt):
 
 ```python
 >>> 2 + 9
