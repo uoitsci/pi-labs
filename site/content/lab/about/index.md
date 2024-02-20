@@ -128,7 +128,7 @@ Now, let's try out conditionals.
 x = 8
 if x < 10:
     print("x is small")
-elif X < 20:
+elif x < 20:
     print("x is medium")
 else:
     print("x is large")
