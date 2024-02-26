@@ -81,6 +81,7 @@ GPIO.setup(DOUT, GPIO.IN)
 GPIO.setup(DIN,  GPIO.OUT)
 GPIO.setup(CS,   GPIO.OUT)
 
+# MCP3008 chip input channel
 potentiometer = 0
 
 # read SPI data from MCP3008 chip, 8 possible adc's  
@@ -125,8 +126,8 @@ try:
         print("Reading {:4} of 1023 ".format(value))
         print("({:7.2%})".format(value/1023.0))
         time.sleep(1)
-  except KeyboardInterrupt:
-      GPIO.cleanup()
+except KeyboardInterrupt:
+    GPIO.cleanup()
 {{< /highlight >}}
 
 ## Exercise
