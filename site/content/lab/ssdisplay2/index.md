@@ -71,5 +71,8 @@ elapsedSeconds = elapsed.total_seconds()
 Display the user's reaction time using the seven segment display.
 
 {{< message >}}
-There is a built-in function to display 4-char string. To call the function, use display.print("STOP")
+There is a built-in function to display 4-char string. For example: 
+{{< highlight python >}}
+display.print("STOP")
+{{< /highlight >}}
 {{< /message >}}
