@@ -90,7 +90,7 @@ First we are going to connect the four-digit seven-segment display to the GPIO p
 
 ## Testing connections
 
-Let's run the provided test program, which shows the current time on the 7 segment display, to be sure it is working properly.
+Let's run the provided test program, which shows a text and a scrolling text on the 7 segment display, to be sure it is working properly.
 
 {{< highlight bash >}}
 python3 examples/ht16k33_segments_7x4customchars.py
@@ -163,9 +163,9 @@ display.colon = False
 Write a program that does the following:
 
 * Write a function `writeDec` which outputs a decimal value.
-    * Count from 0000 to 1000, in decimal, with no delay
+    * Count from 0000 to 1000 in decimal, with no delay
 * Write a function `writeHex` which outputs a hexadecimal value.
-    * Count from 0000 to 1000, in hexadecimal, with no delay
+    * Count from 0000 to 1000 in hexadecimal (which is 4096 in decimal), with no delay
 
 {{< message >}}
 You can use // and % to extract a single digit from a number.  The following code demonstrates how to retrieve the $i$-th number (counted from 0, starting on the right) of the number in num:
