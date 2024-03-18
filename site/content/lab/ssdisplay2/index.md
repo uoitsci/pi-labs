@@ -37,13 +37,13 @@ In this example, the circuit has been designed to use the pull-up resistors in t
 
 ## Exercise #1
 
-Write a program that uses the button to increment the count displayed on the seven segment display.  The counter will increase if the button is depressed, and remain the same otherwise.
+Write a program that uses the button to increment the count displayed on the seven segment display.  The counter will increase if the button is pressed, and remain the same otherwise.
 
 ## Exercise #2
 
 Now, we are going to write a program inspired by the reaction tester at the Ontario Science Centre.  The tester is similar in appearance to the driver's seat of a vehicle.  The simulation starts when the user presses the accelerator pedal.  At a random time, a STOP indicator is shown. When the user sees the STOP indicator, they are supposed to hit the brake pedal.  The tester then shows you a comparative view of your reaction time.
 
-Write a program that displays 'go' to simulate acceleration.  It will then delay for a random amount of time (between 2 seconds and 5 seconds in duration), before displaying 'stop'.  To generate a random number and sleep for that amount of time (in seconds):
+Write a program that displays 'HOLD' when it is first executed. Once the user holds the button, the display will show 'GO' to simulate acceleration. It will then delay for a random amount of time (between 2 seconds and 5 seconds in duration) before displaying 'STOP'. Use the following code to generate a random number and sleep for that amount of time (in seconds):
 
 {{< highlight python >}}
 import time
@@ -53,7 +53,7 @@ delay = random.randrange(2000, 5000) / 1000.0
 time.sleep(delay)
 {{< /highlight >}}
 
-Once stop is displayed, record the time and start polling the button input (GPIO #17).  Then the button is pressed, record the time again.  Use the following code as a template:
+When 'STOP' is displayed, record the time and start reading the button input. Once the user releases the button, record the time again. Use the following code as a template:
 
 {{< highlight python >}}
 import datetime
@@ -75,4 +75,5 @@ There is a built-in function to display 4-char string. For example:
 {{< highlight python >}}
 display.print("STOP")
 {{< /highlight >}}
+However, it only accepts a 4-char string. If there are more than 4 characters, it will throw an error.
 {{< /message >}}
