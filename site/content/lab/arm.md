@@ -18,7 +18,7 @@ We have to start with something, so we will start with a ridiculously simple pro
 
 main:             /* This is main */
        mov w0,#2  /* Put a 2 inside the register w0 */
-       ret      /* Return from main */
+       ret        /* Return from main */
 {{< /highlight >}}
 
 Create a file called first.s and write the contents shown above. Save it.
@@ -76,7 +76,7 @@ main:          /* This is main */
 Every line in GNU Assembler that is not a directive will always be like label: instruction. We can omit `label:` and instruction (empty and blank lines are ignored). A line with only `label:`, applies that label to the next line (you can have more than one label referring to the same thing this way). The instruction part is the ARM assembler language itself. In this case we are just defining main as there is no instruction.
 
 {{< highlight "ARM Assembly" >}}
-    mov w0, #2 /* Put a 2 inside the register w0 */
+mov w0, #2 /* Put a 2 inside the register w0 */
 {{< /highlight >}}
     
 Whitespace is ignored at the beginning of the line, but the indentation suggests visually that this instruction belongs to the main function.
@@ -92,7 +92,41 @@ At its core, a processor in a computer is nothing but a powerful calculator. Cal
 
 Those 16 integer registers in ARM have names from `w0` to `w15`. They can hold 32 bits. Of course these 32 bits can encode whatever you want. That said, it is convenient to represent integers in two's complement as there are instructions which perform computations assuming this encoding. So from now, except noted, we will assume our registers contain integer values encoded in two's complement.
 
-# Basic arithmetic
+# Instructions
+
+Some of the instructions for the ARM assembler are different from the ones for x86 covered in lecture. One such difference is that many instructions now have an explicit destination register, rather an implicit one. For example, the addition instruction `add` takes 3 operands instead of 2 – the first is the destination register where the result will be stored, and the next two operands are the numbers you want to add together, e.g. if you want to sore the result of `w1 + w2` in the register `w0`, you would use:
+
+{{< highlight "ARM Assembly" >}}
+add, w0, w1, w2
+{{< /highlight >}}
+
+# Branching
+
+In x86, the commands used to branch use the “jump” nomenclature, and as such usually begin with `j`, or use `jmp` for an unconditional branch. With ARM assembly, you branch with the instruction `b` followed by an optional condition. You still use the `cmp` instruction to compare two numbers, it’s just the branch statement that changes. For example, an unconditional jump to the label `exit` would use the command:
+
+{{< highlight "ARM Assembly" >}}
+b exit
+{{< /highlight >}}
+
+Whereas a jump to the label `top`, based on whether or not the value in register `w0` was less than 0 would use the commands:
+
+{{< highlight "ARM Assembly" >}}
+cmp w0, #0
+blt top
+{{< /highlight >}}
+
+The following table shows the different conditions for x86 and ARM (we’ll stick to signed number comparisons)
+
+| Condition                    | x86 Instruction | ARM Instruction |
+| ---------------------------- | --------------- | --------------- |
+| equal (==)                   | je              | beq             |
+| not equal (!=)               | jne             | bne             |
+| less than (<)                | jl              | blt             |
+| less than or equal to (≤)    | jle             | ble             |
+| greater than (>)             | jg              | bgt             |
+| greater than or equal to (≥) | jge             | bge             |
+
+# Exercise #1
 
 Almost every processor can do some basic arithmetic computations using the integer registers. So do ARM processors.  You can **add** two registers. Let's retake our example from above:
 
@@ -109,3 +143,7 @@ main:
 {{< /highlight >}}
 
 If we compile and run this program the error code is, as expected, `7`.
+
+# Exercise #2
+
+Write an assembly language program that loops through the numbers 1 through 10, adding each to a total, and exiting the loop as appropriate. Once the loop is complete, the total value should be returned, just as we have in the previous exercise and above examples such that it can be examined from the command line. In this example, the result should be 55 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55).
