@@ -1,0 +1,4 @@
+libnss-ldapd
+libpam-ldapd
+sshfs
+libpam-mount

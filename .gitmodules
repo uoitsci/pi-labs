@@ -7,3 +7,7 @@
 [submodule "themes/hyde-hyde"]
 	path = site/themes/hyde-hyde
 	url = https://github.com/htr3n/hyde-hyde.git
+[submodule "software/os/pi-gen"]
+	path = software/os/pi-gen
+	url = https://github.com/RPi-Distro/pi-gen
+	branch = arm64
